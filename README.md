@@ -1,27 +1,64 @@
-# 全民中医 Quanmin TCM
+# 全民中医 · Quanmin TCM
 
-免费的中医辨证自查工具（Free TCM self-check tool）
+**28 种常见病的中医辨证自查工具（开源）**
 
-28 种常见问题自查：失眠 / 腰痛 / 反酸 / 便秘 / 痛经 / 血压高 / 湿疹 / 咳嗽 / 口苦 / 痛风 / 感冒发烧 / 月经不调 / 乏力 等。
+一个面向普通人的中医自查工具：跟着点几步，把症状理清楚，判断要不要去医院。核心是 28 种常见病的"辨证决策树"，整理自《伤寒论》《金匮要略》经方思路 + 现代常见病问诊逻辑。
 
-Covering 28 common health concerns: insomnia, back pain, acid reflux, constipation, period pain, high blood pressure, eczema, cough, gout, fever, fatigue and more.
+- 🌐 在线体验：https://laoyetools.com/quanmin
+- 📦 GitHub Pages 镜像：https://ysw412135.github.io/quanmin
+- ⭐ 欢迎 Star、提 Issue、提交病种
 
-- 🌿 免费 Free / 不用注册 No registration / 不收集信息 No data collection
-- 📱 打开即用 Mobile-friendly
-- ⚠️ 学习参考工具，不提供医疗诊断（Educational reference only, not medical advice）
+---
 
-## 使用 Use
+## 这是什么
 
-打开工具页：https://laoyetools.com/quanmin
+很多人身体不舒服，第一反应是上网查、问朋友、买药，往往越搞越乱。这个工具的思路是：**去医院的路上，先把自己的情况理清楚**。
 
-或直接访问本站（GitHub Pages 镜像）：https://ysw412135.github.io/quanmin/
+它不看病、不开方、不写剂量，只做一件事——按中医辨证的问诊逻辑，一步步问你症状，帮你分清自己是哪种情况，以及**哪些情况必须马上去医院**。
 
-## 内容来源 Content source
+## 特点
 
-依据《伤寒论》《金匮要略》经典及胡希恕先生讲解整理。
-Based on Shanghan Lun (Treatise on Cold Damage), Jingui Yaolue, and Hu Xishu's lectures.
+- ✅ 纯前端、零依赖、零外部 API，一个文件夹就能跑
+- ✅ 移动端优先（手机打开即用）
+- ✅ 28 种常见病决策树：失眠、腰痛、反酸、便秘、痛经、血压高、湿疹、咳嗽、口苦、孩子发烧……
+- ✅ 全程"学习参考"口径：不承诺疗效、不写剂量、必带就医红线
 
-## 合规 Compliance
+## 项目结构
 
-本工具为经典知识的学习参考，不构成医疗建议。涉及急症请直接就医。
-This tool is for educational reference only. Seek medical attention for emergencies.
+```
+quanmin/
+├── index.html          入口页（移动端优先）
+├── app.js              前端逻辑
+├── trees.js            ★ 核心资产：辨证决策树数据
+│   ├── SHARED          共享方剂/证型池
+│   ├── TREES.xxx       每种病的决策树
+│   └── allDiseases     病种入口列表
+├── landing.html        落地页
+├── generate_seo_pages.js  病种 SEO 页生成器
+├── s/                  病种 SEO 页（由生成器产出）
+├── manifest.json        PWA
+└── sw.js                Service Worker
+```
+
+## 快速开始
+
+```bash
+# 方式一：直接打开 index.html（纯静态，无需构建）
+# 方式二：本地起个静态服务
+python -m http.server 8080
+# 打开 http://localhost:8080
+```
+
+## 如何参与
+
+- **报告问题 / 提需求**：开 [Issue](https://github.com/ysw412135/quanmin/issues)
+- **添加病种 / 修正决策树**：看 [CONTRIBUTING.md](CONTRIBUTING.md)
+- **中医从业者校对**：欢迎对决策树提出专业修正
+
+## 免责声明
+
+本项目内容仅供**学习参考**，不构成医疗建议。工具不诊断、不开方、不写剂量；症状持续或加重，请及时就医。数据仅供参考，使用本项目产生的任何后果与作者无关。
+
+## 许可
+
+[MIT License](LICENSE) © 老叶经方
