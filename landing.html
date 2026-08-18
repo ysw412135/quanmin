@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>全民中医 — 免费的中医自查工具</title>
+<meta name="description" content="免费的中医辨证自查工具：感冒发烧、失眠、腰痛、反酸、便秘、痛经等28种常见问题，跟着点几步把症状理清楚，判断要不要去医院。不用注册，打开即用。">
+<meta name="theme-color" content="#166534">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Microsoft YaHei",sans-serif;background:#f0fdf4;color:#1e293b;min-height:100vh}
+.container{max-width:520px;margin:0 auto;padding:20px 16px 48px}
+.hero{text-align:center;padding:30px 8px 20px}
+.hero .logo{font-size:48px}
+.hero h1{font-size:30px;color:#166534;margin:10px 0 8px;font-weight:800}
+.hero .tag{font-size:15px;color:#475569;line-height:1.7}
+.cta-btn{display:block;margin:18px auto 8px;padding:16px;border:none;border-radius:14px;background:linear-gradient(135deg,#16a34a,#15803d);color:#fff;font-size:18px;font-weight:800;cursor:pointer;font-family:inherit;width:88%;box-shadow:0 6px 18px rgba(22,163,74,.28);text-decoration:none;text-align:center}
+.cta-btn:active{transform:scale(.97)}
+.cta-sub{text-align:center;font-size:12px;color:#94a3b8;margin-bottom:6px}
+.trust-row{display:flex;justify-content:center;gap:8px;margin:14px 0 6px;flex-wrap:wrap}
+.trust-row span{background:#fff;border:1px solid #bbf7d0;color:#166534;font-size:12px;padding:5px 12px;border-radius:20px;font-weight:600}
+.section{background:#fff;border-radius:16px;padding:20px;margin:14px 0;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+.section h2{font-size:17px;color:#166534;margin-bottom:12px}
+.section p,.section li{font-size:14px;color:#475569;line-height:1.8}
+.disease-pills{display:flex;flex-wrap:wrap;gap:8px}
+.disease-pills span{background:#f0fdf4;border:1px solid #dcfce7;border-radius:20px;padding:6px 12px;font-size:13px;color:#166534}
+.steps{display:flex;flex-direction:column;gap:10px}
+.step{display:flex;gap:12px;align-items:flex-start}
+.step .num{width:28px;height:28px;border-radius:50%;background:#16a34a;color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.step .txt{font-size:14px;color:#475569;line-height:1.7}
+.red-box{background:#fef2f2;border:2px solid #fecaca;border-radius:12px;padding:14px;font-size:13px;color:#dc2626;line-height:1.8}
+.red-box b{color:#dc2626}
+.faq{margin-top:8px}
+.faq details{background:#f8fafc;border-radius:10px;padding:12px 14px;margin-bottom:8px}
+.faq summary{font-size:14px;font-weight:700;color:#166534;cursor:pointer}
+.faq p{font-size:13px;color:#475569;margin-top:8px;line-height:1.7}
+.disclaimer{background:#fef2f2;border-radius:10px;padding:12px;font-size:11px;color:#dc2626;margin-top:16px;line-height:1.6;text-align:center}
+.footer{text-align:center;padding:16px 0 0;font-size:12px;color:#94a3b8}
+</style>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "这个工具能帮我判断要不要去医院吗？",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "能帮你理清情况：跟着点几步把症状问清楚，告诉你大概方向和哪些情况该就医。但它不是医生，不看病不开方。"
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "工具覆盖哪些问题？",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "28种常见问题：感冒发烧、咳嗽、睡不着、肠胃不适、腰酸背痛、痛经、血压高、反酸烧心、便秘、鼻炎等。"
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "使用要钱吗？要注册吗？",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "免费、不用注册、不收集信息，打开就能用。"
+   }
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<div class="container">
+
+<div class="hero">
+  <div class="logo">🌿</div>
+  <h1>全民中医</h1>
+  <div class="tag">免费的辨证自查工具<br>小毛病，先搞清楚情况，再决定要不要跑医院</div>
+  <div class="trust-row"><span>免费</span><span>不用注册</span><span>不收集信息</span></div>
+  <a class="cta-btn" href="/quanmin/">开始自查</a>
+  <div class="cta-sub">打开即用 · 30 秒查完 · 可生成分享卡片</div>
+</div>
+
+<div class="section">
+  <h2>它能帮你什么</h2>
+  <p>睡不好、腰疼、胃反酸、便秘、血压高头晕……<b>28 种常见问题</b>，跟着点几步，把症状问清楚，帮你判断：<br><br>
+  ✅ 大概是什么方向<br>
+  ✅ 要不要去医院<br>
+  ✅ 去医院怎么跟医生说清楚</p>
+</div>
+
+<div class="section">
+  <h2>覆盖的常见问题</h2>
+  <div class="disease-pills">
+    <span>🤒 感冒发烧</span><span>😤 咳嗽</span><span>😵 睡不着</span><span>🤢 肠胃不适</span><span>🧎 腰酸背痛</span><span>😖 痛经</span><span>🫀 血压高</span><span>🔥 反酸烧心</span><span>😣 便秘</span><span>🤧 鼻炎</span><span>🍬 血糖高</span><span>🦶 痛风</span><span>😴 乏力虚劳</span><span>🧭 还有更多…</span>
+  </div>
+</div>
+
+<div class="section">
+  <h2>怎么用（3 步）</h2>
+  <div class="steps">
+    <div class="step"><div class="num">1</div><div class="txt">选一个最贴近的问题（如"睡不着"）</div></div>
+    <div class="step"><div class="num">2</div><div class="txt">跟着回答几个大白话问题（怕冷吗？口干吗？大便什么样？）</div></div>
+    <div class="step"><div class="num">3</div><div class="txt">看到整理结果：方向 + 就医提醒 + 给医生看的描述</div></div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>它不做什么（很重要）</h2>
+  <div class="red-box">
+    <b>不是 AI 医生，不看病，不开方。</b><br><br>
+    它是把《伤寒论》《金匮要略》等经典经方思路翻译成大白话的学习参考工具。<br><br>
+    <b>涉及急症（高烧不退、剧烈疼痛、呼吸困难、神志不清、儿童、孕妇），工具会明确提醒你尽快就医。</b>
+  </div>
+</div>
+
+<div class="section faq">
+  <h2>常见疑问</h2>
+  <details><summary>要钱吗？</summary><p>免费，不用注册，没有会员套路，打开就用。</p></details>
+  <details><summary>准不准？</summary><p>它是"学习参考"，不是诊断。帮你把症状理清楚、判断方向，最终判断请交给执业医师。看病去医院，它对你有帮助的是"让你说得清"。</p></details>
+  <details><summary>我的信息会被收集吗？</summary><p>不会。查询在你手机本地完成，不留任何个人信息。</p></details>
+  <details><summary>查完能分享吗？</summary><p>可以，一键生成带结果的分享卡片，转发给家人朋友。</p></details>
+</div>
+
+<a class="cta-btn" href="/quanmin/">开始自查 →</a>
+
+<div class="disclaimer">
+  ⚠️ 本工具为《伤寒论》经典知识的六经八纲问诊思路学习参考，不提供医疗诊断或治疗建议。<br>
+  所有经方信息仅供学习。如需用药，请咨询执业中医师。自行用药有风险。
+</div>
+<div class="footer">全民中医 · laoyetools.com/quanmin</div>
+</div>
+<script>(function(){var src=new URLSearchParams(location.search).get('src')||'';fetch('/pv?tool=quanmin_landing'+(src?'&src='+encodeURIComponent(src):''));})();</script>
+</body>
+</html>
