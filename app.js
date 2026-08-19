@@ -25,6 +25,7 @@ var allDiseases = [
   { id:"reflux", icon:"🔥", name:"反酸/烧心", hint:"吐酸水·嗳气·胸口灼热", ready:true },
   { id:"pharyngitis", icon:"🗣️", name:"咽炎/喉咙不适", hint:"咽干·咽痛·异物感·干咳", ready:true },
   { id:"urinary", icon:"🚽", name:"尿频/尿路不适", hint:"夜尿多·尿黄热痛·小便不利", ready:true },
+  { id:"premature", icon:"⏱️", name:"早泄/遗精", hint:"时间短·腰酸·怕冷·盗汗·阴囊潮湿", ready:true },
   { id:"palpitation", icon:"💓", name:"心慌/胸闷", hint:"心悸·胸闷·容易受惊·头晕", ready:true },
   { id:"fatigue", icon:"😴", name:"乏力虚劳", hint:"没精神·总想躺·出汗·怕冷", ready:true },
   { id:"irregular_menses", icon:"🌙", name:"月经不调", hint:"提前·推迟·量少·血块·经前烦", ready:true },
@@ -33,6 +34,25 @@ var allDiseases = [
 
 // ==================== STATE ====================
 var currentNode = null, diseaseId = null, visitPath = [], visitAnswers = [], popStateHandled = false;
+
+// 相关病种推荐（结果页底部引导，提高留存）
+var relatedMap = {
+  fever:['cough','headache'], cough:['fever','pharyngitis'], headache:['hypertension','insomnia'],
+  insomnia:['palpitation','fatigue'], palpitation:['insomnia','fatigue'], fatigue:['insomnia','palpitation'],
+  backpain:['arthralgia','gout'], arthralgia:['backpain','gout'], gout:['arthralgia','urinary'],
+  reflux:['stomach','ulcer'], stomach:['reflux','ulcer'], ulcer:['reflux','stomach'],
+  constipation:['hemorrhoids','stomach'], hemorrhoids:['constipation','urinary'],
+  dysmenorrhea:['irregular_menses'], irregular_menses:['dysmenorrhea','fatigue'],
+  eczema:['acne','urinary'], acne:['eczema','ulcer'], rhinitis:['cough','pharyngitis'],
+  pharyngitis:['cough','rhinitis'], hypertension:['headache','palpitation'],
+  diabetes:['fatigue','urinary'], gallbladder:['reflux','fattyliver'], fattyliver:['gallbladder','reflux'],
+  thyroid:['palpitation','breast'], breast:['thyroid','irregular_menses'],
+  urinary:['gout','hemorrhoids','premature'], premature:['fatigue','urinary'], symptoms:['fatigue','palpitation']
+};
+function diseaseName(id) {
+  for (var i = 0; i < allDiseases.length; i++) { if (allDiseases[i].id === id) return allDiseases[i].name; }
+  return '';
+}
 
 function inferPattern(node, nodeKey) {
   var syn = node.syndrome || '';
@@ -151,10 +171,24 @@ function init() {
     si.addEventListener('input', function() {
       var kw = this.value.trim().toLowerCase();
       var cards = document.querySelectorAll('.disease-card');
+      var shown = 0;
       for (var i = 0; i < cards.length; i++) {
         var ok = !kw || cards[i].textContent.toLowerCase().indexOf(kw) >= 0;
         cards[i].style.display = ok ? '' : 'none';
+        if (ok) shown++;
       }
+      // 无结果提示（引导留言提病种）
+      var tip = document.getElementById('searchEmptyTip');
+      if (kw && shown === 0) {
+        if (!tip) {
+          tip = document.createElement('div');
+          tip.id = 'searchEmptyTip';
+          tip.style.cssText = 'background:#fffbeb;border:1.5px solid #fcd34d;border-radius:12px;padding:14px;margin-bottom:12px;font-size:13px;color:#92400e;line-height:1.7;text-align:center;';
+          tip.innerHTML = '🔍 没搜到「' + kw + '」<br>想查的病种这里还没有？<br><b>留言告诉我</b>（页面底部），我每周更新病种';
+          si.parentNode.insertBefore(tip, si.nextSibling);
+        }
+        tip.style.display = 'block';
+      } else if (tip) { tip.style.display = 'none'; }
     });
   }
   // 支持 ?d=病种id 直达（SEO/落地页链接用）
@@ -196,6 +230,8 @@ function selectDisease(id) {
   if (d && d.ready === false) { alert('这个病种还在整理中，敬请期待！'); return; }
   var tree = getTree(id);
   if (!tree) { alert('这个病种即将上线！敬请期待。'); return; }
+  // 查询埋点（运营数据：哪个病种被查最多）
+  try { fetch('/pv?tool=quanmin&d=' + encodeURIComponent(id)); } catch (e) {}
   diseaseId = id; currentNode = 'start'; visitPath = []; visitAnswers = [];
   showNode();
   document.getElementById('diseaseSelector').style.display = 'none';
@@ -211,7 +247,32 @@ function goHome() {
   for (var i = 0; i < kcs.length; i++) kcs[i].classList.remove('show');
   pushState('home', null, null, '#');
 }
-function goBack() { goHome(); }
+function goBack() {
+  // 问答中：回退一题（配合浏览器返回键行为一致）
+  if (document.getElementById('questionArea').classList.contains('active')) {
+    if (visitPath.length > 0) {
+      currentNode = visitPath.pop();
+      visitAnswers.pop();
+      showNode();
+      return;
+    }
+    goHome();
+    return;
+  }
+  // 结果页：回到问答最后一步
+  if (document.getElementById('resultArea').classList.contains('active')) {
+    if (visitPath.length > 0) {
+      currentNode = visitPath.pop();
+      visitAnswers.pop();
+      document.getElementById('resultArea').classList.remove('active');
+      showNode();
+      return;
+    }
+    goHome();
+    return;
+  }
+  goHome();
+}
 
 function showNode() {
   if (!diseaseId) return;
@@ -232,6 +293,9 @@ function showNode() {
   document.getElementById('questionContent').innerHTML = html;
   document.getElementById('questionArea').classList.add('active');
   document.getElementById('resultArea').classList.remove('active');
+  // 返回按钮：第一题显示"返回首页"，后续显示"上一题"
+  var bb = document.querySelector('#questionArea .back-btn');
+  if (bb) bb.textContent = visitPath.length > 0 ? '← 上一题' : '← 返回首页';
   pushState('quiz', diseaseId, currentNode, '#q/' + diseaseId + '/' + currentNode);
   var buttons = document.querySelectorAll('.option-btn');
   for (var j = 0; j < buttons.length; j++) {
@@ -273,8 +337,22 @@ function showResult(node) {
   if (node.rhyme) html += '<div class="r-section"><h4>🎵 辨证口诀</h4><div class="r-rhyme">' + node.rhyme + '</div></div>';
   html += '<p style="font-size:12px;color:#94a3b8;margin-top:12px;">以上为《伤寒论》经典知识的学习参考，不构成医疗建议。如需用药，请咨询执业中医师。</p></div>';
   html += '<div class="report-actions"><button class="btn-save" onclick="copyDoctorText()">📋 复制病情描述</button><button class="btn-share" onclick="genShareCard()">🖼️ 生成分享卡片</button><button class="btn-share" onclick="shareReport()">📤 一键转发</button></div>';
+  // 相关病种推荐（提高留存和传播）
+  var relIds = relatedMap[diseaseId] || [];
+  if (relIds.length) {
+    var relHtml = '<div class="r-related"><div class="r-related-title">🤔 你还可能想查</div><div class="r-related-grid">';
+    for (var ri = 0; ri < relIds.length; ri++) {
+      var rn = diseaseName(relIds[ri]);
+      if (rn) relHtml += '<button class="related-btn" onclick="selectDisease(\'' + relIds[ri] + '\')">' + rn + '</button>';
+    }
+    relHtml += '</div></div>';
+    html += relHtml;
+  }
   html += '<div style="text-align:center;margin-bottom:16px;"><button class="btn-donate" onclick="showDonate()">☕ 请老叶喝杯咖啡</button></div>';
   document.getElementById('reportContent').innerHTML = html;
+  // 结果页返回按钮：显示"← 上一步"
+  var rbb = document.querySelector('#resultArea .back-btn');
+  if (rbb) rbb.textContent = visitPath.length > 0 ? '← 上一步' : '← 返回首页';
   pushState('result', diseaseId, currentNode, '#r/' + diseaseId + '/' + currentNode);
 }
 

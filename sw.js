@@ -1,4 +1,4 @@
-var CACHE = 'quanmin-v8';
+var CACHE = 'quanmin-v9';
 var URLS = ['/quanmin', '/quanmin/', '/quanmin/index.html', '/quanmin/manifest.json', '/quanmin/trees.js', '/quanmin/app.js', '/quanmin/pwa.js', '/quanmin/icon-192.png', '/quanmin/icon-512.png'];
 
 // Take control immediately (critical for PWA install to work on first visit)
@@ -27,17 +27,16 @@ self.addEventListener('fetch', function(e) {
     );
     return;
   }
-  // Cache-first for static assets
+  // Network-first for static assets（保证更新生效，离线时回退缓存）
   e.respondWith(
-    caches.match(e.request).then(function(r) {
-      return r || fetch(e.request).then(function(resp) {
-        // Cache new static assets on the fly
-        if(resp.status === 200) {
-          var clone = resp.clone();
-          caches.open(CACHE).then(function(c) { c.put(e.request, clone); });
-        }
-        return resp;
-      });
+    fetch(e.request).then(function(resp) {
+      if(resp.status === 200) {
+        var clone = resp.clone();
+        caches.open(CACHE).then(function(c) { c.put(e.request, clone); });
+      }
+      return resp;
+    }).catch(function() {
+      return caches.match(e.request);
     })
   );
 });
