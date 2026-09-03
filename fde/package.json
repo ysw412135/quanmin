@@ -1,0 +1,16 @@
+{
+  "name": "quanmin-tcm-fde-phase1",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build-assets.mjs",
+    "test": "node scripts/run-adversarial-tests.mjs",
+    "smoke": "node tests/api-smoke.mjs",
+    "start": "node server/start.mjs",
+    "verify": "npm run build && npm test && npm run smoke"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

@@ -29,7 +29,8 @@ var allDiseases = [
   { id:"palpitation", icon:"💓", name:"心慌/胸闷", hint:"心悸·胸闷·容易受惊·头晕", ready:true },
   { id:"fatigue", icon:"😴", name:"乏力虚劳", hint:"没精神·总想躺·出汗·怕冷", ready:true },
   { id:"irregular_menses", icon:"🌙", name:"月经不调", hint:"提前·推迟·量少·血块·经前烦", ready:true },
-  { id:"symptoms", icon:"🧭", name:"找不到症状？", hint:"心慌·乏力·怕冷·出汗·口苦·尿频", ready:true }
+  { id:"symptoms", icon:"🧭", name:"找不到症状？", hint:"心慌·乏力·怕冷·出汗·口苦·尿频", ready:true },
+  { id:"vertigo", icon:"🌀", name:"头晕/眩晕", hint:"天旋地转·头重脚轻·昏沉·体位性眩晕", ready:true }
 ];
 
 // ==================== STATE ====================
@@ -47,7 +48,8 @@ var relatedMap = {
   pharyngitis:['cough','rhinitis'], hypertension:['headache','palpitation'],
   diabetes:['fatigue','urinary'], gallbladder:['reflux','fattyliver'], fattyliver:['gallbladder','reflux'],
   thyroid:['palpitation','breast'], breast:['thyroid','irregular_menses'],
-  urinary:['gout','hemorrhoids','premature'], premature:['fatigue','urinary'], symptoms:['fatigue','palpitation']
+  urinary:['gout','hemorrhoids','premature'], premature:['fatigue','urinary'], symptoms:['fatigue','palpitation'],
+  vertigo:['hypertension','fatigue','palpitation']
 };
 function diseaseName(id) {
   for (var i = 0; i < allDiseases.length; i++) { if (allDiseases[i].id === id) return allDiseases[i].name; }

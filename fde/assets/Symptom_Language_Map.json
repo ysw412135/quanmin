@@ -1,0 +1,5739 @@
+{
+  "schemaVersion": "0.1.0",
+  "count": 525,
+  "mappings": [
+    {
+      "phrase": "上火",
+      "professionalCategory": "非标准症状标签",
+      "decomposesTo": [
+        "口腔灼痛/溃疡",
+        "咽痛",
+        "口干口渴",
+        "便干",
+        "尿色深",
+        "痘疹",
+        "烦热"
+      ],
+      "handlingRule": "不得直接归为热证；先拆成可观察事实",
+      "source": "curated_seed"
+    },
+    {
+      "phrase": "湿气重",
+      "professionalCategory": "非标准症状标签",
+      "decomposesTo": [
+        "身体困重",
+        "头重昏沉",
+        "胃口差",
+        "腹胀",
+        "大便黏/稀",
+        "浮肿",
+        "痰多"
+      ],
+      "handlingRule": "不得直接归为湿证；要求用户选具体表现",
+      "source": "curated_seed"
+    },
+    {
+      "phrase": "体虚",
+      "professionalCategory": "非标准症状标签",
+      "decomposesTo": [
+        "容易疲劳",
+        "活动耐力下降",
+        "气短",
+        "食欲下降",
+        "容易出汗",
+        "怕冷",
+        "反复生病"
+      ],
+      "handlingRule": "不得直接归为虚证",
+      "source": "curated_seed"
+    },
+    {
+      "phrase": "胃不舒服",
+      "professionalCategory": "部位+模糊不适",
+      "decomposesTo": [
+        "疼痛",
+        "胀满",
+        "烧灼",
+        "反酸",
+        "恶心",
+        "早饱"
+      ],
+      "handlingRule": "先问主感觉，再问饮食关系",
+      "source": "curated_seed"
+    },
+    {
+      "phrase": "心慌",
+      "professionalCategory": "心悸主观感",
+      "decomposesTo": [
+        "心跳快",
+        "心跳乱/漏拍",
+        "心跳感强",
+        "伴气短/胸痛/晕厥"
+      ],
+      "handlingRule": "先排危险伴随症状",
+      "source": "curated_seed"
+    },
+    {
+      "phrase": "头晕",
+      "professionalCategory": "眩晕/头昏待分",
+      "decomposesTo": [
+        "旋转感",
+        "眼前发黑",
+        "昏沉",
+        "站立不稳"
+      ],
+      "handlingRule": "不要把所有“晕”当作同一症状",
+      "source": "curated_seed"
+    },
+    {
+      "phrase": "睡不好",
+      "professionalCategory": "睡眠障碍待分",
+      "decomposesTo": [
+        "入睡困难",
+        "睡眠维持困难",
+        "早醒",
+        "睡后不解乏"
+      ],
+      "handlingRule": "记录频率、持续时间、日间影响",
+      "source": "curated_seed"
+    },
+    {
+      "phrase": "手脚凉",
+      "professionalCategory": "末梢冷感",
+      "decomposesTo": [
+        "仅手足冷",
+        "全身怕冷",
+        "颜色变化",
+        "麻木疼痛",
+        "遇冷诱发"
+      ],
+      "handlingRule": "不能单独推出阳虚",
+      "source": "curated_seed"
+    },
+    {
+      "phrase": "肾虚",
+      "professionalCategory": "用户自我诊断",
+      "decomposesTo": [
+        "腰酸",
+        "夜尿",
+        "性功能变化",
+        "乏力",
+        "耳鸣"
+      ],
+      "handlingRule": "保留原话为自我解释，不写入事实结论",
+      "source": "curated_seed"
+    },
+    {
+      "phrase": "肝火旺",
+      "professionalCategory": "用户自我诊断",
+      "decomposesTo": [
+        "烦躁",
+        "口苦",
+        "头痛",
+        "目赤",
+        "睡眠差"
+      ],
+      "handlingRule": "拆成事实，不确认用户诊断",
+      "source": "curated_seed"
+    },
+    {
+      "phrase": "寒气重",
+      "professionalCategory": "用户自我解释",
+      "decomposesTo": [
+        "怕冷",
+        "受凉加重",
+        "喜温",
+        "清稀分泌物",
+        "腹泻"
+      ],
+      "handlingRule": "不得等同寒证",
+      "source": "curated_seed"
+    },
+    {
+      "phrase": "气血不足",
+      "professionalCategory": "用户自我诊断",
+      "decomposesTo": [
+        "乏力",
+        "头晕",
+        "心悸",
+        "面色变化",
+        "月经量变化"
+      ],
+      "handlingRule": "需医生结合检查，必要时排除贫血等",
+      "source": "curated_seed"
+    },
+    {
+      "phrase": "胸口堵",
+      "professionalCategory": "胸部压迫/闷感",
+      "decomposesTo": [
+        "胸闷",
+        "胸痛",
+        "气短",
+        "咽部异物感",
+        "上腹胀"
+      ],
+      "handlingRule": "先问活动关系和危险伴随症状",
+      "source": "curated_seed"
+    },
+    {
+      "phrase": "喉咙有东西",
+      "professionalCategory": "咽部异物感",
+      "decomposesTo": [
+        "吞咽困难",
+        "吞咽痛",
+        "异物感",
+        "反酸",
+        "情绪关系"
+      ],
+      "handlingRule": "真性吞咽困难需单独标记",
+      "source": "curated_seed"
+    },
+    {
+      "phrase": "没精神",
+      "professionalCategory": "精力下降",
+      "decomposesTo": [
+        "嗜睡",
+        "疲劳",
+        "动力下降",
+        "注意力下降"
+      ],
+      "handlingRule": "问功能影响和睡眠",
+      "source": "curated_seed"
+    },
+    {
+      "phrase": "内热",
+      "professionalCategory": "主观热感",
+      "decomposesTo": [
+        "怕热",
+        "潮热",
+        "体温升高",
+        "手足心热",
+        "盗汗"
+      ],
+      "handlingRule": "必须区分体温与主观热感",
+      "source": "curated_seed"
+    },
+    {
+      "phrase": "睡不好",
+      "professionalCategory": "睡眠与情志主诉",
+      "decomposesTo": [
+        "sleep_pattern",
+        "duration",
+        "daytime_impact",
+        "substance_or_medication_change"
+      ],
+      "handlingRule": "先进入 sleep_bad 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "失眠",
+      "professionalCategory": "睡眠与情志主诉",
+      "decomposesTo": [
+        "sleep_pattern",
+        "duration",
+        "daytime_impact",
+        "substance_or_medication_change"
+      ],
+      "handlingRule": "先进入 sleep_bad 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "睡眠不佳",
+      "professionalCategory": "睡眠与情志主诉",
+      "decomposesTo": [
+        "sleep_pattern",
+        "duration",
+        "daytime_impact",
+        "substance_or_medication_change"
+      ],
+      "handlingRule": "先进入 sleep_bad 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "入睡困难",
+      "professionalCategory": "睡眠与情志主诉",
+      "decomposesTo": [
+        "sleep_pattern",
+        "duration",
+        "daytime_impact",
+        "substance_or_medication_change"
+      ],
+      "handlingRule": "先进入 hard_to_fall_asleep 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "躺很久睡不着",
+      "professionalCategory": "睡眠与情志主诉",
+      "decomposesTo": [
+        "sleep_pattern",
+        "duration",
+        "daytime_impact",
+        "substance_or_medication_change"
+      ],
+      "handlingRule": "先进入 hard_to_fall_asleep 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "夜里老醒",
+      "professionalCategory": "睡眠与情志主诉",
+      "decomposesTo": [
+        "sleep_pattern",
+        "duration",
+        "daytime_impact",
+        "substance_or_medication_change"
+      ],
+      "handlingRule": "先进入 wake_often 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "睡不踏实",
+      "professionalCategory": "睡眠与情志主诉",
+      "decomposesTo": [
+        "sleep_pattern",
+        "duration",
+        "daytime_impact",
+        "substance_or_medication_change"
+      ],
+      "handlingRule": "先进入 wake_often 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "醒得太早",
+      "professionalCategory": "睡眠与情志主诉",
+      "decomposesTo": [
+        "sleep_pattern",
+        "duration",
+        "daytime_impact",
+        "substance_or_medication_change"
+      ],
+      "handlingRule": "先进入 wake_too_early 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "凌晨就醒",
+      "professionalCategory": "睡眠与情志主诉",
+      "decomposesTo": [
+        "sleep_pattern",
+        "duration",
+        "daytime_impact",
+        "substance_or_medication_change"
+      ],
+      "handlingRule": "先进入 wake_too_early 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "梦多",
+      "professionalCategory": "睡眠与情志主诉",
+      "decomposesTo": [
+        "sleep_pattern",
+        "duration",
+        "daytime_impact",
+        "substance_or_medication_change"
+      ],
+      "handlingRule": "先进入 many_dreams 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "整晚做梦",
+      "professionalCategory": "睡眠与情志主诉",
+      "decomposesTo": [
+        "sleep_pattern",
+        "duration",
+        "daytime_impact",
+        "substance_or_medication_change"
+      ],
+      "handlingRule": "先进入 many_dreams 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "心烦静不下来",
+      "professionalCategory": "睡眠与情志主诉",
+      "decomposesTo": [
+        "sleep_pattern",
+        "duration",
+        "daytime_impact",
+        "substance_or_medication_change"
+      ],
+      "handlingRule": "先进入 restless_irritable 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "脑子停不下来",
+      "professionalCategory": "睡眠与情志主诉",
+      "decomposesTo": [
+        "sleep_pattern",
+        "duration",
+        "daytime_impact",
+        "substance_or_medication_change"
+      ],
+      "handlingRule": "先进入 restless_irritable 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "容易受惊",
+      "professionalCategory": "睡眠与情志主诉",
+      "decomposesTo": [
+        "sleep_pattern",
+        "duration",
+        "daytime_impact",
+        "substance_or_medication_change"
+      ],
+      "handlingRule": "先进入 easily_startled 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "一点声音就吓到",
+      "professionalCategory": "睡眠与情志主诉",
+      "decomposesTo": [
+        "sleep_pattern",
+        "duration",
+        "daytime_impact",
+        "substance_or_medication_change"
+      ],
+      "handlingRule": "先进入 easily_startled 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "情绪低落想哭",
+      "professionalCategory": "睡眠与情志主诉",
+      "decomposesTo": [
+        "sleep_pattern",
+        "duration",
+        "daytime_impact",
+        "substance_or_medication_change"
+      ],
+      "handlingRule": "先进入 low_mood_cry 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "莫名想哭",
+      "professionalCategory": "睡眠与情志主诉",
+      "decomposesTo": [
+        "sleep_pattern",
+        "duration",
+        "daytime_impact",
+        "substance_or_medication_change"
+      ],
+      "handlingRule": "先进入 low_mood_cry 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "总是焦虑",
+      "professionalCategory": "睡眠与情志主诉",
+      "decomposesTo": [
+        "sleep_pattern",
+        "duration",
+        "daytime_impact",
+        "substance_or_medication_change"
+      ],
+      "handlingRule": "先进入 anxious 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "心里发慌",
+      "professionalCategory": "睡眠与情志主诉",
+      "decomposesTo": [
+        "sleep_pattern",
+        "duration",
+        "daytime_impact",
+        "substance_or_medication_change"
+      ],
+      "handlingRule": "先进入 anxious 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "最近健忘",
+      "professionalCategory": "睡眠与情志主诉",
+      "decomposesTo": [
+        "sleep_pattern",
+        "duration",
+        "daytime_impact",
+        "substance_or_medication_change"
+      ],
+      "handlingRule": "先进入 poor_memory 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "记性变差",
+      "professionalCategory": "睡眠与情志主诉",
+      "decomposesTo": [
+        "sleep_pattern",
+        "duration",
+        "daytime_impact",
+        "substance_or_medication_change"
+      ],
+      "handlingRule": "先进入 poor_memory 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "胃不舒服",
+      "professionalCategory": "上消化道主诉",
+      "decomposesTo": [
+        "dominant_sensation",
+        "meal_relation",
+        "vomiting_character",
+        "weight_change"
+      ],
+      "handlingRule": "先进入 stomach_uncomfortable 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "胃难受",
+      "professionalCategory": "上消化道主诉",
+      "decomposesTo": [
+        "dominant_sensation",
+        "meal_relation",
+        "vomiting_character",
+        "weight_change"
+      ],
+      "handlingRule": "先进入 stomach_uncomfortable 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "胃痛",
+      "professionalCategory": "上消化道主诉",
+      "decomposesTo": [
+        "dominant_sensation",
+        "meal_relation",
+        "vomiting_character",
+        "weight_change"
+      ],
+      "handlingRule": "先进入 stomach_pain 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "胃那里疼",
+      "professionalCategory": "上消化道主诉",
+      "decomposesTo": [
+        "dominant_sensation",
+        "meal_relation",
+        "vomiting_character",
+        "weight_change"
+      ],
+      "handlingRule": "先进入 stomach_pain 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "胃胀",
+      "professionalCategory": "上消化道主诉",
+      "decomposesTo": [
+        "dominant_sensation",
+        "meal_relation",
+        "vomiting_character",
+        "weight_change"
+      ],
+      "handlingRule": "先进入 bloating 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "吃一点就胀",
+      "professionalCategory": "上消化道主诉",
+      "decomposesTo": [
+        "dominant_sensation",
+        "meal_relation",
+        "vomiting_character",
+        "weight_change"
+      ],
+      "handlingRule": "先进入 bloating 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "反酸",
+      "professionalCategory": "上消化道主诉",
+      "decomposesTo": [
+        "dominant_sensation",
+        "meal_relation",
+        "vomiting_character",
+        "weight_change"
+      ],
+      "handlingRule": "先进入 acid_reflux 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "酸水上来",
+      "professionalCategory": "上消化道主诉",
+      "decomposesTo": [
+        "dominant_sensation",
+        "meal_relation",
+        "vomiting_character",
+        "weight_change"
+      ],
+      "handlingRule": "先进入 acid_reflux 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "烧心",
+      "professionalCategory": "上消化道主诉",
+      "decomposesTo": [
+        "dominant_sensation",
+        "meal_relation",
+        "vomiting_character",
+        "weight_change"
+      ],
+      "handlingRule": "先进入 heartburn 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "胸口烧灼",
+      "professionalCategory": "上消化道主诉",
+      "decomposesTo": [
+        "dominant_sensation",
+        "meal_relation",
+        "vomiting_character",
+        "weight_change"
+      ],
+      "handlingRule": "先进入 heartburn 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "老打嗝嗳气",
+      "professionalCategory": "上消化道主诉",
+      "decomposesTo": [
+        "dominant_sensation",
+        "meal_relation",
+        "vomiting_character",
+        "weight_change"
+      ],
+      "handlingRule": "先进入 belching 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "一直嗳气",
+      "professionalCategory": "上消化道主诉",
+      "decomposesTo": [
+        "dominant_sensation",
+        "meal_relation",
+        "vomiting_character",
+        "weight_change"
+      ],
+      "handlingRule": "先进入 belching 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "恶心",
+      "professionalCategory": "上消化道主诉",
+      "decomposesTo": [
+        "dominant_sensation",
+        "meal_relation",
+        "vomiting_character",
+        "weight_change"
+      ],
+      "handlingRule": "先进入 nausea 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "想吐",
+      "professionalCategory": "上消化道主诉",
+      "decomposesTo": [
+        "dominant_sensation",
+        "meal_relation",
+        "vomiting_character",
+        "weight_change"
+      ],
+      "handlingRule": "先进入 nausea 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "呕吐",
+      "professionalCategory": "上消化道主诉",
+      "decomposesTo": [
+        "dominant_sensation",
+        "meal_relation",
+        "vomiting_character",
+        "weight_change"
+      ],
+      "handlingRule": "先进入 vomiting 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "吃了就吐",
+      "professionalCategory": "上消化道主诉",
+      "decomposesTo": [
+        "dominant_sensation",
+        "meal_relation",
+        "vomiting_character",
+        "weight_change"
+      ],
+      "handlingRule": "先进入 vomiting 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "食欲差",
+      "professionalCategory": "上消化道主诉",
+      "decomposesTo": [
+        "dominant_sensation",
+        "meal_relation",
+        "vomiting_character",
+        "weight_change"
+      ],
+      "handlingRule": "先进入 poor_appetite 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "不想吃东西",
+      "professionalCategory": "上消化道主诉",
+      "decomposesTo": [
+        "dominant_sensation",
+        "meal_relation",
+        "vomiting_character",
+        "weight_change"
+      ],
+      "handlingRule": "先进入 poor_appetite 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "喉咙像堵着东西",
+      "professionalCategory": "上消化道主诉",
+      "decomposesTo": [
+        "dominant_sensation",
+        "meal_relation",
+        "vomiting_character",
+        "weight_change"
+      ],
+      "handlingRule": "先进入 throat_lump 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "咽不下吐不出",
+      "professionalCategory": "上消化道主诉",
+      "decomposesTo": [
+        "dominant_sensation",
+        "meal_relation",
+        "vomiting_character",
+        "weight_change"
+      ],
+      "handlingRule": "先进入 throat_lump 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "肚子不舒服",
+      "professionalCategory": "腹部与排便主诉",
+      "decomposesTo": [
+        "stool_form",
+        "frequency",
+        "blood_or_black_stool",
+        "abdominal_pain_relation"
+      ],
+      "handlingRule": "先进入 abdomen_uncomfortable 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "腹部难受",
+      "professionalCategory": "腹部与排便主诉",
+      "decomposesTo": [
+        "stool_form",
+        "frequency",
+        "blood_or_black_stool",
+        "abdominal_pain_relation"
+      ],
+      "handlingRule": "先进入 abdomen_uncomfortable 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "肚子痛",
+      "professionalCategory": "腹部与排便主诉",
+      "decomposesTo": [
+        "stool_form",
+        "frequency",
+        "blood_or_black_stool",
+        "abdominal_pain_relation"
+      ],
+      "handlingRule": "先进入 abdominal_pain 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "腹痛",
+      "professionalCategory": "腹部与排便主诉",
+      "decomposesTo": [
+        "stool_form",
+        "frequency",
+        "blood_or_black_stool",
+        "abdominal_pain_relation"
+      ],
+      "handlingRule": "先进入 abdominal_pain 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "腹泻",
+      "professionalCategory": "腹部与排便主诉",
+      "decomposesTo": [
+        "stool_form",
+        "frequency",
+        "blood_or_black_stool",
+        "abdominal_pain_relation"
+      ],
+      "handlingRule": "先进入 diarrhea 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "拉肚子",
+      "professionalCategory": "腹部与排便主诉",
+      "decomposesTo": [
+        "stool_form",
+        "frequency",
+        "blood_or_black_stool",
+        "abdominal_pain_relation"
+      ],
+      "handlingRule": "先进入 diarrhea 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "大便稀",
+      "professionalCategory": "腹部与排便主诉",
+      "decomposesTo": [
+        "stool_form",
+        "frequency",
+        "blood_or_black_stool",
+        "abdominal_pain_relation"
+      ],
+      "handlingRule": "先进入 loose_stool 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "便溏",
+      "professionalCategory": "腹部与排便主诉",
+      "decomposesTo": [
+        "stool_form",
+        "frequency",
+        "blood_or_black_stool",
+        "abdominal_pain_relation"
+      ],
+      "handlingRule": "先进入 loose_stool 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "便秘",
+      "professionalCategory": "腹部与排便主诉",
+      "decomposesTo": [
+        "stool_form",
+        "frequency",
+        "blood_or_black_stool",
+        "abdominal_pain_relation"
+      ],
+      "handlingRule": "先进入 constipation 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "拉不出来",
+      "professionalCategory": "腹部与排便主诉",
+      "decomposesTo": [
+        "stool_form",
+        "frequency",
+        "blood_or_black_stool",
+        "abdominal_pain_relation"
+      ],
+      "handlingRule": "先进入 constipation 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "便秘腹泻交替",
+      "professionalCategory": "腹部与排便主诉",
+      "decomposesTo": [
+        "stool_form",
+        "frequency",
+        "blood_or_black_stool",
+        "abdominal_pain_relation"
+      ],
+      "handlingRule": "先进入 alternating_stool 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "大便忽干忽稀",
+      "professionalCategory": "腹部与排便主诉",
+      "decomposesTo": [
+        "stool_form",
+        "frequency",
+        "blood_or_black_stool",
+        "abdominal_pain_relation"
+      ],
+      "handlingRule": "先进入 alternating_stool 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "大便次数多",
+      "professionalCategory": "腹部与排便主诉",
+      "decomposesTo": [
+        "stool_form",
+        "frequency",
+        "blood_or_black_stool",
+        "abdominal_pain_relation"
+      ],
+      "handlingRule": "先进入 frequent_stool 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "一天拉好多次",
+      "professionalCategory": "腹部与排便主诉",
+      "decomposesTo": [
+        "stool_form",
+        "frequency",
+        "blood_or_black_stool",
+        "abdominal_pain_relation"
+      ],
+      "handlingRule": "先进入 frequent_stool 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "大便拉不净",
+      "professionalCategory": "腹部与排便主诉",
+      "decomposesTo": [
+        "stool_form",
+        "frequency",
+        "blood_or_black_stool",
+        "abdominal_pain_relation"
+      ],
+      "handlingRule": "先进入 incomplete_stool 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "总有便意",
+      "professionalCategory": "腹部与排便主诉",
+      "decomposesTo": [
+        "stool_form",
+        "frequency",
+        "blood_or_black_stool",
+        "abdominal_pain_relation"
+      ],
+      "handlingRule": "先进入 incomplete_stool 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "大便黏马桶",
+      "professionalCategory": "腹部与排便主诉",
+      "decomposesTo": [
+        "stool_form",
+        "frequency",
+        "blood_or_black_stool",
+        "abdominal_pain_relation"
+      ],
+      "handlingRule": "先进入 sticky_stool 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "大便很黏",
+      "professionalCategory": "腹部与排便主诉",
+      "decomposesTo": [
+        "stool_form",
+        "frequency",
+        "blood_or_black_stool",
+        "abdominal_pain_relation"
+      ],
+      "handlingRule": "先进入 sticky_stool 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "屁多肠鸣",
+      "professionalCategory": "腹部与排便主诉",
+      "decomposesTo": [
+        "stool_form",
+        "frequency",
+        "blood_or_black_stool",
+        "abdominal_pain_relation"
+      ],
+      "handlingRule": "先进入 gas 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "肚子咕噜响",
+      "professionalCategory": "腹部与排便主诉",
+      "decomposesTo": [
+        "stool_form",
+        "frequency",
+        "blood_or_black_stool",
+        "abdominal_pain_relation"
+      ],
+      "handlingRule": "先进入 gas 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "便血",
+      "professionalCategory": "腹部与排便主诉",
+      "decomposesTo": [
+        "stool_form",
+        "frequency",
+        "blood_or_black_stool",
+        "abdominal_pain_relation"
+      ],
+      "handlingRule": "先进入 blood_in_stool 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "大便带血",
+      "professionalCategory": "腹部与排便主诉",
+      "decomposesTo": [
+        "stool_form",
+        "frequency",
+        "blood_or_black_stool",
+        "abdominal_pain_relation"
+      ],
+      "handlingRule": "先进入 blood_in_stool 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "便中带血",
+      "professionalCategory": "腹部与排便主诉",
+      "decomposesTo": [
+        "stool_form",
+        "frequency",
+        "blood_or_black_stool",
+        "abdominal_pain_relation"
+      ],
+      "handlingRule": "先进入 blood_in_stool 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "拉血",
+      "professionalCategory": "腹部与排便主诉",
+      "decomposesTo": [
+        "stool_form",
+        "frequency",
+        "blood_or_black_stool",
+        "abdominal_pain_relation"
+      ],
+      "handlingRule": "先进入 blood_in_stool 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "下血",
+      "professionalCategory": "腹部与排便主诉",
+      "decomposesTo": [
+        "stool_form",
+        "frequency",
+        "blood_or_black_stool",
+        "abdominal_pain_relation"
+      ],
+      "handlingRule": "先进入 blood_in_stool 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "血便",
+      "professionalCategory": "腹部与排便主诉",
+      "decomposesTo": [
+        "stool_form",
+        "frequency",
+        "blood_or_black_stool",
+        "abdominal_pain_relation"
+      ],
+      "handlingRule": "先进入 blood_in_stool 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "痔疮",
+      "professionalCategory": "腹部与排便主诉",
+      "decomposesTo": [
+        "stool_form",
+        "frequency",
+        "blood_or_black_stool",
+        "abdominal_pain_relation"
+      ],
+      "handlingRule": "先进入 hemorrhoid 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "痔",
+      "professionalCategory": "腹部与排便主诉",
+      "decomposesTo": [
+        "stool_form",
+        "frequency",
+        "blood_or_black_stool",
+        "abdominal_pain_relation"
+      ],
+      "handlingRule": "先进入 hemorrhoid 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "肛门坠胀",
+      "professionalCategory": "腹部与排便主诉",
+      "decomposesTo": [
+        "stool_form",
+        "frequency",
+        "blood_or_black_stool",
+        "abdominal_pain_relation"
+      ],
+      "handlingRule": "先进入 hemorrhoid 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "肛门有肉球",
+      "professionalCategory": "腹部与排便主诉",
+      "decomposesTo": [
+        "stool_form",
+        "frequency",
+        "blood_or_black_stool",
+        "abdominal_pain_relation"
+      ],
+      "handlingRule": "先进入 hemorrhoid 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "脱肛",
+      "professionalCategory": "腹部与排便主诉",
+      "decomposesTo": [
+        "stool_form",
+        "frequency",
+        "blood_or_black_stool",
+        "abdominal_pain_relation"
+      ],
+      "handlingRule": "先进入 hemorrhoid 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "咳嗽",
+      "professionalCategory": "呼吸与耳鼻咽喉主诉",
+      "decomposesTo": [
+        "breathing_difficulty",
+        "sputum_or_discharge",
+        "fever",
+        "duration"
+      ],
+      "handlingRule": "先进入 cough 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "一直咳",
+      "professionalCategory": "呼吸与耳鼻咽喉主诉",
+      "decomposesTo": [
+        "breathing_difficulty",
+        "sputum_or_discharge",
+        "fever",
+        "duration"
+      ],
+      "handlingRule": "先进入 cough 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "干咳",
+      "professionalCategory": "呼吸与耳鼻咽喉主诉",
+      "decomposesTo": [
+        "breathing_difficulty",
+        "sputum_or_discharge",
+        "fever",
+        "duration"
+      ],
+      "handlingRule": "先进入 dry_cough 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "咳不出痰",
+      "professionalCategory": "呼吸与耳鼻咽喉主诉",
+      "decomposesTo": [
+        "breathing_difficulty",
+        "sputum_or_discharge",
+        "fever",
+        "duration"
+      ],
+      "handlingRule": "先进入 dry_cough 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "痰多",
+      "professionalCategory": "呼吸与耳鼻咽喉主诉",
+      "decomposesTo": [
+        "breathing_difficulty",
+        "sputum_or_discharge",
+        "fever",
+        "duration"
+      ],
+      "handlingRule": "先进入 phlegm 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "喉咙很多痰",
+      "professionalCategory": "呼吸与耳鼻咽喉主诉",
+      "decomposesTo": [
+        "breathing_difficulty",
+        "sputum_or_discharge",
+        "fever",
+        "duration"
+      ],
+      "handlingRule": "先进入 phlegm 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "喘鸣",
+      "professionalCategory": "呼吸与耳鼻咽喉主诉",
+      "decomposesTo": [
+        "breathing_difficulty",
+        "sputum_or_discharge",
+        "fever",
+        "duration"
+      ],
+      "handlingRule": "先进入 wheeze 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "呼噜呼噜喘",
+      "professionalCategory": "呼吸与耳鼻咽喉主诉",
+      "decomposesTo": [
+        "breathing_difficulty",
+        "sputum_or_discharge",
+        "fever",
+        "duration"
+      ],
+      "handlingRule": "先进入 wheeze 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "气短",
+      "professionalCategory": "呼吸与耳鼻咽喉主诉",
+      "decomposesTo": [
+        "breathing_difficulty",
+        "sputum_or_discharge",
+        "fever",
+        "duration"
+      ],
+      "handlingRule": "先进入 short_breath 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "不够气",
+      "professionalCategory": "呼吸与耳鼻咽喉主诉",
+      "decomposesTo": [
+        "breathing_difficulty",
+        "sputum_or_discharge",
+        "fever",
+        "duration"
+      ],
+      "handlingRule": "先进入 short_breath 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "咽喉痛",
+      "professionalCategory": "呼吸与耳鼻咽喉主诉",
+      "decomposesTo": [
+        "breathing_difficulty",
+        "sputum_or_discharge",
+        "fever",
+        "duration"
+      ],
+      "handlingRule": "先进入 sore_throat 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "吞咽痛",
+      "professionalCategory": "呼吸与耳鼻咽喉主诉",
+      "decomposesTo": [
+        "breathing_difficulty",
+        "sputum_or_discharge",
+        "fever",
+        "duration"
+      ],
+      "handlingRule": "先进入 sore_throat 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "咽干",
+      "professionalCategory": "呼吸与耳鼻咽喉主诉",
+      "decomposesTo": [
+        "breathing_difficulty",
+        "sputum_or_discharge",
+        "fever",
+        "duration"
+      ],
+      "handlingRule": "先进入 throat_dry 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "嗓子干",
+      "professionalCategory": "呼吸与耳鼻咽喉主诉",
+      "decomposesTo": [
+        "breathing_difficulty",
+        "sputum_or_discharge",
+        "fever",
+        "duration"
+      ],
+      "handlingRule": "先进入 throat_dry 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "鼻塞",
+      "professionalCategory": "呼吸与耳鼻咽喉主诉",
+      "decomposesTo": [
+        "breathing_difficulty",
+        "sputum_or_discharge",
+        "fever",
+        "duration"
+      ],
+      "handlingRule": "先进入 stuffy_nose 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "鼻子不通",
+      "professionalCategory": "呼吸与耳鼻咽喉主诉",
+      "decomposesTo": [
+        "breathing_difficulty",
+        "sputum_or_discharge",
+        "fever",
+        "duration"
+      ],
+      "handlingRule": "先进入 stuffy_nose 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "流鼻涕",
+      "professionalCategory": "呼吸与耳鼻咽喉主诉",
+      "decomposesTo": [
+        "breathing_difficulty",
+        "sputum_or_discharge",
+        "fever",
+        "duration"
+      ],
+      "handlingRule": "先进入 runny_nose 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "鼻水多",
+      "professionalCategory": "呼吸与耳鼻咽喉主诉",
+      "decomposesTo": [
+        "breathing_difficulty",
+        "sputum_or_discharge",
+        "fever",
+        "duration"
+      ],
+      "handlingRule": "先进入 runny_nose 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "喷嚏鼻痒",
+      "professionalCategory": "呼吸与耳鼻咽喉主诉",
+      "decomposesTo": [
+        "breathing_difficulty",
+        "sputum_or_discharge",
+        "fever",
+        "duration"
+      ],
+      "handlingRule": "先进入 sneeze_itch 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "一直打喷嚏",
+      "professionalCategory": "呼吸与耳鼻咽喉主诉",
+      "decomposesTo": [
+        "breathing_difficulty",
+        "sputum_or_discharge",
+        "fever",
+        "duration"
+      ],
+      "handlingRule": "先进入 sneeze_itch 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "胸闷",
+      "professionalCategory": "胸部、心悸与循环主诉",
+      "decomposesTo": [
+        "chest_urgent",
+        "exertion_relation",
+        "palpitation_pattern",
+        "edema_breath"
+      ],
+      "handlingRule": "先进入 chest_tight 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "胸口堵",
+      "professionalCategory": "胸部、心悸与循环主诉",
+      "decomposesTo": [
+        "chest_urgent",
+        "exertion_relation",
+        "palpitation_pattern",
+        "edema_breath"
+      ],
+      "handlingRule": "先进入 chest_tight 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "胸痛",
+      "professionalCategory": "胸部、心悸与循环主诉",
+      "decomposesTo": [
+        "chest_urgent",
+        "exertion_relation",
+        "palpitation_pattern",
+        "edema_breath"
+      ],
+      "handlingRule": "先进入 chest_pain 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "胸口疼",
+      "professionalCategory": "胸部、心悸与循环主诉",
+      "decomposesTo": [
+        "chest_urgent",
+        "exertion_relation",
+        "palpitation_pattern",
+        "edema_breath"
+      ],
+      "handlingRule": "先进入 chest_pain 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "心慌",
+      "professionalCategory": "胸部、心悸与循环主诉",
+      "decomposesTo": [
+        "chest_urgent",
+        "exertion_relation",
+        "palpitation_pattern",
+        "edema_breath"
+      ],
+      "handlingRule": "先进入 palpitation 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "心跳得慌",
+      "professionalCategory": "胸部、心悸与循环主诉",
+      "decomposesTo": [
+        "chest_urgent",
+        "exertion_relation",
+        "palpitation_pattern",
+        "edema_breath"
+      ],
+      "handlingRule": "先进入 palpitation 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "心跳快",
+      "professionalCategory": "胸部、心悸与循环主诉",
+      "decomposesTo": [
+        "chest_urgent",
+        "exertion_relation",
+        "palpitation_pattern",
+        "edema_breath"
+      ],
+      "handlingRule": "先进入 heart_racing 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "心跳突然很快",
+      "professionalCategory": "胸部、心悸与循环主诉",
+      "decomposesTo": [
+        "chest_urgent",
+        "exertion_relation",
+        "palpitation_pattern",
+        "edema_breath"
+      ],
+      "handlingRule": "先进入 heart_racing 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "心跳乱",
+      "professionalCategory": "胸部、心悸与循环主诉",
+      "decomposesTo": [
+        "chest_urgent",
+        "exertion_relation",
+        "palpitation_pattern",
+        "edema_breath"
+      ],
+      "handlingRule": "先进入 irregular_beat 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "像漏跳",
+      "professionalCategory": "胸部、心悸与循环主诉",
+      "decomposesTo": [
+        "chest_urgent",
+        "exertion_relation",
+        "palpitation_pattern",
+        "edema_breath"
+      ],
+      "handlingRule": "先进入 irregular_beat 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "总想叹气",
+      "professionalCategory": "胸部、心悸与循环主诉",
+      "decomposesTo": [
+        "chest_urgent",
+        "exertion_relation",
+        "palpitation_pattern",
+        "edema_breath"
+      ],
+      "handlingRule": "先进入 sighing 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "深呼吸才舒服",
+      "professionalCategory": "胸部、心悸与循环主诉",
+      "decomposesTo": [
+        "chest_urgent",
+        "exertion_relation",
+        "palpitation_pattern",
+        "edema_breath"
+      ],
+      "handlingRule": "先进入 sighing 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "一活动就喘",
+      "professionalCategory": "胸部、心悸与循环主诉",
+      "decomposesTo": [
+        "chest_urgent",
+        "exertion_relation",
+        "palpitation_pattern",
+        "edema_breath"
+      ],
+      "handlingRule": "先进入 breathless_exertion 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "走路就气喘",
+      "professionalCategory": "胸部、心悸与循环主诉",
+      "decomposesTo": [
+        "chest_urgent",
+        "exertion_relation",
+        "palpitation_pattern",
+        "edema_breath"
+      ],
+      "handlingRule": "先进入 breathless_exertion 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "躺下憋气",
+      "professionalCategory": "胸部、心悸与循环主诉",
+      "decomposesTo": [
+        "chest_urgent",
+        "exertion_relation",
+        "palpitation_pattern",
+        "edema_breath"
+      ],
+      "handlingRule": "先进入 breathless_lying 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "平躺不舒服",
+      "professionalCategory": "胸部、心悸与循环主诉",
+      "decomposesTo": [
+        "chest_urgent",
+        "exertion_relation",
+        "palpitation_pattern",
+        "edema_breath"
+      ],
+      "handlingRule": "先进入 breathless_lying 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "快要晕倒",
+      "professionalCategory": "胸部、心悸与循环主诉",
+      "decomposesTo": [
+        "chest_urgent",
+        "exertion_relation",
+        "palpitation_pattern",
+        "edema_breath"
+      ],
+      "handlingRule": "先进入 faint_feeling 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "眼前发黑要倒",
+      "professionalCategory": "胸部、心悸与循环主诉",
+      "decomposesTo": [
+        "chest_urgent",
+        "exertion_relation",
+        "palpitation_pattern",
+        "edema_breath"
+      ],
+      "handlingRule": "先进入 faint_feeling 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "突然冷汗心慌",
+      "professionalCategory": "胸部、心悸与循环主诉",
+      "decomposesTo": [
+        "chest_urgent",
+        "exertion_relation",
+        "palpitation_pattern",
+        "edema_breath"
+      ],
+      "handlingRule": "先进入 cold_sweat_episodes 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "一阵冷汗",
+      "professionalCategory": "胸部、心悸与循环主诉",
+      "decomposesTo": [
+        "chest_urgent",
+        "exertion_relation",
+        "palpitation_pattern",
+        "edema_breath"
+      ],
+      "handlingRule": "先进入 cold_sweat_episodes 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "头晕",
+      "professionalCategory": "头面、眩晕与感觉主诉",
+      "decomposesTo": [
+        "neurologic_deficit",
+        "dizziness_type",
+        "position_trigger",
+        "duration"
+      ],
+      "handlingRule": "先进入 dizzy 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "晕乎乎",
+      "professionalCategory": "头面、眩晕与感觉主诉",
+      "decomposesTo": [
+        "neurologic_deficit",
+        "dizziness_type",
+        "position_trigger",
+        "duration"
+      ],
+      "handlingRule": "先进入 dizzy 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "天旋地转",
+      "professionalCategory": "头面、眩晕与感觉主诉",
+      "decomposesTo": [
+        "neurologic_deficit",
+        "dizziness_type",
+        "position_trigger",
+        "duration"
+      ],
+      "handlingRule": "先进入 vertigo 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "房子在转",
+      "professionalCategory": "头面、眩晕与感觉主诉",
+      "decomposesTo": [
+        "neurologic_deficit",
+        "dizziness_type",
+        "position_trigger",
+        "duration"
+      ],
+      "handlingRule": "先进入 vertigo 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "头痛",
+      "professionalCategory": "头面、眩晕与感觉主诉",
+      "decomposesTo": [
+        "neurologic_deficit",
+        "dizziness_type",
+        "position_trigger",
+        "duration"
+      ],
+      "handlingRule": "先进入 headache 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "脑袋疼",
+      "professionalCategory": "头面、眩晕与感觉主诉",
+      "decomposesTo": [
+        "neurologic_deficit",
+        "dizziness_type",
+        "position_trigger",
+        "duration"
+      ],
+      "handlingRule": "先进入 headache 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "偏头痛",
+      "professionalCategory": "头面、眩晕与感觉主诉",
+      "decomposesTo": [
+        "neurologic_deficit",
+        "dizziness_type",
+        "position_trigger",
+        "duration"
+      ],
+      "handlingRule": "先进入 migraine_like 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "一边头疼",
+      "professionalCategory": "头面、眩晕与感觉主诉",
+      "decomposesTo": [
+        "neurologic_deficit",
+        "dizziness_type",
+        "position_trigger",
+        "duration"
+      ],
+      "handlingRule": "先进入 migraine_like 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "头重昏沉",
+      "professionalCategory": "头面、眩晕与感觉主诉",
+      "decomposesTo": [
+        "neurologic_deficit",
+        "dizziness_type",
+        "position_trigger",
+        "duration"
+      ],
+      "handlingRule": "先进入 heavy_head 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "头像裹着东西",
+      "professionalCategory": "头面、眩晕与感觉主诉",
+      "decomposesTo": [
+        "neurologic_deficit",
+        "dizziness_type",
+        "position_trigger",
+        "duration"
+      ],
+      "handlingRule": "先进入 heavy_head 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "耳鸣",
+      "professionalCategory": "头面、眩晕与感觉主诉",
+      "decomposesTo": [
+        "neurologic_deficit",
+        "dizziness_type",
+        "position_trigger",
+        "duration"
+      ],
+      "handlingRule": "先进入 tinnitus 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "耳朵响",
+      "professionalCategory": "头面、眩晕与感觉主诉",
+      "decomposesTo": [
+        "neurologic_deficit",
+        "dizziness_type",
+        "position_trigger",
+        "duration"
+      ],
+      "handlingRule": "先进入 tinnitus 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "视物模糊",
+      "professionalCategory": "头面、眩晕与感觉主诉",
+      "decomposesTo": [
+        "neurologic_deficit",
+        "dizziness_type",
+        "position_trigger",
+        "duration"
+      ],
+      "handlingRule": "先进入 blurred_vision 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "看东西不清",
+      "professionalCategory": "头面、眩晕与感觉主诉",
+      "decomposesTo": [
+        "neurologic_deficit",
+        "dizziness_type",
+        "position_trigger",
+        "duration"
+      ],
+      "handlingRule": "先进入 blurred_vision 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "眼干",
+      "professionalCategory": "头面、眩晕与感觉主诉",
+      "decomposesTo": [
+        "neurologic_deficit",
+        "dizziness_type",
+        "position_trigger",
+        "duration"
+      ],
+      "handlingRule": "先进入 eye_dry 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "眼睛涩",
+      "professionalCategory": "头面、眩晕与感觉主诉",
+      "decomposesTo": [
+        "neurologic_deficit",
+        "dizziness_type",
+        "position_trigger",
+        "duration"
+      ],
+      "handlingRule": "先进入 eye_dry 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "脸麻",
+      "professionalCategory": "头面、眩晕与感觉主诉",
+      "decomposesTo": [
+        "neurologic_deficit",
+        "dizziness_type",
+        "position_trigger",
+        "duration"
+      ],
+      "handlingRule": "先进入 numb_face 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "半边脸发麻",
+      "professionalCategory": "头面、眩晕与感觉主诉",
+      "decomposesTo": [
+        "neurologic_deficit",
+        "dizziness_type",
+        "position_trigger",
+        "duration"
+      ],
+      "handlingRule": "先进入 numb_face 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "脑子昏沉",
+      "professionalCategory": "头面、眩晕与感觉主诉",
+      "decomposesTo": [
+        "neurologic_deficit",
+        "dizziness_type",
+        "position_trigger",
+        "duration"
+      ],
+      "handlingRule": "先进入 brain_fog 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "脑雾",
+      "professionalCategory": "头面、眩晕与感觉主诉",
+      "decomposesTo": [
+        "neurologic_deficit",
+        "dizziness_type",
+        "position_trigger",
+        "duration"
+      ],
+      "handlingRule": "先进入 brain_fog 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "怕冷",
+      "professionalCategory": "冷热、出汗与津液感受主诉",
+      "decomposesTo": [
+        "measured_temperature",
+        "sweat_context",
+        "thirst_and_intake",
+        "weight_change"
+      ],
+      "handlingRule": "先进入 fear_cold 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "特别怕冷",
+      "professionalCategory": "冷热、出汗与津液感受主诉",
+      "decomposesTo": [
+        "measured_temperature",
+        "sweat_context",
+        "thirst_and_intake",
+        "weight_change"
+      ],
+      "handlingRule": "先进入 fear_cold 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "怕热",
+      "professionalCategory": "冷热、出汗与津液感受主诉",
+      "decomposesTo": [
+        "measured_temperature",
+        "sweat_context",
+        "thirst_and_intake",
+        "weight_change"
+      ],
+      "handlingRule": "先进入 fear_heat 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "特别怕热",
+      "professionalCategory": "冷热、出汗与津液感受主诉",
+      "decomposesTo": [
+        "measured_temperature",
+        "sweat_context",
+        "thirst_and_intake",
+        "weight_change"
+      ],
+      "handlingRule": "先进入 fear_heat 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "感觉发热",
+      "professionalCategory": "冷热、出汗与津液感受主诉",
+      "decomposesTo": [
+        "measured_temperature",
+        "sweat_context",
+        "thirst_and_intake",
+        "weight_change"
+      ],
+      "handlingRule": "先进入 feverish 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "身上发烫",
+      "professionalCategory": "冷热、出汗与津液感受主诉",
+      "decomposesTo": [
+        "measured_temperature",
+        "sweat_context",
+        "thirst_and_intake",
+        "weight_change"
+      ],
+      "handlingRule": "先进入 feverish 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "忽冷忽热",
+      "professionalCategory": "冷热、出汗与津液感受主诉",
+      "decomposesTo": [
+        "measured_temperature",
+        "sweat_context",
+        "thirst_and_intake",
+        "weight_change"
+      ],
+      "handlingRule": "先进入 alternating_hot_cold 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "一会冷一会热",
+      "professionalCategory": "冷热、出汗与津液感受主诉",
+      "decomposesTo": [
+        "measured_temperature",
+        "sweat_context",
+        "thirst_and_intake",
+        "weight_change"
+      ],
+      "handlingRule": "先进入 alternating_hot_cold 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "容易出汗",
+      "professionalCategory": "冷热、出汗与津液感受主诉",
+      "decomposesTo": [
+        "measured_temperature",
+        "sweat_context",
+        "thirst_and_intake",
+        "weight_change"
+      ],
+      "handlingRule": "先进入 sweat_easy 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "稍动就出汗",
+      "professionalCategory": "冷热、出汗与津液感受主诉",
+      "decomposesTo": [
+        "measured_temperature",
+        "sweat_context",
+        "thirst_and_intake",
+        "weight_change"
+      ],
+      "handlingRule": "先进入 sweat_easy 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "睡觉盗汗",
+      "professionalCategory": "冷热、出汗与津液感受主诉",
+      "decomposesTo": [
+        "measured_temperature",
+        "sweat_context",
+        "thirst_and_intake",
+        "weight_change"
+      ],
+      "handlingRule": "先进入 night_sweat 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "睡着后出汗",
+      "professionalCategory": "冷热、出汗与津液感受主诉",
+      "decomposesTo": [
+        "measured_temperature",
+        "sweat_context",
+        "thirst_and_intake",
+        "weight_change"
+      ],
+      "handlingRule": "先进入 night_sweat 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "该出汗却不出汗",
+      "professionalCategory": "冷热、出汗与津液感受主诉",
+      "decomposesTo": [
+        "measured_temperature",
+        "sweat_context",
+        "thirst_and_intake",
+        "weight_change"
+      ],
+      "handlingRule": "先进入 no_sweat 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "发热也没汗",
+      "professionalCategory": "冷热、出汗与津液感受主诉",
+      "decomposesTo": [
+        "measured_temperature",
+        "sweat_context",
+        "thirst_and_intake",
+        "weight_change"
+      ],
+      "handlingRule": "先进入 no_sweat 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "口干",
+      "professionalCategory": "冷热、出汗与津液感受主诉",
+      "decomposesTo": [
+        "measured_temperature",
+        "sweat_context",
+        "thirst_and_intake",
+        "weight_change"
+      ],
+      "handlingRule": "先进入 dry_mouth 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "嘴巴干",
+      "professionalCategory": "冷热、出汗与津液感受主诉",
+      "decomposesTo": [
+        "measured_temperature",
+        "sweat_context",
+        "thirst_and_intake",
+        "weight_change"
+      ],
+      "handlingRule": "先进入 dry_mouth 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "总口渴",
+      "professionalCategory": "冷热、出汗与津液感受主诉",
+      "decomposesTo": [
+        "measured_temperature",
+        "sweat_context",
+        "thirst_and_intake",
+        "weight_change"
+      ],
+      "handlingRule": "先进入 thirsty 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "一直想喝水",
+      "professionalCategory": "冷热、出汗与津液感受主诉",
+      "decomposesTo": [
+        "measured_temperature",
+        "sweat_context",
+        "thirst_and_intake",
+        "weight_change"
+      ],
+      "handlingRule": "先进入 thirsty 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "口苦",
+      "professionalCategory": "冷热、出汗与津液感受主诉",
+      "decomposesTo": [
+        "measured_temperature",
+        "sweat_context",
+        "thirst_and_intake",
+        "weight_change"
+      ],
+      "handlingRule": "先进入 bitter_mouth 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "嘴里发苦",
+      "professionalCategory": "冷热、出汗与津液感受主诉",
+      "decomposesTo": [
+        "measured_temperature",
+        "sweat_context",
+        "thirst_and_intake",
+        "weight_change"
+      ],
+      "handlingRule": "先进入 bitter_mouth 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "腰酸",
+      "professionalCategory": "肌肉关节与疼痛主诉",
+      "decomposesTo": [
+        "pain_red_flag",
+        "movement_relation",
+        "joint_inflammation",
+        "weakness_or_numbness"
+      ],
+      "handlingRule": "先进入 low_back_ache 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "腰没劲",
+      "professionalCategory": "肌肉关节与疼痛主诉",
+      "decomposesTo": [
+        "pain_red_flag",
+        "movement_relation",
+        "joint_inflammation",
+        "weakness_or_numbness"
+      ],
+      "handlingRule": "先进入 low_back_ache 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "腰痛",
+      "professionalCategory": "肌肉关节与疼痛主诉",
+      "decomposesTo": [
+        "pain_red_flag",
+        "movement_relation",
+        "joint_inflammation",
+        "weakness_or_numbness"
+      ],
+      "handlingRule": "先进入 low_back_pain 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "腰疼",
+      "professionalCategory": "肌肉关节与疼痛主诉",
+      "decomposesTo": [
+        "pain_red_flag",
+        "movement_relation",
+        "joint_inflammation",
+        "weakness_or_numbness"
+      ],
+      "handlingRule": "先进入 low_back_pain 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "脖子僵硬",
+      "professionalCategory": "肌肉关节与疼痛主诉",
+      "decomposesTo": [
+        "pain_red_flag",
+        "movement_relation",
+        "joint_inflammation",
+        "weakness_or_numbness"
+      ],
+      "handlingRule": "先进入 neck_stiff 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "颈肩僵",
+      "professionalCategory": "肌肉关节与疼痛主诉",
+      "decomposesTo": [
+        "pain_red_flag",
+        "movement_relation",
+        "joint_inflammation",
+        "weakness_or_numbness"
+      ],
+      "handlingRule": "先进入 neck_stiff 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "肩痛",
+      "professionalCategory": "肌肉关节与疼痛主诉",
+      "decomposesTo": [
+        "pain_red_flag",
+        "movement_relation",
+        "joint_inflammation",
+        "weakness_or_numbness"
+      ],
+      "handlingRule": "先进入 shoulder_pain 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "抬胳膊疼",
+      "professionalCategory": "肌肉关节与疼痛主诉",
+      "decomposesTo": [
+        "pain_red_flag",
+        "movement_relation",
+        "joint_inflammation",
+        "weakness_or_numbness"
+      ],
+      "handlingRule": "先进入 shoulder_pain 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "膝盖痛",
+      "professionalCategory": "肌肉关节与疼痛主诉",
+      "decomposesTo": [
+        "pain_red_flag",
+        "movement_relation",
+        "joint_inflammation",
+        "weakness_or_numbness"
+      ],
+      "handlingRule": "先进入 knee_pain 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "膝关节疼",
+      "professionalCategory": "肌肉关节与疼痛主诉",
+      "decomposesTo": [
+        "pain_red_flag",
+        "movement_relation",
+        "joint_inflammation",
+        "weakness_or_numbness"
+      ],
+      "handlingRule": "先进入 knee_pain 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "关节酸痛",
+      "professionalCategory": "肌肉关节与疼痛主诉",
+      "decomposesTo": [
+        "pain_red_flag",
+        "movement_relation",
+        "joint_inflammation",
+        "weakness_or_numbness"
+      ],
+      "handlingRule": "先进入 joint_ache 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "全身关节疼",
+      "professionalCategory": "肌肉关节与疼痛主诉",
+      "decomposesTo": [
+        "pain_red_flag",
+        "movement_relation",
+        "joint_inflammation",
+        "weakness_or_numbness"
+      ],
+      "handlingRule": "先进入 joint_ache 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "肌肉酸痛",
+      "professionalCategory": "肌肉关节与疼痛主诉",
+      "decomposesTo": [
+        "pain_red_flag",
+        "movement_relation",
+        "joint_inflammation",
+        "weakness_or_numbness"
+      ],
+      "handlingRule": "先进入 muscle_ache 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "浑身酸",
+      "professionalCategory": "肌肉关节与疼痛主诉",
+      "decomposesTo": [
+        "pain_red_flag",
+        "movement_relation",
+        "joint_inflammation",
+        "weakness_or_numbness"
+      ],
+      "handlingRule": "先进入 muscle_ache 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "手脚发麻",
+      "professionalCategory": "肌肉关节与疼痛主诉",
+      "decomposesTo": [
+        "pain_red_flag",
+        "movement_relation",
+        "joint_inflammation",
+        "weakness_or_numbness"
+      ],
+      "handlingRule": "先进入 limb_numb 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "四肢麻木",
+      "professionalCategory": "肌肉关节与疼痛主诉",
+      "decomposesTo": [
+        "pain_red_flag",
+        "movement_relation",
+        "joint_inflammation",
+        "weakness_or_numbness"
+      ],
+      "handlingRule": "先进入 limb_numb 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "腿没力",
+      "professionalCategory": "肌肉关节与疼痛主诉",
+      "decomposesTo": [
+        "pain_red_flag",
+        "movement_relation",
+        "joint_inflammation",
+        "weakness_or_numbness"
+      ],
+      "handlingRule": "先进入 leg_weak 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "腿软",
+      "professionalCategory": "肌肉关节与疼痛主诉",
+      "decomposesTo": [
+        "pain_red_flag",
+        "movement_relation",
+        "joint_inflammation",
+        "weakness_or_numbness"
+      ],
+      "handlingRule": "先进入 leg_weak 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "容易抽筋",
+      "professionalCategory": "肌肉关节与疼痛主诉",
+      "decomposesTo": [
+        "pain_red_flag",
+        "movement_relation",
+        "joint_inflammation",
+        "weakness_or_numbness"
+      ],
+      "handlingRule": "先进入 cramp 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "小腿抽筋",
+      "professionalCategory": "肌肉关节与疼痛主诉",
+      "decomposesTo": [
+        "pain_red_flag",
+        "movement_relation",
+        "joint_inflammation",
+        "weakness_or_numbness"
+      ],
+      "handlingRule": "先进入 cramp 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "小便次数多",
+      "professionalCategory": "泌尿与男性相关主诉",
+      "decomposesTo": [
+        "urine_volume_pattern",
+        "pain_or_blood",
+        "night_frequency",
+        "fluid_and_diuretic_intake"
+      ],
+      "handlingRule": "先进入 frequent_urine 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "尿频",
+      "professionalCategory": "泌尿与男性相关主诉",
+      "decomposesTo": [
+        "urine_volume_pattern",
+        "pain_or_blood",
+        "night_frequency",
+        "fluid_and_diuretic_intake"
+      ],
+      "handlingRule": "先进入 frequent_urine 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "夜尿多",
+      "professionalCategory": "泌尿与男性相关主诉",
+      "decomposesTo": [
+        "urine_volume_pattern",
+        "pain_or_blood",
+        "night_frequency",
+        "fluid_and_diuretic_intake"
+      ],
+      "handlingRule": "先进入 night_urine 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "夜里老起夜",
+      "professionalCategory": "泌尿与男性相关主诉",
+      "decomposesTo": [
+        "urine_volume_pattern",
+        "pain_or_blood",
+        "night_frequency",
+        "fluid_and_diuretic_intake"
+      ],
+      "handlingRule": "先进入 night_urine 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "尿急",
+      "professionalCategory": "泌尿与男性相关主诉",
+      "decomposesTo": [
+        "urine_volume_pattern",
+        "pain_or_blood",
+        "night_frequency",
+        "fluid_and_diuretic_intake"
+      ],
+      "handlingRule": "先进入 urgent_urine 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "憋不住尿",
+      "professionalCategory": "泌尿与男性相关主诉",
+      "decomposesTo": [
+        "urine_volume_pattern",
+        "pain_or_blood",
+        "night_frequency",
+        "fluid_and_diuretic_intake"
+      ],
+      "handlingRule": "先进入 urgent_urine 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "小便疼",
+      "professionalCategory": "泌尿与男性相关主诉",
+      "decomposesTo": [
+        "urine_volume_pattern",
+        "pain_or_blood",
+        "night_frequency",
+        "fluid_and_diuretic_intake"
+      ],
+      "handlingRule": "先进入 painful_urine 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "尿痛",
+      "professionalCategory": "泌尿与男性相关主诉",
+      "decomposesTo": [
+        "urine_volume_pattern",
+        "pain_or_blood",
+        "night_frequency",
+        "fluid_and_diuretic_intake"
+      ],
+      "handlingRule": "先进入 painful_urine 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "尿黄",
+      "professionalCategory": "泌尿与男性相关主诉",
+      "decomposesTo": [
+        "urine_volume_pattern",
+        "pain_or_blood",
+        "night_frequency",
+        "fluid_and_diuretic_intake"
+      ],
+      "handlingRule": "先进入 dark_urine 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "小便颜色深",
+      "professionalCategory": "泌尿与男性相关主诉",
+      "decomposesTo": [
+        "urine_volume_pattern",
+        "pain_or_blood",
+        "night_frequency",
+        "fluid_and_diuretic_intake"
+      ],
+      "handlingRule": "先进入 dark_urine 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "尿线细没劲",
+      "professionalCategory": "泌尿与男性相关主诉",
+      "decomposesTo": [
+        "urine_volume_pattern",
+        "pain_or_blood",
+        "night_frequency",
+        "fluid_and_diuretic_intake"
+      ],
+      "handlingRule": "先进入 weak_stream 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "排尿无力",
+      "professionalCategory": "泌尿与男性相关主诉",
+      "decomposesTo": [
+        "urine_volume_pattern",
+        "pain_or_blood",
+        "night_frequency",
+        "fluid_and_diuretic_intake"
+      ],
+      "handlingRule": "先进入 weak_stream 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "尿不干净",
+      "professionalCategory": "泌尿与男性相关主诉",
+      "decomposesTo": [
+        "urine_volume_pattern",
+        "pain_or_blood",
+        "night_frequency",
+        "fluid_and_diuretic_intake"
+      ],
+      "handlingRule": "先进入 incomplete_urine 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "还有尿意",
+      "professionalCategory": "泌尿与男性相关主诉",
+      "decomposesTo": [
+        "urine_volume_pattern",
+        "pain_or_blood",
+        "night_frequency",
+        "fluid_and_diuretic_intake"
+      ],
+      "handlingRule": "先进入 incomplete_urine 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "性欲下降",
+      "professionalCategory": "泌尿与男性相关主诉",
+      "decomposesTo": [
+        "urine_volume_pattern",
+        "pain_or_blood",
+        "night_frequency",
+        "fluid_and_diuretic_intake"
+      ],
+      "handlingRule": "先进入 sexual_low 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "没兴趣",
+      "professionalCategory": "泌尿与男性相关主诉",
+      "decomposesTo": [
+        "urine_volume_pattern",
+        "pain_or_blood",
+        "night_frequency",
+        "fluid_and_diuretic_intake"
+      ],
+      "handlingRule": "先进入 sexual_low 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "勃起状态变差",
+      "professionalCategory": "泌尿与男性相关主诉",
+      "decomposesTo": [
+        "urine_volume_pattern",
+        "pain_or_blood",
+        "night_frequency",
+        "fluid_and_diuretic_intake"
+      ],
+      "handlingRule": "先进入 erection_problem 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "硬度不够",
+      "professionalCategory": "泌尿与男性相关主诉",
+      "decomposesTo": [
+        "urine_volume_pattern",
+        "pain_or_blood",
+        "night_frequency",
+        "fluid_and_diuretic_intake"
+      ],
+      "handlingRule": "先进入 erection_problem 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "射精太快",
+      "professionalCategory": "泌尿与男性相关主诉",
+      "decomposesTo": [
+        "urine_volume_pattern",
+        "pain_or_blood",
+        "night_frequency",
+        "fluid_and_diuretic_intake"
+      ],
+      "handlingRule": "先进入 premature_ejaculation 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "早泄",
+      "professionalCategory": "泌尿与男性相关主诉",
+      "decomposesTo": [
+        "urine_volume_pattern",
+        "pain_or_blood",
+        "night_frequency",
+        "fluid_and_diuretic_intake"
+      ],
+      "handlingRule": "先进入 premature_ejaculation 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "月经痛",
+      "professionalCategory": "月经与妇科相关主诉",
+      "decomposesTo": [
+        "gynecology_red_flag",
+        "pregnancy_possibility",
+        "cycle_relation",
+        "bleeding_amount"
+      ],
+      "handlingRule": "先进入 period_pain 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "痛经",
+      "professionalCategory": "月经与妇科相关主诉",
+      "decomposesTo": [
+        "gynecology_red_flag",
+        "pregnancy_possibility",
+        "cycle_relation",
+        "bleeding_amount"
+      ],
+      "handlingRule": "先进入 period_pain 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "月经不规律",
+      "professionalCategory": "月经与妇科相关主诉",
+      "decomposesTo": [
+        "gynecology_red_flag",
+        "pregnancy_possibility",
+        "cycle_relation",
+        "bleeding_amount"
+      ],
+      "handlingRule": "先进入 period_irregular 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "周期乱",
+      "professionalCategory": "月经与妇科相关主诉",
+      "decomposesTo": [
+        "gynecology_red_flag",
+        "pregnancy_possibility",
+        "cycle_relation",
+        "bleeding_amount"
+      ],
+      "handlingRule": "先进入 period_irregular 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "月经量多",
+      "professionalCategory": "月经与妇科相关主诉",
+      "decomposesTo": [
+        "gynecology_red_flag",
+        "pregnancy_possibility",
+        "cycle_relation",
+        "bleeding_amount"
+      ],
+      "handlingRule": "先进入 period_heavy 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "经量很大",
+      "professionalCategory": "月经与妇科相关主诉",
+      "decomposesTo": [
+        "gynecology_red_flag",
+        "pregnancy_possibility",
+        "cycle_relation",
+        "bleeding_amount"
+      ],
+      "handlingRule": "先进入 period_heavy 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "月经量少",
+      "professionalCategory": "月经与妇科相关主诉",
+      "decomposesTo": [
+        "gynecology_red_flag",
+        "pregnancy_possibility",
+        "cycle_relation",
+        "bleeding_amount"
+      ],
+      "handlingRule": "先进入 period_light 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "经量少",
+      "professionalCategory": "月经与妇科相关主诉",
+      "decomposesTo": [
+        "gynecology_red_flag",
+        "pregnancy_possibility",
+        "cycle_relation",
+        "bleeding_amount"
+      ],
+      "handlingRule": "先进入 period_light 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "月经血块多",
+      "professionalCategory": "月经与妇科相关主诉",
+      "decomposesTo": [
+        "gynecology_red_flag",
+        "pregnancy_possibility",
+        "cycle_relation",
+        "bleeding_amount"
+      ],
+      "handlingRule": "先进入 period_clots 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "很多血块",
+      "professionalCategory": "月经与妇科相关主诉",
+      "decomposesTo": [
+        "gynecology_red_flag",
+        "pregnancy_possibility",
+        "cycle_relation",
+        "bleeding_amount"
+      ],
+      "handlingRule": "先进入 period_clots 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "月经推迟",
+      "professionalCategory": "月经与妇科相关主诉",
+      "decomposesTo": [
+        "gynecology_red_flag",
+        "pregnancy_possibility",
+        "cycle_relation",
+        "bleeding_amount"
+      ],
+      "handlingRule": "先进入 period_delayed 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "月经没来",
+      "professionalCategory": "月经与妇科相关主诉",
+      "decomposesTo": [
+        "gynecology_red_flag",
+        "pregnancy_possibility",
+        "cycle_relation",
+        "bleeding_amount"
+      ],
+      "handlingRule": "先进入 period_delayed 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "月经提前",
+      "professionalCategory": "月经与妇科相关主诉",
+      "decomposesTo": [
+        "gynecology_red_flag",
+        "pregnancy_possibility",
+        "cycle_relation",
+        "bleeding_amount"
+      ],
+      "handlingRule": "先进入 period_early 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "总提前来",
+      "professionalCategory": "月经与妇科相关主诉",
+      "decomposesTo": [
+        "gynecology_red_flag",
+        "pregnancy_possibility",
+        "cycle_relation",
+        "bleeding_amount"
+      ],
+      "handlingRule": "先进入 period_early 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "白带异常",
+      "professionalCategory": "月经与妇科相关主诉",
+      "decomposesTo": [
+        "gynecology_red_flag",
+        "pregnancy_possibility",
+        "cycle_relation",
+        "bleeding_amount"
+      ],
+      "handlingRule": "先进入 vaginal_discharge 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "带下多",
+      "professionalCategory": "月经与妇科相关主诉",
+      "decomposesTo": [
+        "gynecology_red_flag",
+        "pregnancy_possibility",
+        "cycle_relation",
+        "bleeding_amount"
+      ],
+      "handlingRule": "先进入 vaginal_discharge 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "小腹坠胀",
+      "professionalCategory": "月经与妇科相关主诉",
+      "decomposesTo": [
+        "gynecology_red_flag",
+        "pregnancy_possibility",
+        "cycle_relation",
+        "bleeding_amount"
+      ],
+      "handlingRule": "先进入 pelvic_discomfort 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "下腹不舒服",
+      "professionalCategory": "月经与妇科相关主诉",
+      "decomposesTo": [
+        "gynecology_red_flag",
+        "pregnancy_possibility",
+        "cycle_relation",
+        "bleeding_amount"
+      ],
+      "handlingRule": "先进入 pelvic_discomfort 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "更年期不舒服",
+      "professionalCategory": "月经与妇科相关主诉",
+      "decomposesTo": [
+        "gynecology_red_flag",
+        "pregnancy_possibility",
+        "cycle_relation",
+        "bleeding_amount"
+      ],
+      "handlingRule": "先进入 menopause_discomfort 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "潮热心烦",
+      "professionalCategory": "月经与妇科相关主诉",
+      "decomposesTo": [
+        "gynecology_red_flag",
+        "pregnancy_possibility",
+        "cycle_relation",
+        "bleeding_amount"
+      ],
+      "handlingRule": "先进入 menopause_discomfort 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "皮肤痒",
+      "professionalCategory": "皮肤、毛发与水肿主诉",
+      "decomposesTo": [
+        "skin_red_flag",
+        "appearance",
+        "distribution",
+        "new_exposure_or_medication"
+      ],
+      "handlingRule": "先进入 skin_itch 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "身上发痒",
+      "professionalCategory": "皮肤、毛发与水肿主诉",
+      "decomposesTo": [
+        "skin_red_flag",
+        "appearance",
+        "distribution",
+        "new_exposure_or_medication"
+      ],
+      "handlingRule": "先进入 skin_itch 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "起疹子",
+      "professionalCategory": "皮肤、毛发与水肿主诉",
+      "decomposesTo": [
+        "skin_red_flag",
+        "appearance",
+        "distribution",
+        "new_exposure_or_medication"
+      ],
+      "handlingRule": "先进入 rash 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "皮肤出红点",
+      "professionalCategory": "皮肤、毛发与水肿主诉",
+      "decomposesTo": [
+        "skin_red_flag",
+        "appearance",
+        "distribution",
+        "new_exposure_or_medication"
+      ],
+      "handlingRule": "先进入 rash 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "湿疹反复",
+      "professionalCategory": "皮肤、毛发与水肿主诉",
+      "decomposesTo": [
+        "skin_red_flag",
+        "appearance",
+        "distribution",
+        "new_exposure_or_medication"
+      ],
+      "handlingRule": "先进入 eczema_like 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "湿疹老不好",
+      "professionalCategory": "皮肤、毛发与水肿主诉",
+      "decomposesTo": [
+        "skin_red_flag",
+        "appearance",
+        "distribution",
+        "new_exposure_or_medication"
+      ],
+      "handlingRule": "先进入 eczema_like 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "痘痘多",
+      "professionalCategory": "皮肤、毛发与水肿主诉",
+      "decomposesTo": [
+        "skin_red_flag",
+        "appearance",
+        "distribution",
+        "new_exposure_or_medication"
+      ],
+      "handlingRule": "先进入 acne 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "长痘",
+      "professionalCategory": "皮肤、毛发与水肿主诉",
+      "decomposesTo": [
+        "skin_red_flag",
+        "appearance",
+        "distribution",
+        "new_exposure_or_medication"
+      ],
+      "handlingRule": "先进入 acne 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "皮肤干",
+      "professionalCategory": "皮肤、毛发与水肿主诉",
+      "decomposesTo": [
+        "skin_red_flag",
+        "appearance",
+        "distribution",
+        "new_exposure_or_medication"
+      ],
+      "handlingRule": "先进入 dry_skin 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "皮肤脱皮",
+      "professionalCategory": "皮肤、毛发与水肿主诉",
+      "decomposesTo": [
+        "skin_red_flag",
+        "appearance",
+        "distribution",
+        "new_exposure_or_medication"
+      ],
+      "handlingRule": "先进入 dry_skin 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "掉头发",
+      "professionalCategory": "皮肤、毛发与水肿主诉",
+      "decomposesTo": [
+        "skin_red_flag",
+        "appearance",
+        "distribution",
+        "new_exposure_or_medication"
+      ],
+      "handlingRule": "先进入 hair_loss 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "脱发",
+      "professionalCategory": "皮肤、毛发与水肿主诉",
+      "decomposesTo": [
+        "skin_red_flag",
+        "appearance",
+        "distribution",
+        "new_exposure_or_medication"
+      ],
+      "handlingRule": "先进入 hair_loss 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "白头发变多",
+      "professionalCategory": "皮肤、毛发与水肿主诉",
+      "decomposesTo": [
+        "skin_red_flag",
+        "appearance",
+        "distribution",
+        "new_exposure_or_medication"
+      ],
+      "handlingRule": "先进入 white_hair 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "突然多了白发",
+      "professionalCategory": "皮肤、毛发与水肿主诉",
+      "decomposesTo": [
+        "skin_red_flag",
+        "appearance",
+        "distribution",
+        "new_exposure_or_medication"
+      ],
+      "handlingRule": "先进入 white_hair 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "脸肿",
+      "professionalCategory": "皮肤、毛发与水肿主诉",
+      "decomposesTo": [
+        "skin_red_flag",
+        "appearance",
+        "distribution",
+        "new_exposure_or_medication"
+      ],
+      "handlingRule": "先进入 face_swelling 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "眼皮肿",
+      "professionalCategory": "皮肤、毛发与水肿主诉",
+      "decomposesTo": [
+        "skin_red_flag",
+        "appearance",
+        "distribution",
+        "new_exposure_or_medication"
+      ],
+      "handlingRule": "先进入 face_swelling 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "腿脚肿",
+      "professionalCategory": "皮肤、毛发与水肿主诉",
+      "decomposesTo": [
+        "skin_red_flag",
+        "appearance",
+        "distribution",
+        "new_exposure_or_medication"
+      ],
+      "handlingRule": "先进入 leg_edema 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "脚踝水肿",
+      "professionalCategory": "皮肤、毛发与水肿主诉",
+      "decomposesTo": [
+        "skin_red_flag",
+        "appearance",
+        "distribution",
+        "new_exposure_or_medication"
+      ],
+      "handlingRule": "先进入 leg_edema 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "容易淤青",
+      "professionalCategory": "皮肤、毛发与水肿主诉",
+      "decomposesTo": [
+        "skin_red_flag",
+        "appearance",
+        "distribution",
+        "new_exposure_or_medication"
+      ],
+      "handlingRule": "先进入 easy_bruise 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "轻轻碰就青",
+      "professionalCategory": "皮肤、毛发与水肿主诉",
+      "decomposesTo": [
+        "skin_red_flag",
+        "appearance",
+        "distribution",
+        "new_exposure_or_medication"
+      ],
+      "handlingRule": "先进入 easy_bruise 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "乏力",
+      "professionalCategory": "全身感受与体力主诉",
+      "decomposesTo": [
+        "duration",
+        "functional_impact",
+        "appetite_weight",
+        "general_red_flag"
+      ],
+      "handlingRule": "先进入 fatigue 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "没力气",
+      "professionalCategory": "全身感受与体力主诉",
+      "decomposesTo": [
+        "duration",
+        "functional_impact",
+        "appetite_weight",
+        "general_red_flag"
+      ],
+      "handlingRule": "先进入 fatigue 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "总觉得虚",
+      "professionalCategory": "全身感受与体力主诉",
+      "decomposesTo": [
+        "duration",
+        "functional_impact",
+        "appetite_weight",
+        "general_red_flag"
+      ],
+      "handlingRule": "先进入 feel_weak 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "体虚",
+      "professionalCategory": "全身感受与体力主诉",
+      "decomposesTo": [
+        "duration",
+        "functional_impact",
+        "appetite_weight",
+        "general_red_flag"
+      ],
+      "handlingRule": "先进入 feel_weak 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "虚弱",
+      "professionalCategory": "全身感受与体力主诉",
+      "decomposesTo": [
+        "duration",
+        "functional_impact",
+        "appetite_weight",
+        "general_red_flag"
+      ],
+      "handlingRule": "先进入 feel_weak 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "精神差",
+      "professionalCategory": "全身感受与体力主诉",
+      "decomposesTo": [
+        "duration",
+        "functional_impact",
+        "appetite_weight",
+        "general_red_flag"
+      ],
+      "handlingRule": "先进入 low_energy 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "没精神",
+      "professionalCategory": "全身感受与体力主诉",
+      "decomposesTo": [
+        "duration",
+        "functional_impact",
+        "appetite_weight",
+        "general_red_flag"
+      ],
+      "handlingRule": "先进入 low_energy 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "容易累",
+      "professionalCategory": "全身感受与体力主诉",
+      "decomposesTo": [
+        "duration",
+        "functional_impact",
+        "appetite_weight",
+        "general_red_flag"
+      ],
+      "handlingRule": "先进入 easily_tired 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "动一下就累",
+      "professionalCategory": "全身感受与体力主诉",
+      "decomposesTo": [
+        "duration",
+        "functional_impact",
+        "appetite_weight",
+        "general_red_flag"
+      ],
+      "handlingRule": "先进入 easily_tired 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "总容易生病",
+      "professionalCategory": "全身感受与体力主诉",
+      "decomposesTo": [
+        "duration",
+        "functional_impact",
+        "appetite_weight",
+        "general_red_flag"
+      ],
+      "handlingRule": "先进入 easy_ill 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "抵抗力差",
+      "professionalCategory": "全身感受与体力主诉",
+      "decomposesTo": [
+        "duration",
+        "functional_impact",
+        "appetite_weight",
+        "general_red_flag"
+      ],
+      "handlingRule": "先进入 easy_ill 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "容易上火",
+      "professionalCategory": "全身感受与体力主诉",
+      "decomposesTo": [
+        "duration",
+        "functional_impact",
+        "appetite_weight",
+        "general_red_flag"
+      ],
+      "handlingRule": "先进入 internal_heat 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "上火",
+      "professionalCategory": "全身感受与体力主诉",
+      "decomposesTo": [
+        "duration",
+        "functional_impact",
+        "appetite_weight",
+        "general_red_flag"
+      ],
+      "handlingRule": "先进入 internal_heat 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "火气大",
+      "professionalCategory": "全身感受与体力主诉",
+      "decomposesTo": [
+        "duration",
+        "functional_impact",
+        "appetite_weight",
+        "general_red_flag"
+      ],
+      "handlingRule": "先进入 internal_heat 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "感觉湿气重",
+      "professionalCategory": "全身感受与体力主诉",
+      "decomposesTo": [
+        "duration",
+        "functional_impact",
+        "appetite_weight",
+        "general_red_flag"
+      ],
+      "handlingRule": "先进入 heavy_damp 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "湿气重",
+      "professionalCategory": "全身感受与体力主诉",
+      "decomposesTo": [
+        "duration",
+        "functional_impact",
+        "appetite_weight",
+        "general_red_flag"
+      ],
+      "handlingRule": "先进入 heavy_damp 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "身体困重",
+      "professionalCategory": "全身感受与体力主诉",
+      "decomposesTo": [
+        "duration",
+        "functional_impact",
+        "appetite_weight",
+        "general_red_flag"
+      ],
+      "handlingRule": "先进入 heavy_damp 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "手脚凉",
+      "professionalCategory": "全身感受与体力主诉",
+      "decomposesTo": [
+        "duration",
+        "functional_impact",
+        "appetite_weight",
+        "general_red_flag"
+      ],
+      "handlingRule": "先进入 cold_hands_feet 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "四肢冰凉",
+      "professionalCategory": "全身感受与体力主诉",
+      "decomposesTo": [
+        "duration",
+        "functional_impact",
+        "appetite_weight",
+        "general_red_flag"
+      ],
+      "handlingRule": "先进入 cold_hands_feet 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "手脚冰凉",
+      "professionalCategory": "全身感受与体力主诉",
+      "decomposesTo": [
+        "duration",
+        "functional_impact",
+        "appetite_weight",
+        "general_red_flag"
+      ],
+      "handlingRule": "先进入 cold_hands_feet 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "手脚发凉",
+      "professionalCategory": "全身感受与体力主诉",
+      "decomposesTo": [
+        "duration",
+        "functional_impact",
+        "appetite_weight",
+        "general_red_flag"
+      ],
+      "handlingRule": "先进入 cold_hands_feet 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "手脚冰",
+      "professionalCategory": "全身感受与体力主诉",
+      "decomposesTo": [
+        "duration",
+        "functional_impact",
+        "appetite_weight",
+        "general_red_flag"
+      ],
+      "handlingRule": "先进入 cold_hands_feet 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "莫名变瘦",
+      "professionalCategory": "全身感受与体力主诉",
+      "decomposesTo": [
+        "duration",
+        "functional_impact",
+        "appetite_weight",
+        "general_red_flag"
+      ],
+      "handlingRule": "先进入 weight_loss 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "体重下降",
+      "professionalCategory": "全身感受与体力主诉",
+      "decomposesTo": [
+        "duration",
+        "functional_impact",
+        "appetite_weight",
+        "general_red_flag"
+      ],
+      "handlingRule": "先进入 weight_loss 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "最近发胖",
+      "professionalCategory": "全身感受与体力主诉",
+      "decomposesTo": [
+        "duration",
+        "functional_impact",
+        "appetite_weight",
+        "general_red_flag"
+      ],
+      "handlingRule": "先进入 weight_gain 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "体重增加",
+      "professionalCategory": "全身感受与体力主诉",
+      "decomposesTo": [
+        "duration",
+        "functional_impact",
+        "appetite_weight",
+        "general_red_flag"
+      ],
+      "handlingRule": "先进入 weight_gain 竞争假设集合；不得从该短语直接推出证型。",
+      "source": "complaint_catalog"
+    },
+    {
+      "phrase": "有，且正在发生",
+      "professionalCategory": "urgent_warning",
+      "normalizedValue": "yes",
+      "decomposesTo": [
+        "urgent"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "没有",
+      "professionalCategory": "urgent_warning",
+      "normalizedValue": "no",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "不确定",
+      "professionalCategory": "urgent_warning",
+      "normalizedValue": "unsure",
+      "decomposesTo": [
+        "urgent"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "有，或现在不安全",
+      "professionalCategory": "mental_safety",
+      "normalizedValue": "yes",
+      "decomposesTo": [
+        "urgent"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "没有",
+      "professionalCategory": "mental_safety",
+      "normalizedValue": "no",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "暂时不想回答",
+      "professionalCategory": "mental_safety",
+      "normalizedValue": "prefer_not",
+      "decomposesTo": [
+        "urgent"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "几小时到几天",
+      "professionalCategory": "duration",
+      "normalizedValue": "hours_days",
+      "decomposesTo": [
+        "acute_course"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "几周",
+      "professionalCategory": "duration",
+      "normalizedValue": "weeks",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "几个月或更久",
+      "professionalCategory": "duration",
+      "normalizedValue": "months_years",
+      "decomposesTo": [
+        "chronic"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "反复发作，中间会好",
+      "professionalCategory": "duration",
+      "normalizedValue": "episodic",
+      "decomposesTo": [
+        "variable_course"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "越来越重",
+      "professionalCategory": "course",
+      "normalizedValue": "worse",
+      "decomposesTo": [
+        "progressive"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "在减轻",
+      "professionalCategory": "course",
+      "normalizedValue": "better",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "时好时坏",
+      "professionalCategory": "course",
+      "normalizedValue": "variable",
+      "decomposesTo": [
+        "variable_course"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "差不多",
+      "professionalCategory": "course",
+      "normalizedValue": "stable",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "0–3分",
+      "professionalCategory": "severity",
+      "normalizedValue": "mild",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "4–6分",
+      "professionalCategory": "severity",
+      "normalizedValue": "moderate",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "7–10分",
+      "professionalCategory": "severity",
+      "normalizedValue": "severe",
+      "decomposesTo": [
+        "severe"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "基本不影响",
+      "professionalCategory": "functional_impact",
+      "normalizedValue": "none",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "影响工作/家务/上学",
+      "professionalCategory": "functional_impact",
+      "normalizedValue": "daily",
+      "decomposesTo": [
+        "functional_loss"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "主要影响睡眠",
+      "professionalCategory": "functional_impact",
+      "normalizedValue": "sleep",
+      "decomposesTo": [
+        "poor_sleep"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "已经无法正常活动",
+      "professionalCategory": "functional_impact",
+      "normalizedValue": "cannot",
+      "decomposesTo": [
+        "loss_function"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "入睡困难",
+      "professionalCategory": "sleep_pattern",
+      "normalizedValue": "onset",
+      "decomposesTo": [
+        "mind_racing"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "夜里常醒",
+      "professionalCategory": "sleep_pattern",
+      "normalizedValue": "maintenance",
+      "decomposesTo": [
+        "poor_sleep"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "醒得过早",
+      "professionalCategory": "sleep_pattern",
+      "normalizedValue": "early",
+      "decomposesTo": [
+        "poor_sleep"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "睡够也不解乏",
+      "professionalCategory": "sleep_pattern",
+      "normalizedValue": "unrested",
+      "decomposesTo": [
+        "fatigue"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "脑子一直转、越想越清醒",
+      "professionalCategory": "pre_sleep_state",
+      "normalizedValue": "racing",
+      "decomposesTo": [
+        "mind_racing",
+        "stress_linked"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "身体或心里烦热，躺不住",
+      "professionalCategory": "pre_sleep_state",
+      "normalizedValue": "restless_hot",
+      "decomposesTo": [
+        "irritable_hot"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "紧张、害怕或容易惊醒",
+      "professionalCategory": "pre_sleep_state",
+      "normalizedValue": "fear_startle",
+      "decomposesTo": [
+        "palpitation",
+        "stress_linked"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "说不上来，就是睡不着",
+      "professionalCategory": "pre_sleep_state",
+      "normalizedValue": "no_clear",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "疲乏没精神",
+      "professionalCategory": "daytime_after_sleep",
+      "normalizedValue": "fatigue",
+      "decomposesTo": [
+        "fatigue"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "头晕心慌",
+      "professionalCategory": "daytime_after_sleep",
+      "normalizedValue": "dizzy",
+      "decomposesTo": [
+        "lightheaded",
+        "palpitation"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "烦躁或注意力差",
+      "professionalCategory": "daytime_after_sleep",
+      "normalizedValue": "irritable",
+      "decomposesTo": [
+        "irritable_hot"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "白天影响不大",
+      "professionalCategory": "daytime_after_sleep",
+      "normalizedValue": "normal",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "有明显变化",
+      "professionalCategory": "substance_or_medication_change",
+      "normalizedValue": "yes",
+      "decomposesTo": [
+        "caffeine_alcohol",
+        "medication_change"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "没有",
+      "professionalCategory": "substance_or_medication_change",
+      "normalizedValue": "no",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "记不清",
+      "professionalCategory": "substance_or_medication_change",
+      "normalizedValue": "unsure",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "有明显关系",
+      "professionalCategory": "digestive_link",
+      "normalizedValue": "yes",
+      "decomposesTo": [
+        "meal_linked",
+        "bloating",
+        "reflux"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "没有",
+      "professionalCategory": "digestive_link",
+      "normalizedValue": "no",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "没留意",
+      "professionalCategory": "digestive_link",
+      "normalizedValue": "unsure",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "疼",
+      "professionalCategory": "dominant_sensation",
+      "normalizedValue": "pain",
+      "decomposesTo": [
+        "fixed_stabbing"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "胀或堵",
+      "professionalCategory": "dominant_sensation",
+      "normalizedValue": "bloat",
+      "decomposesTo": [
+        "bloating",
+        "epigastric_block"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "烧灼/辣感",
+      "professionalCategory": "dominant_sensation",
+      "normalizedValue": "burn",
+      "decomposesTo": [
+        "burning"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "恶心想吐",
+      "professionalCategory": "dominant_sensation",
+      "normalizedValue": "nausea",
+      "decomposesTo": [
+        "clear_vomit"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "暂时说不清",
+      "professionalCategory": "dominant_sensation",
+      "normalizedValue": "unclear",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "空腹更明显",
+      "professionalCategory": "meal_relation",
+      "normalizedValue": "empty",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "饭后更明显",
+      "professionalCategory": "meal_relation",
+      "normalizedValue": "after",
+      "decomposesTo": [
+        "meal_linked",
+        "bloating"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "油腻/辛辣/酒后明显",
+      "professionalCategory": "meal_relation",
+      "normalizedValue": "specific",
+      "decomposesTo": [
+        "food_trigger",
+        "burning"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "躺下或夜里更明显",
+      "professionalCategory": "meal_relation",
+      "normalizedValue": "lying",
+      "decomposesTo": [
+        "lying_worse",
+        "reflux"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "看不出关系",
+      "professionalCategory": "meal_relation",
+      "normalizedValue": "none",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "没有吐",
+      "professionalCategory": "vomiting_character",
+      "normalizedValue": "none",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "吐食物",
+      "professionalCategory": "vomiting_character",
+      "normalizedValue": "food",
+      "decomposesTo": [
+        "meal_linked"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "吐清水或痰涎样液体",
+      "professionalCategory": "vomiting_character",
+      "normalizedValue": "clear",
+      "decomposesTo": [
+        "clear_vomit"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "带血或像咖啡渣",
+      "professionalCategory": "vomiting_character",
+      "normalizedValue": "blood_coffee",
+      "decomposesTo": [
+        "bleeding",
+        "urgent"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "连水都留不住",
+      "professionalCategory": "vomiting_character",
+      "normalizedValue": "cannot_keep",
+      "decomposesTo": [
+        "urgent"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "干硬、颗粒或排出费力",
+      "professionalCategory": "stool_form",
+      "normalizedValue": "hard",
+      "decomposesTo": [
+        "hard_stool",
+        "straining"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "成形",
+      "professionalCategory": "stool_form",
+      "normalizedValue": "formed",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "软烂不成形",
+      "professionalCategory": "stool_form",
+      "normalizedValue": "loose",
+      "decomposesTo": [
+        "loose_stool"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "水样",
+      "professionalCategory": "stool_form",
+      "normalizedValue": "watery",
+      "decomposesTo": [
+        "watery_stool"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "忽干忽稀",
+      "professionalCategory": "stool_form",
+      "normalizedValue": "alternating",
+      "decomposesTo": [
+        "alternating_stool"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "三天以上一次",
+      "professionalCategory": "stool_frequency",
+      "normalizedValue": "rare",
+      "decomposesTo": [
+        "hard_stool"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "一天1–2次或两天1次",
+      "professionalCategory": "stool_frequency",
+      "normalizedValue": "normal",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "一天3次以上",
+      "professionalCategory": "stool_frequency",
+      "normalizedValue": "frequent",
+      "decomposesTo": [
+        "urgency"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "次数不一定多，但总觉得没排净",
+      "professionalCategory": "stool_frequency",
+      "normalizedValue": "urge_incomplete",
+      "decomposesTo": [
+        "incomplete_emptying"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "便前痛/胀，排完会缓解",
+      "professionalCategory": "pain_stool_relation",
+      "normalizedValue": "before_relief",
+      "decomposesTo": [
+        "pain_relief_after_stool"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "排便后反而更不舒服",
+      "professionalCategory": "pain_stool_relation",
+      "normalizedValue": "after",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "持续不缓解",
+      "professionalCategory": "pain_stool_relation",
+      "normalizedValue": "constant",
+      "decomposesTo": [
+        "progressive"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "没关系或没留意",
+      "professionalCategory": "pain_stool_relation",
+      "normalizedValue": "none",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "有",
+      "professionalCategory": "blood_or_black_stool",
+      "normalizedValue": "yes",
+      "decomposesTo": [
+        "bleeding",
+        "urgent"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "没有",
+      "professionalCategory": "blood_or_black_stool",
+      "normalizedValue": "no",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "不确定颜色",
+      "professionalCategory": "blood_or_black_stool",
+      "normalizedValue": "unsure",
+      "decomposesTo": [
+        "bleeding"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "多人同时发作",
+      "professionalCategory": "food_trigger",
+      "normalizedValue": "cluster",
+      "decomposesTo": [
+        "food_trigger",
+        "acute_course"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "特定食物反复诱发",
+      "professionalCategory": "food_trigger",
+      "normalizedValue": "specific",
+      "decomposesTo": [
+        "food_trigger"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "没有",
+      "professionalCategory": "food_trigger",
+      "normalizedValue": "no",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "是",
+      "professionalCategory": "hydration",
+      "normalizedValue": "yes",
+      "decomposesTo": [
+        "low_intake",
+        "dark_urine",
+        "lightheaded"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "不是",
+      "professionalCategory": "hydration",
+      "normalizedValue": "no",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "不清楚",
+      "professionalCategory": "hydration",
+      "normalizedValue": "unsure",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "是",
+      "professionalCategory": "breathing_difficulty",
+      "normalizedValue": "yes",
+      "decomposesTo": [
+        "breathlessness",
+        "cyanosis",
+        "urgent"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "只是轻微气短",
+      "professionalCategory": "breathing_difficulty",
+      "normalizedValue": "mild",
+      "decomposesTo": [
+        "breathlessness"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "没有",
+      "professionalCategory": "breathing_difficulty",
+      "normalizedValue": "no",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "干咳或几乎无痰",
+      "professionalCategory": "sputum",
+      "normalizedValue": "none",
+      "decomposesTo": [
+        "dry_cough",
+        "little_sputum"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "白色清稀/泡沫样",
+      "professionalCategory": "sputum",
+      "normalizedValue": "clear",
+      "decomposesTo": [
+        "clear_sputum",
+        "copious_sputum"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "黄稠或绿色",
+      "professionalCategory": "sputum",
+      "normalizedValue": "yellow",
+      "decomposesTo": [
+        "yellow_discharge"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "带血",
+      "professionalCategory": "sputum",
+      "normalizedValue": "blood",
+      "decomposesTo": [
+        "bleeding",
+        "urgent"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "怕冷/发冷明显",
+      "professionalCategory": "fever_chill",
+      "normalizedValue": "chill",
+      "decomposesTo": [
+        "chill"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "体温升高或发热明显",
+      "professionalCategory": "fever_chill",
+      "normalizedValue": "fever",
+      "decomposesTo": [
+        "fever"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "先冷后热或两者都有",
+      "professionalCategory": "fever_chill",
+      "normalizedValue": "both",
+      "decomposesTo": [
+        "fever",
+        "chill"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "都没有",
+      "professionalCategory": "fever_chill",
+      "normalizedValue": "none",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "清稀像水",
+      "professionalCategory": "nasal_discharge",
+      "normalizedValue": "clear",
+      "decomposesTo": [
+        "clear_discharge"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "黄稠",
+      "professionalCategory": "nasal_discharge",
+      "normalizedValue": "yellow",
+      "decomposesTo": [
+        "yellow_discharge"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "很少，主要干堵",
+      "professionalCategory": "nasal_discharge",
+      "normalizedValue": "dry",
+      "decomposesTo": [
+        "throat_dry"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "没有",
+      "professionalCategory": "nasal_discharge",
+      "normalizedValue": "none",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "是，关系明显",
+      "professionalCategory": "environment_trigger",
+      "normalizedValue": "yes",
+      "decomposesTo": [
+        "seasonal",
+        "itch_sneeze"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "没有明显关系",
+      "professionalCategory": "environment_trigger",
+      "normalizedValue": "no",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "没留意",
+      "professionalCategory": "environment_trigger",
+      "normalizedValue": "unsure",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "会",
+      "professionalCategory": "night_breathing",
+      "normalizedValue": "yes",
+      "decomposesTo": [
+        "night_breathlessness",
+        "orthopnea"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "不会",
+      "professionalCategory": "night_breathing",
+      "normalizedValue": "no",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "不确定",
+      "professionalCategory": "night_breathing",
+      "normalizedValue": "unsure",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "有其中一项",
+      "professionalCategory": "chest_urgent",
+      "normalizedValue": "yes",
+      "decomposesTo": [
+        "urgent",
+        "radiation",
+        "cold_sweat"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "都没有",
+      "professionalCategory": "chest_urgent",
+      "normalizedValue": "no",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "不确定",
+      "professionalCategory": "chest_urgent",
+      "normalizedValue": "unsure",
+      "decomposesTo": [
+        "urgent"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "活动时明显，休息后缓解",
+      "professionalCategory": "exertion_relation",
+      "normalizedValue": "worse",
+      "decomposesTo": [
+        "exertional",
+        "pressure"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "静坐或紧张时出现",
+      "professionalCategory": "exertion_relation",
+      "normalizedValue": "rest",
+      "decomposesTo": [
+        "stress_linked"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "一直都有",
+      "professionalCategory": "exertion_relation",
+      "normalizedValue": "constant",
+      "decomposesTo": [
+        "progressive"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "无明显关系",
+      "professionalCategory": "exertion_relation",
+      "normalizedValue": "none",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "突然很快",
+      "professionalCategory": "palpitation_pattern",
+      "normalizedValue": "fast",
+      "decomposesTo": [
+        "sudden_onset"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "乱或漏拍",
+      "professionalCategory": "palpitation_pattern",
+      "normalizedValue": "irregular",
+      "decomposesTo": [
+        "irregular"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "不一定快，但跳动感很强",
+      "professionalCategory": "palpitation_pattern",
+      "normalizedValue": "strong",
+      "decomposesTo": [
+        "palpitation"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "分不清",
+      "professionalCategory": "palpitation_pattern",
+      "normalizedValue": "unsure",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "有",
+      "professionalCategory": "edema_breath",
+      "normalizedValue": "yes",
+      "decomposesTo": [
+        "edema",
+        "orthopnea",
+        "night_breathlessness"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "没有",
+      "professionalCategory": "edema_breath",
+      "normalizedValue": "no",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "不确定",
+      "professionalCategory": "edema_breath",
+      "normalizedValue": "unsure",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "会",
+      "professionalCategory": "chest_wall_relation",
+      "normalizedValue": "yes",
+      "decomposesTo": [
+        "tender_touch",
+        "movement_linked",
+        "localized"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "不会",
+      "professionalCategory": "chest_wall_relation",
+      "normalizedValue": "no",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "不确定",
+      "professionalCategory": "chest_wall_relation",
+      "normalizedValue": "unsure",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "有",
+      "professionalCategory": "neurologic_deficit",
+      "normalizedValue": "yes",
+      "decomposesTo": [
+        "urgent",
+        "weakness_one_side",
+        "speech_change",
+        "sudden_worst"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "没有",
+      "professionalCategory": "neurologic_deficit",
+      "normalizedValue": "no",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "不确定",
+      "professionalCategory": "neurologic_deficit",
+      "normalizedValue": "unsure",
+      "decomposesTo": [
+        "urgent"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "自己或周围在转",
+      "professionalCategory": "dizziness_type",
+      "normalizedValue": "spin",
+      "decomposesTo": [
+        "spinning"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "发飘、眼前发黑，像要晕倒",
+      "professionalCategory": "dizziness_type",
+      "normalizedValue": "faint",
+      "decomposesTo": [
+        "lightheaded"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "头重昏沉，不清醒",
+      "professionalCategory": "dizziness_type",
+      "normalizedValue": "heavy",
+      "decomposesTo": [
+        "fatigue"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "走路不稳",
+      "professionalCategory": "dizziness_type",
+      "normalizedValue": "unstable",
+      "decomposesTo": [
+        "loss_function"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "一跳一跳",
+      "professionalCategory": "headache_character",
+      "normalizedValue": "throb",
+      "decomposesTo": [
+        "throbbing"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "紧箍/压迫",
+      "professionalCategory": "headache_character",
+      "normalizedValue": "band",
+      "decomposesTo": [
+        "bandlike"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "固定刺痛",
+      "professionalCategory": "headache_character",
+      "normalizedValue": "stabbing",
+      "decomposesTo": [
+        "fixed_stabbing"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "突然达到最剧烈",
+      "professionalCategory": "headache_character",
+      "normalizedValue": "sudden",
+      "decomposesTo": [
+        "sudden_worst",
+        "urgent"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "转头/翻身诱发，通常不到1分钟",
+      "professionalCategory": "position_trigger",
+      "normalizedValue": "head_brief",
+      "decomposesTo": [
+        "head_position",
+        "brief_episode"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "站起时眼前发黑",
+      "professionalCategory": "position_trigger",
+      "normalizedValue": "stand",
+      "decomposesTo": [
+        "standing_trigger",
+        "lightheaded"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "与体位无关，持续较久",
+      "professionalCategory": "position_trigger",
+      "normalizedValue": "long",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "无明显关系",
+      "professionalCategory": "position_trigger",
+      "normalizedValue": "none",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "耳鸣/听力变化",
+      "professionalCategory": "sensory_change",
+      "normalizedValue": "ear",
+      "decomposesTo": [
+        "hearing_change"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "怕光或恶心",
+      "professionalCategory": "sensory_change",
+      "normalizedValue": "light",
+      "decomposesTo": [
+        "light_sensitive",
+        "nausea"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "视物变化",
+      "professionalCategory": "sensory_change",
+      "normalizedValue": "vision",
+      "decomposesTo": [
+        "vision_change"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "面颊/额头胀痛鼻塞",
+      "professionalCategory": "sensory_change",
+      "normalizedValue": "sinus",
+      "decomposesTo": [
+        "sinus_pressure"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "都没有",
+      "professionalCategory": "sensory_change",
+      "normalizedValue": "none",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "量到过升高",
+      "professionalCategory": "measured_temperature",
+      "normalizedValue": "measured_high",
+      "decomposesTo": [
+        "fever"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "量过，体温正常",
+      "professionalCategory": "measured_temperature",
+      "normalizedValue": "normal",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "没量过",
+      "professionalCategory": "measured_temperature",
+      "normalizedValue": "not_measured",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "别人不冷我也冷，喜欢热的",
+      "professionalCategory": "temperature_pattern",
+      "normalizedValue": "cold",
+      "decomposesTo": [
+        "cold_intolerance",
+        "warm_relief"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "别人不热我也热，想吹凉风",
+      "professionalCategory": "temperature_pattern",
+      "normalizedValue": "heat",
+      "decomposesTo": [
+        "heat_intolerance"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "一阵阵忽冷忽热",
+      "professionalCategory": "temperature_pattern",
+      "normalizedValue": "episodes",
+      "decomposesTo": [
+        "variable_course"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "主要只是手脚凉",
+      "professionalCategory": "temperature_pattern",
+      "normalizedValue": "hands",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "白天稍动就出汗",
+      "professionalCategory": "sweat_context",
+      "normalizedValue": "day_easy",
+      "decomposesTo": [
+        "spontaneous_sweat",
+        "exertion"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "睡着后出汗，醒来减轻",
+      "professionalCategory": "sweat_context",
+      "normalizedValue": "night",
+      "decomposesTo": [
+        "night_sweat"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "手脚/头面局部",
+      "professionalCategory": "sweat_context",
+      "normalizedValue": "local",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "并不多汗",
+      "professionalCategory": "sweat_context",
+      "normalizedValue": "none",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "很渴，想大量喝冷水",
+      "professionalCategory": "thirst_and_intake",
+      "normalizedValue": "cold_much",
+      "decomposesTo": [
+        "dry_thirst",
+        "heat_intolerance"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "想喝温热的",
+      "professionalCategory": "thirst_and_intake",
+      "normalizedValue": "warm",
+      "decomposesTo": [
+        "cold_intolerance"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "口干但只小口润一下",
+      "professionalCategory": "thirst_and_intake",
+      "normalizedValue": "sip",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "并不想喝",
+      "professionalCategory": "thirst_and_intake",
+      "normalizedValue": "no_thirst",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "明显下降",
+      "professionalCategory": "weight_change",
+      "normalizedValue": "loss",
+      "decomposesTo": [
+        "weight_loss"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "明显增加",
+      "professionalCategory": "weight_change",
+      "normalizedValue": "gain",
+      "decomposesTo": [
+        "weight_change"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "基本稳定",
+      "professionalCategory": "weight_change",
+      "normalizedValue": "stable",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "没称过",
+      "professionalCategory": "weight_change",
+      "normalizedValue": "unknown",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "是",
+      "professionalCategory": "medication_change",
+      "normalizedValue": "yes",
+      "decomposesTo": [
+        "medication_change",
+        "new_exposure"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "没有",
+      "professionalCategory": "medication_change",
+      "normalizedValue": "no",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "不确定",
+      "professionalCategory": "medication_change",
+      "normalizedValue": "unsure",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "有",
+      "professionalCategory": "pain_red_flag",
+      "normalizedValue": "yes",
+      "decomposesTo": [
+        "trauma",
+        "fever",
+        "loss_function",
+        "urgent"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "没有",
+      "professionalCategory": "pain_red_flag",
+      "normalizedValue": "no",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "不确定",
+      "professionalCategory": "pain_red_flag",
+      "normalizedValue": "unsure",
+      "decomposesTo": [
+        "urgent"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "一动或负重就加重",
+      "professionalCategory": "movement_relation",
+      "normalizedValue": "move_worse",
+      "decomposesTo": [
+        "movement_linked",
+        "overuse"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "久坐久躺后更明显，活动开会缓解",
+      "professionalCategory": "movement_relation",
+      "normalizedValue": "rest_worse",
+      "decomposesTo": [
+        "morning_stiffness"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "休息后减轻",
+      "professionalCategory": "movement_relation",
+      "normalizedValue": "rest_relief",
+      "decomposesTo": [
+        "rest_relief"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "无明显关系",
+      "professionalCategory": "movement_relation",
+      "normalizedValue": "none",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "有",
+      "professionalCategory": "joint_inflammation",
+      "normalizedValue": "yes",
+      "decomposesTo": [
+        "swollen_hot",
+        "morning_stiffness"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "没有",
+      "professionalCategory": "joint_inflammation",
+      "normalizedValue": "no",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "说不准",
+      "professionalCategory": "joint_inflammation",
+      "normalizedValue": "unsure",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "酸胀",
+      "professionalCategory": "pain_quality",
+      "normalizedValue": "ache",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "固定刺痛",
+      "professionalCategory": "pain_quality",
+      "normalizedValue": "stabbing",
+      "decomposesTo": [
+        "fixed_stabbing"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "灼痛/电击样",
+      "professionalCategory": "pain_quality",
+      "normalizedValue": "burn_electric",
+      "decomposesTo": [
+        "radiating"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "抽筋或拘紧",
+      "professionalCategory": "pain_quality",
+      "normalizedValue": "cramp",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "有放射痛麻",
+      "professionalCategory": "weakness_or_numbness",
+      "normalizedValue": "radiate",
+      "decomposesTo": [
+        "radiating",
+        "numbness"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "有明确无力",
+      "professionalCategory": "weakness_or_numbness",
+      "normalizedValue": "weak",
+      "decomposesTo": [
+        "weakness_focal",
+        "loss_function"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "两者都有",
+      "professionalCategory": "weakness_or_numbness",
+      "normalizedValue": "both",
+      "decomposesTo": [
+        "radiating",
+        "weakness_focal"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "都没有",
+      "professionalCategory": "weakness_or_numbness",
+      "normalizedValue": "no",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "是",
+      "professionalCategory": "weather_relation",
+      "normalizedValue": "yes",
+      "decomposesTo": [
+        "cold_trigger",
+        "damp_weather",
+        "warm_relief"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "不是",
+      "professionalCategory": "weather_relation",
+      "normalizedValue": "no",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "没留意",
+      "professionalCategory": "weather_relation",
+      "normalizedValue": "unsure",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "有",
+      "professionalCategory": "urinary_red_flag",
+      "normalizedValue": "yes",
+      "decomposesTo": [
+        "blood_urine",
+        "fever_flank",
+        "retention",
+        "urgent"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "没有",
+      "professionalCategory": "urinary_red_flag",
+      "normalizedValue": "no",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "不确定",
+      "professionalCategory": "urinary_red_flag",
+      "normalizedValue": "unsure",
+      "decomposesTo": [
+        "urgent"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "次数多且每次量也多",
+      "professionalCategory": "urine_volume_pattern",
+      "normalizedValue": "large",
+      "decomposesTo": [
+        "large_volume"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "次数多但每次很少、很急",
+      "professionalCategory": "urine_volume_pattern",
+      "normalizedValue": "small_urgent",
+      "decomposesTo": [
+        "small_volume",
+        "urgency"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "等待、尿线细或断续",
+      "professionalCategory": "urine_volume_pattern",
+      "normalizedValue": "weak",
+      "decomposesTo": [
+        "hesitancy",
+        "weak_stream"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "排完仍觉得没排净",
+      "professionalCategory": "urine_volume_pattern",
+      "normalizedValue": "incomplete",
+      "decomposesTo": [
+        "incomplete_emptying"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "灼痛",
+      "professionalCategory": "urine_pain_or_urgency",
+      "normalizedValue": "burn",
+      "decomposesTo": [
+        "burning_urine"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "尿急明显",
+      "professionalCategory": "urine_pain_or_urgency",
+      "normalizedValue": "urgent",
+      "decomposesTo": [
+        "urgency"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "下腹/会阴不适",
+      "professionalCategory": "urine_pain_or_urgency",
+      "normalizedValue": "pelvic",
+      "decomposesTo": [
+        "pelvic_discomfort"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "都没有",
+      "professionalCategory": "urine_pain_or_urgency",
+      "normalizedValue": "none",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "酒/咖啡/茶或利尿药增加",
+      "professionalCategory": "fluid_and_diuretic_intake",
+      "normalizedValue": "diuretic",
+      "decomposesTo": [
+        "caffeine_alcohol",
+        "high_intake"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "喝水少、出汗多",
+      "professionalCategory": "fluid_and_diuretic_intake",
+      "normalizedValue": "low_water",
+      "decomposesTo": [
+        "low_intake",
+        "dark_urine"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "没有明显变化",
+      "professionalCategory": "fluid_and_diuretic_intake",
+      "normalizedValue": "none",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "0–1次",
+      "professionalCategory": "night_frequency",
+      "normalizedValue": "zero_one",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "2次以上且量多",
+      "professionalCategory": "night_frequency",
+      "normalizedValue": "two_plus_large",
+      "decomposesTo": [
+        "nocturia",
+        "large_volume"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "2次以上但量少",
+      "professionalCategory": "night_frequency",
+      "normalizedValue": "two_plus_small",
+      "decomposesTo": [
+        "nocturia",
+        "small_volume"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "突然且与压力明显相关",
+      "professionalCategory": "sexual_context",
+      "normalizedValue": "sudden_stress",
+      "decomposesTo": [
+        "stress_linked"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "逐渐变化",
+      "professionalCategory": "sexual_context",
+      "normalizedValue": "gradual",
+      "decomposesTo": [
+        "chronic"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "伴疼痛或明显弯曲",
+      "professionalCategory": "sexual_context",
+      "normalizedValue": "pain",
+      "decomposesTo": [
+        "pelvic_discomfort"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "说不清",
+      "professionalCategory": "sexual_context",
+      "normalizedValue": "unsure",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "有其中一项",
+      "professionalCategory": "gynecology_red_flag",
+      "normalizedValue": "yes",
+      "decomposesTo": [
+        "pregnancy_possible",
+        "one_side_pain",
+        "heavy_bleeding",
+        "urgent"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "都没有",
+      "professionalCategory": "gynecology_red_flag",
+      "normalizedValue": "no",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "不确定是否怀孕",
+      "professionalCategory": "gynecology_red_flag",
+      "normalizedValue": "unsure",
+      "decomposesTo": [
+        "pregnancy_possible"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "经前",
+      "professionalCategory": "cycle_relation",
+      "normalizedValue": "before",
+      "decomposesTo": [
+        "cycle_linked",
+        "stress_linked"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "经期",
+      "professionalCategory": "cycle_relation",
+      "normalizedValue": "during",
+      "decomposesTo": [
+        "cycle_linked"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "经后",
+      "professionalCategory": "cycle_relation",
+      "normalizedValue": "after",
+      "decomposesTo": [
+        "fatigue"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "无明显关系",
+      "professionalCategory": "cycle_relation",
+      "normalizedValue": "unrelated",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "明显增多/大血块",
+      "professionalCategory": "bleeding_amount",
+      "normalizedValue": "heavy",
+      "decomposesTo": [
+        "heavy_bleeding",
+        "clots"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "明显减少",
+      "professionalCategory": "bleeding_amount",
+      "normalizedValue": "light",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "和平时差不多",
+      "professionalCategory": "bleeding_amount",
+      "normalizedValue": "usual",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "量多并头晕心慌",
+      "professionalCategory": "bleeding_amount",
+      "normalizedValue": "dizzy",
+      "decomposesTo": [
+        "heavy_bleeding",
+        "lightheaded",
+        "palpitation"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "大致稳定",
+      "professionalCategory": "cycle_regularity",
+      "normalizedValue": "stable",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "经常提前",
+      "professionalCategory": "cycle_regularity",
+      "normalizedValue": "early",
+      "decomposesTo": [
+        "irregular_cycle"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "经常推迟",
+      "professionalCategory": "cycle_regularity",
+      "normalizedValue": "late",
+      "decomposesTo": [
+        "irregular_cycle"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "忽早忽晚",
+      "professionalCategory": "cycle_regularity",
+      "normalizedValue": "variable",
+      "decomposesTo": [
+        "irregular_cycle",
+        "variable_course"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "清稀量多，无明显异味",
+      "professionalCategory": "discharge_change",
+      "normalizedValue": "clear",
+      "decomposesTo": [
+        "discharge_change"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "黄/黄绿且有异味",
+      "professionalCategory": "discharge_change",
+      "normalizedValue": "yellow_odor",
+      "decomposesTo": [
+        "odor"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "豆渣样并瘙痒",
+      "professionalCategory": "discharge_change",
+      "normalizedValue": "curd_itch",
+      "decomposesTo": [
+        "itch"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "没明显变化",
+      "professionalCategory": "discharge_change",
+      "normalizedValue": "none",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "有可能",
+      "professionalCategory": "pregnancy_possibility",
+      "normalizedValue": "yes",
+      "decomposesTo": [
+        "pregnancy_possible"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "确定没有",
+      "professionalCategory": "pregnancy_possibility",
+      "normalizedValue": "no",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "不确定",
+      "professionalCategory": "pregnancy_possibility",
+      "normalizedValue": "unsure",
+      "decomposesTo": [
+        "pregnancy_possible"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "有",
+      "professionalCategory": "skin_red_flag",
+      "normalizedValue": "yes",
+      "decomposesTo": [
+        "urgent",
+        "face_swelling",
+        "breathlessness"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "没有",
+      "professionalCategory": "skin_red_flag",
+      "normalizedValue": "no",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "不确定",
+      "professionalCategory": "skin_red_flag",
+      "normalizedValue": "unsure",
+      "decomposesTo": [
+        "urgent"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "红、热、痒",
+      "professionalCategory": "appearance",
+      "normalizedValue": "red_hot",
+      "decomposesTo": [
+        "red_hot",
+        "itch"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "水疱、渗液或糜烂",
+      "professionalCategory": "appearance",
+      "normalizedValue": "wet",
+      "decomposesTo": [
+        "oozing",
+        "blister"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "干燥、脱屑或裂口",
+      "professionalCategory": "appearance",
+      "normalizedValue": "dry",
+      "decomposesTo": [
+        "dry_scale",
+        "crack"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "颜色暗、皮肤增厚",
+      "professionalCategory": "appearance",
+      "normalizedValue": "dark_thick",
+      "decomposesTo": [
+        "dark_color",
+        "thickened"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "外观看不明显",
+      "professionalCategory": "appearance",
+      "normalizedValue": "none",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "局限一小片",
+      "professionalCategory": "distribution",
+      "normalizedValue": "local",
+      "decomposesTo": [
+        "localized"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "两侧大致对称",
+      "professionalCategory": "distribution",
+      "normalizedValue": "symmetric",
+      "decomposesTo": [
+        "chronic"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "短时间迅速扩散",
+      "professionalCategory": "distribution",
+      "normalizedValue": "rapid",
+      "decomposesTo": [
+        "sudden_spread"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "全身多处",
+      "professionalCategory": "distribution",
+      "normalizedValue": "whole",
+      "decomposesTo": [
+        "progressive"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "有",
+      "professionalCategory": "new_exposure_or_medication",
+      "normalizedValue": "yes",
+      "decomposesTo": [
+        "new_exposure",
+        "medication_change"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "没有",
+      "professionalCategory": "new_exposure_or_medication",
+      "normalizedValue": "no",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "记不清",
+      "professionalCategory": "new_exposure_or_medication",
+      "normalizedValue": "unsure",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "早晨脸/眼皮明显",
+      "professionalCategory": "edema_pattern",
+      "normalizedValue": "morning_face",
+      "decomposesTo": [
+        "face_swelling"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "傍晚脚踝明显",
+      "professionalCategory": "edema_pattern",
+      "normalizedValue": "evening_leg",
+      "decomposesTo": [
+        "edema"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "按压后凹坑一会不恢复",
+      "professionalCategory": "edema_pattern",
+      "normalizedValue": "pitting",
+      "decomposesTo": [
+        "edema"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "说不清",
+      "professionalCategory": "edema_pattern",
+      "normalizedValue": "not_sure",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "有",
+      "professionalCategory": "general_red_flag",
+      "normalizedValue": "yes",
+      "decomposesTo": [
+        "urgent",
+        "fever",
+        "bleeding",
+        "weight_loss",
+        "loss_function"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "没有",
+      "professionalCategory": "general_red_flag",
+      "normalizedValue": "no",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "不确定",
+      "professionalCategory": "general_red_flag",
+      "normalizedValue": "unsure",
+      "decomposesTo": [
+        "urgent"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "困、想睡",
+      "professionalCategory": "fatigue_pattern",
+      "normalizedValue": "sleepy",
+      "decomposesTo": [
+        "poor_sleep"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "肌肉没力，活动耐力差",
+      "professionalCategory": "fatigue_pattern",
+      "normalizedValue": "muscle",
+      "decomposesTo": [
+        "weakness",
+        "exertion"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "一动就气短心慌",
+      "professionalCategory": "fatigue_pattern",
+      "normalizedValue": "breath",
+      "decomposesTo": [
+        "short_breath_exertion",
+        "palpitation"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "身体能动，但提不起精神",
+      "professionalCategory": "fatigue_pattern",
+      "normalizedValue": "motivation",
+      "decomposesTo": [
+        "stress_linked"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "暂时分不清",
+      "professionalCategory": "fatigue_pattern",
+      "normalizedValue": "unclear",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "吃得少且变瘦",
+      "professionalCategory": "appetite_weight",
+      "normalizedValue": "less_loss",
+      "decomposesTo": [
+        "poor_appetite",
+        "weight_loss"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "吃得多却变瘦",
+      "professionalCategory": "appetite_weight",
+      "normalizedValue": "more_loss",
+      "decomposesTo": [
+        "heat_intolerance",
+        "weight_loss"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "食量没少但体重增加",
+      "professionalCategory": "appetite_weight",
+      "normalizedValue": "gain",
+      "decomposesTo": [
+        "weight_change"
+      ],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    },
+    {
+      "phrase": "都稳定",
+      "professionalCategory": "appetite_weight",
+      "normalizedValue": "stable",
+      "decomposesTo": [],
+      "handlingRule": "保留用户原话；标准化值只表示该问题下的回答，不表示诊断。",
+      "source": "question_option"
+    }
+  ]
+}

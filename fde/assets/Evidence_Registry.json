@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "0.1.0",
+  "sources": [
+    {
+      "id": "zhang_shanghan",
+      "title": "《伤寒论》通行本文本",
+      "url": "https://ctext.org/wiki.pl?if=gb&res=592661",
+      "use": "仅作条文定位；正式入库需与可靠点校本复核",
+      "level": "primary_text_needs_collation"
+    },
+    {
+      "id": "zhang_jingui",
+      "title": "《金匮要略》电子全文",
+      "url": "https://ctext.org/jinkui-yaolue/zh",
+      "use": "杂病症状组合和方证条文定位",
+      "level": "primary_text_needs_collation"
+    },
+    {
+      "id": "yumoto_kokan",
+      "title": "湯本求真《皇漢医学》馆藏记录",
+      "url": "https://jpsearch.go.jp/item/dignl-1379123",
+      "use": "确认原著书目与馆藏；具体主张必须逐页锚定",
+      "level": "primary_bibliographic"
+    },
+    {
+      "id": "yumoto_abdomen_2026",
+      "title": "六経弁証に基づく『皇漢医学』における腹証の解析",
+      "url": "https://www.jstage.jst.go.jp/article/kampomed/76/4/76_279/_article/-char/ja",
+      "use": "研究腹证、主观症状词汇和方药—腹证对应；不等同汤本本人原话",
+      "level": "secondary_peer_reviewed"
+    },
+    {
+      "id": "hu_lecture",
+      "title": "《胡希恕伤寒论讲座（中日录音增补版）》",
+      "isbn": "9787513223995",
+      "publisher": "中国中医药出版社",
+      "year": 2016,
+      "use": "逐条核对胡希恕讲述；未核页码内容不得冠以“胡老说”",
+      "level": "edited_transcript"
+    },
+    {
+      "id": "who_terms",
+      "title": "WHO International Standard Terminologies on Traditional Medicine in the Western Pacific Region",
+      "url": "https://www.who.int/publications/i/item/9789240042322",
+      "year": 2022,
+      "use": "术语规范化参考，不作为个案诊断规则",
+      "level": "terminology_standard"
+    },
+    {
+      "id": "cn_terms",
+      "title": "《中医病证分类与代码》《中医临床诊疗术语》通知",
+      "url": "https://www.natcm.gov.cn/yizhengsi/zhengcewenjian/2020-11-23/18461.html",
+      "year": 2020,
+      "use": "专业输出字段和代码接口参考",
+      "level": "official_standard_notice"
+    },
+    {
+      "id": "gb_codes",
+      "title": "GB/T 15657-2021 中医病证分类与代码",
+      "url": "https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=41FD9D06E5BE4F84EA1D8D07101BED2C",
+      "year": 2021,
+      "use": "代码映射接口；不把用户主诉自动编码成证候",
+      "level": "national_standard"
+    }
+  ],
+  "policy": {
+    "exactQuoteRequires": [
+      "edition",
+      "page_or_recording_timestamp",
+      "reviewer"
+    ],
+    "unverifiedLegacyClaimAction": "quarantine_as_candidate_material",
+    "userFacingClaimsAllowed": [
+      "reported_fact",
+      "normalized_symptom_term",
+      "clinician_to_verify"
+    ]
+  }
+}

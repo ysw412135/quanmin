@@ -15,7 +15,7 @@ const NAMES = {
   gallbladder:'胆结石/胆囊炎', arthralgia:'关节痛/风湿', hemorrhoids:'痔疮', gout:'痛风/尿酸高',
   thyroid:'甲状腺结节', breast:'乳腺结节/胀痛', fattyliver:'脂肪肝/转氨酶高', reflux:'反酸/烧心',
   pharyngitis:'咽炎/喉咙不适', urinary:'尿频/尿路不适', premature:'早泄/遗精', palpitation:'心慌/胸闷', fatigue:'乏力虚劳',
-  irregular_menses:'月经不调'
+  irregular_menses:'月经不调', vertigo:'头晕/眩晕'
 };
 const EXISTING = ['insomnia','backpain','constipation','reflux','cough','dysmenorrhea','hypertension','eczema','gallbladder','gout','fever','irregular_menses','fatigue'];
 

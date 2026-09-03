@@ -1,0 +1,2563 @@
+{
+  "schemaVersion": "0.1.0",
+  "count": 68,
+  "questions": [
+    {
+      "id": "q_safety_gate",
+      "factKey": "urgent_warning",
+      "prompt": "先确认安全：现在是否有突然出现且很重的症状，例如呼吸明显困难、意识不清、晕倒、单侧无力、呕血/黑便或止不住的出血？",
+      "options": [
+        {
+          "value": "yes",
+          "label": "有，且正在发生",
+          "signals": [
+            "urgent"
+          ]
+        },
+        {
+          "value": "no",
+          "label": "没有",
+          "signals": []
+        },
+        {
+          "value": "unsure",
+          "label": "不确定",
+          "signals": [
+            "urgent"
+          ]
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 0.8,
+      "decisionImpact": 1,
+      "userAnswerable": true,
+      "kind": "safety",
+      "repairFor": null
+    },
+    {
+      "id": "q_mental_alarm",
+      "factKey": "mental_safety",
+      "prompt": "最近是否出现过伤害自己、不想活，或已经无法保证自己安全的念头？",
+      "options": [
+        {
+          "value": "yes",
+          "label": "有，或现在不安全",
+          "signals": [
+            "urgent"
+          ]
+        },
+        {
+          "value": "no",
+          "label": "没有",
+          "signals": []
+        },
+        {
+          "value": "prefer_not",
+          "label": "暂时不想回答",
+          "signals": [
+            "urgent"
+          ]
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 1,
+      "userAnswerable": true,
+      "kind": "safety",
+      "repairFor": null
+    },
+    {
+      "id": "q_duration",
+      "factKey": "duration",
+      "prompt": "这个情况从什么时候开始？",
+      "options": [
+        {
+          "value": "hours_days",
+          "label": "几小时到几天",
+          "signals": [
+            "acute_course"
+          ]
+        },
+        {
+          "value": "weeks",
+          "label": "几周",
+          "signals": []
+        },
+        {
+          "value": "months_years",
+          "label": "几个月或更久",
+          "signals": [
+            "chronic"
+          ]
+        },
+        {
+          "value": "episodic",
+          "label": "反复发作，中间会好",
+          "signals": [
+            "variable_course"
+          ]
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_course",
+      "factKey": "course",
+      "prompt": "从开始到现在，整体是在加重、减轻，还是反反复复？",
+      "options": [
+        {
+          "value": "worse",
+          "label": "越来越重",
+          "signals": [
+            "progressive"
+          ]
+        },
+        {
+          "value": "better",
+          "label": "在减轻",
+          "signals": []
+        },
+        {
+          "value": "variable",
+          "label": "时好时坏",
+          "signals": [
+            "variable_course"
+          ]
+        },
+        {
+          "value": "stable",
+          "label": "差不多",
+          "signals": []
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_severity",
+      "factKey": "severity",
+      "prompt": "最难受时按0到10分，大约几分？",
+      "options": [
+        {
+          "value": "mild",
+          "label": "0–3分",
+          "signals": []
+        },
+        {
+          "value": "moderate",
+          "label": "4–6分",
+          "signals": []
+        },
+        {
+          "value": "severe",
+          "label": "7–10分",
+          "signals": [
+            "severe"
+          ]
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 0.7,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_impact",
+      "factKey": "functional_impact",
+      "prompt": "它具体影响了什么？",
+      "options": [
+        {
+          "value": "none",
+          "label": "基本不影响",
+          "signals": []
+        },
+        {
+          "value": "daily",
+          "label": "影响工作/家务/上学",
+          "signals": [
+            "functional_loss"
+          ]
+        },
+        {
+          "value": "sleep",
+          "label": "主要影响睡眠",
+          "signals": [
+            "poor_sleep"
+          ]
+        },
+        {
+          "value": "cannot",
+          "label": "已经无法正常活动",
+          "signals": [
+            "loss_function"
+          ]
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_sleep_pattern",
+      "factKey": "sleep_pattern",
+      "prompt": "最主要是哪一种：很久睡不着、夜里常醒、太早醒，还是睡了仍不解乏？",
+      "options": [
+        {
+          "value": "onset",
+          "label": "入睡困难",
+          "signals": [
+            "mind_racing"
+          ]
+        },
+        {
+          "value": "maintenance",
+          "label": "夜里常醒",
+          "signals": [
+            "poor_sleep"
+          ]
+        },
+        {
+          "value": "early",
+          "label": "醒得过早",
+          "signals": [
+            "poor_sleep"
+          ]
+        },
+        {
+          "value": "unrested",
+          "label": "睡够也不解乏",
+          "signals": [
+            "fatigue"
+          ]
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_sleep_mind",
+      "factKey": "pre_sleep_state",
+      "prompt": "睡不着时更像哪一种？",
+      "options": [
+        {
+          "value": "racing",
+          "label": "脑子一直转、越想越清醒",
+          "signals": [
+            "mind_racing",
+            "stress_linked"
+          ]
+        },
+        {
+          "value": "restless_hot",
+          "label": "身体或心里烦热，躺不住",
+          "signals": [
+            "irritable_hot"
+          ]
+        },
+        {
+          "value": "fear_startle",
+          "label": "紧张、害怕或容易惊醒",
+          "signals": [
+            "palpitation",
+            "stress_linked"
+          ]
+        },
+        {
+          "value": "no_clear",
+          "label": "说不上来，就是睡不着",
+          "signals": []
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_sleep_day",
+      "factKey": "daytime_after_sleep",
+      "prompt": "第二天主要有什么感觉？",
+      "options": [
+        {
+          "value": "fatigue",
+          "label": "疲乏没精神",
+          "signals": [
+            "fatigue"
+          ]
+        },
+        {
+          "value": "dizzy",
+          "label": "头晕心慌",
+          "signals": [
+            "lightheaded",
+            "palpitation"
+          ]
+        },
+        {
+          "value": "irritable",
+          "label": "烦躁或注意力差",
+          "signals": [
+            "irritable_hot"
+          ]
+        },
+        {
+          "value": "normal",
+          "label": "白天影响不大",
+          "signals": []
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_substance_change",
+      "factKey": "substance_or_medication_change",
+      "prompt": "最近咖啡、浓茶、酒、烟、保健品或药物有没有增加或更换？",
+      "options": [
+        {
+          "value": "yes",
+          "label": "有明显变化",
+          "signals": [
+            "caffeine_alcohol",
+            "medication_change"
+          ]
+        },
+        {
+          "value": "no",
+          "label": "没有",
+          "signals": []
+        },
+        {
+          "value": "unsure",
+          "label": "记不清",
+          "signals": []
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_digestive_link",
+      "factKey": "digestive_link",
+      "prompt": "睡眠变差时，是否同时胃胀、反酸、吃撑或夜宵较多？",
+      "options": [
+        {
+          "value": "yes",
+          "label": "有明显关系",
+          "signals": [
+            "meal_linked",
+            "bloating",
+            "reflux"
+          ]
+        },
+        {
+          "value": "no",
+          "label": "没有",
+          "signals": []
+        },
+        {
+          "value": "unsure",
+          "label": "没留意",
+          "signals": []
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_gi_dominant",
+      "factKey": "dominant_sensation",
+      "prompt": "你说的“胃/肚子不舒服”，最接近疼、胀堵、烧灼、恶心，还是说不清的难受？",
+      "options": [
+        {
+          "value": "pain",
+          "label": "疼",
+          "signals": [
+            "fixed_stabbing"
+          ]
+        },
+        {
+          "value": "bloat",
+          "label": "胀或堵",
+          "signals": [
+            "bloating",
+            "epigastric_block"
+          ]
+        },
+        {
+          "value": "burn",
+          "label": "烧灼/辣感",
+          "signals": [
+            "burning"
+          ]
+        },
+        {
+          "value": "nausea",
+          "label": "恶心想吐",
+          "signals": [
+            "clear_vomit"
+          ]
+        },
+        {
+          "value": "unclear",
+          "label": "暂时说不清",
+          "signals": []
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_gi_meal",
+      "factKey": "meal_relation",
+      "prompt": "它和吃饭是什么关系？",
+      "options": [
+        {
+          "value": "empty",
+          "label": "空腹更明显",
+          "signals": []
+        },
+        {
+          "value": "after",
+          "label": "饭后更明显",
+          "signals": [
+            "meal_linked",
+            "bloating"
+          ]
+        },
+        {
+          "value": "specific",
+          "label": "油腻/辛辣/酒后明显",
+          "signals": [
+            "food_trigger",
+            "burning"
+          ]
+        },
+        {
+          "value": "lying",
+          "label": "躺下或夜里更明显",
+          "signals": [
+            "lying_worse",
+            "reflux"
+          ]
+        },
+        {
+          "value": "none",
+          "label": "看不出关系",
+          "signals": []
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_gi_vomit",
+      "factKey": "vomiting_character",
+      "prompt": "有没有吐？如果有，最接近哪一种？",
+      "options": [
+        {
+          "value": "none",
+          "label": "没有吐",
+          "signals": []
+        },
+        {
+          "value": "food",
+          "label": "吐食物",
+          "signals": [
+            "meal_linked"
+          ]
+        },
+        {
+          "value": "clear",
+          "label": "吐清水或痰涎样液体",
+          "signals": [
+            "clear_vomit"
+          ]
+        },
+        {
+          "value": "blood_coffee",
+          "label": "带血或像咖啡渣",
+          "signals": [
+            "bleeding",
+            "urgent"
+          ]
+        },
+        {
+          "value": "cannot_keep",
+          "label": "连水都留不住",
+          "signals": [
+            "urgent"
+          ]
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_stool_form",
+      "factKey": "stool_form",
+      "prompt": "大便最接近哪一种？",
+      "options": [
+        {
+          "value": "hard",
+          "label": "干硬、颗粒或排出费力",
+          "signals": [
+            "hard_stool",
+            "straining"
+          ]
+        },
+        {
+          "value": "formed",
+          "label": "成形",
+          "signals": []
+        },
+        {
+          "value": "loose",
+          "label": "软烂不成形",
+          "signals": [
+            "loose_stool"
+          ]
+        },
+        {
+          "value": "watery",
+          "label": "水样",
+          "signals": [
+            "watery_stool"
+          ]
+        },
+        {
+          "value": "alternating",
+          "label": "忽干忽稀",
+          "signals": [
+            "alternating_stool"
+          ]
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_stool_frequency",
+      "factKey": "stool_frequency",
+      "prompt": "现在大约多久一次，或一天几次？",
+      "options": [
+        {
+          "value": "rare",
+          "label": "三天以上一次",
+          "signals": [
+            "hard_stool"
+          ]
+        },
+        {
+          "value": "normal",
+          "label": "一天1–2次或两天1次",
+          "signals": []
+        },
+        {
+          "value": "frequent",
+          "label": "一天3次以上",
+          "signals": [
+            "urgency"
+          ]
+        },
+        {
+          "value": "urge_incomplete",
+          "label": "次数不一定多，但总觉得没排净",
+          "signals": [
+            "incomplete_emptying"
+          ]
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_bowel_pain_link",
+      "factKey": "pain_stool_relation",
+      "prompt": "腹部不适和排便有什么关系？",
+      "options": [
+        {
+          "value": "before_relief",
+          "label": "便前痛/胀，排完会缓解",
+          "signals": [
+            "pain_relief_after_stool"
+          ]
+        },
+        {
+          "value": "after",
+          "label": "排便后反而更不舒服",
+          "signals": []
+        },
+        {
+          "value": "constant",
+          "label": "持续不缓解",
+          "signals": [
+            "progressive"
+          ]
+        },
+        {
+          "value": "none",
+          "label": "没关系或没留意",
+          "signals": []
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_stool_alarm",
+      "factKey": "blood_or_black_stool",
+      "prompt": "有没有黑得像柏油的大便、明显鲜血，或持续呕血？",
+      "options": [
+        {
+          "value": "yes",
+          "label": "有",
+          "signals": [
+            "bleeding",
+            "urgent"
+          ]
+        },
+        {
+          "value": "no",
+          "label": "没有",
+          "signals": []
+        },
+        {
+          "value": "unsure",
+          "label": "不确定颜色",
+          "signals": [
+            "bleeding"
+          ]
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 1,
+      "userAnswerable": true,
+      "kind": "safety",
+      "repairFor": null
+    },
+    {
+      "id": "q_food_trigger",
+      "factKey": "food_trigger",
+      "prompt": "是否多人吃同样食物后都不舒服，或每次吃某类食物就发作？",
+      "options": [
+        {
+          "value": "cluster",
+          "label": "多人同时发作",
+          "signals": [
+            "food_trigger",
+            "acute_course"
+          ]
+        },
+        {
+          "value": "specific",
+          "label": "特定食物反复诱发",
+          "signals": [
+            "food_trigger"
+          ]
+        },
+        {
+          "value": "no",
+          "label": "没有",
+          "signals": []
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_hydration",
+      "factKey": "hydration",
+      "prompt": "最近喝水和排尿是否明显减少，站起来会眼前发黑吗？",
+      "options": [
+        {
+          "value": "yes",
+          "label": "是",
+          "signals": [
+            "low_intake",
+            "dark_urine",
+            "lightheaded"
+          ]
+        },
+        {
+          "value": "no",
+          "label": "不是",
+          "signals": []
+        },
+        {
+          "value": "unsure",
+          "label": "不清楚",
+          "signals": []
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_breathing_alarm",
+      "factKey": "breathing_difficulty",
+      "prompt": "现在呼吸是否明显费力、说不完整句话，或嘴唇发紫？",
+      "options": [
+        {
+          "value": "yes",
+          "label": "是",
+          "signals": [
+            "breathlessness",
+            "cyanosis",
+            "urgent"
+          ]
+        },
+        {
+          "value": "mild",
+          "label": "只是轻微气短",
+          "signals": [
+            "breathlessness"
+          ]
+        },
+        {
+          "value": "no",
+          "label": "没有",
+          "signals": []
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 1,
+      "userAnswerable": true,
+      "kind": "safety",
+      "repairFor": null
+    },
+    {
+      "id": "q_sputum",
+      "factKey": "sputum",
+      "prompt": "咳嗽时痰最接近哪一种？",
+      "options": [
+        {
+          "value": "none",
+          "label": "干咳或几乎无痰",
+          "signals": [
+            "dry_cough",
+            "little_sputum"
+          ]
+        },
+        {
+          "value": "clear",
+          "label": "白色清稀/泡沫样",
+          "signals": [
+            "clear_sputum",
+            "copious_sputum"
+          ]
+        },
+        {
+          "value": "yellow",
+          "label": "黄稠或绿色",
+          "signals": [
+            "yellow_discharge"
+          ]
+        },
+        {
+          "value": "blood",
+          "label": "带血",
+          "signals": [
+            "bleeding",
+            "urgent"
+          ]
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_fever_chill",
+      "factKey": "fever_chill",
+      "prompt": "有没有量过体温？同时更明显的是怕冷、发热，还是都没有？",
+      "options": [
+        {
+          "value": "chill",
+          "label": "怕冷/发冷明显",
+          "signals": [
+            "chill"
+          ]
+        },
+        {
+          "value": "fever",
+          "label": "体温升高或发热明显",
+          "signals": [
+            "fever"
+          ]
+        },
+        {
+          "value": "both",
+          "label": "先冷后热或两者都有",
+          "signals": [
+            "fever",
+            "chill"
+          ]
+        },
+        {
+          "value": "none",
+          "label": "都没有",
+          "signals": []
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_nose_discharge",
+      "factKey": "nasal_discharge",
+      "prompt": "鼻涕/分泌物是什么样？",
+      "options": [
+        {
+          "value": "clear",
+          "label": "清稀像水",
+          "signals": [
+            "clear_discharge"
+          ]
+        },
+        {
+          "value": "yellow",
+          "label": "黄稠",
+          "signals": [
+            "yellow_discharge"
+          ]
+        },
+        {
+          "value": "dry",
+          "label": "很少，主要干堵",
+          "signals": [
+            "throat_dry"
+          ]
+        },
+        {
+          "value": "none",
+          "label": "没有",
+          "signals": []
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_trigger_environment",
+      "factKey": "environment_trigger",
+      "prompt": "是否在换季、接触灰尘/宠物/冷空气后反复出现？",
+      "options": [
+        {
+          "value": "yes",
+          "label": "是，关系明显",
+          "signals": [
+            "seasonal",
+            "itch_sneeze"
+          ]
+        },
+        {
+          "value": "no",
+          "label": "没有明显关系",
+          "signals": []
+        },
+        {
+          "value": "unsure",
+          "label": "没留意",
+          "signals": []
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_night_breath",
+      "factKey": "night_breathing",
+      "prompt": "咳喘会不会在夜里或平躺后明显加重？",
+      "options": [
+        {
+          "value": "yes",
+          "label": "会",
+          "signals": [
+            "night_breathlessness",
+            "orthopnea"
+          ]
+        },
+        {
+          "value": "no",
+          "label": "不会",
+          "signals": []
+        },
+        {
+          "value": "unsure",
+          "label": "不确定",
+          "signals": []
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_chest_alarm",
+      "factKey": "chest_urgent",
+      "prompt": "胸部不适是否突然很重，并伴冷汗、晕厥、明显气短，或向手臂/下颌/背部放射？",
+      "options": [
+        {
+          "value": "yes",
+          "label": "有其中一项",
+          "signals": [
+            "urgent",
+            "radiation",
+            "cold_sweat"
+          ]
+        },
+        {
+          "value": "no",
+          "label": "都没有",
+          "signals": []
+        },
+        {
+          "value": "unsure",
+          "label": "不确定",
+          "signals": [
+            "urgent"
+          ]
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 1,
+      "userAnswerable": true,
+      "kind": "safety",
+      "repairFor": null
+    },
+    {
+      "id": "q_chest_exertion",
+      "factKey": "exertion_relation",
+      "prompt": "胸闷/气短和走路、爬楼等活动是什么关系？",
+      "options": [
+        {
+          "value": "worse",
+          "label": "活动时明显，休息后缓解",
+          "signals": [
+            "exertional",
+            "pressure"
+          ]
+        },
+        {
+          "value": "rest",
+          "label": "静坐或紧张时出现",
+          "signals": [
+            "stress_linked"
+          ]
+        },
+        {
+          "value": "constant",
+          "label": "一直都有",
+          "signals": [
+            "progressive"
+          ]
+        },
+        {
+          "value": "none",
+          "label": "无明显关系",
+          "signals": []
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_palpitation_pattern",
+      "factKey": "palpitation_pattern",
+      "prompt": "心慌时更像跳得快、跳得乱/漏拍，还是只是心跳感特别强？",
+      "options": [
+        {
+          "value": "fast",
+          "label": "突然很快",
+          "signals": [
+            "sudden_onset"
+          ]
+        },
+        {
+          "value": "irregular",
+          "label": "乱或漏拍",
+          "signals": [
+            "irregular"
+          ]
+        },
+        {
+          "value": "strong",
+          "label": "不一定快，但跳动感很强",
+          "signals": [
+            "palpitation"
+          ]
+        },
+        {
+          "value": "unsure",
+          "label": "分不清",
+          "signals": []
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_edema_breath",
+      "factKey": "edema_breath",
+      "prompt": "是否同时脚踝肿、平躺憋气或夜里憋醒？",
+      "options": [
+        {
+          "value": "yes",
+          "label": "有",
+          "signals": [
+            "edema",
+            "orthopnea",
+            "night_breathlessness"
+          ]
+        },
+        {
+          "value": "no",
+          "label": "没有",
+          "signals": []
+        },
+        {
+          "value": "unsure",
+          "label": "不确定",
+          "signals": []
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.95,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_chest_touch_move",
+      "factKey": "chest_wall_relation",
+      "prompt": "按压胸口、转身或抬手时，疼痛会被明确引出来吗？",
+      "options": [
+        {
+          "value": "yes",
+          "label": "会",
+          "signals": [
+            "tender_touch",
+            "movement_linked",
+            "localized"
+          ]
+        },
+        {
+          "value": "no",
+          "label": "不会",
+          "signals": []
+        },
+        {
+          "value": "unsure",
+          "label": "不确定",
+          "signals": []
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_neuro_alarm",
+      "factKey": "neurologic_deficit",
+      "prompt": "是否突然出现一侧脸/手脚无力或麻木、说话含糊、视力突然下降，或从未有过的爆炸样剧烈头痛？",
+      "options": [
+        {
+          "value": "yes",
+          "label": "有",
+          "signals": [
+            "urgent",
+            "weakness_one_side",
+            "speech_change",
+            "sudden_worst"
+          ]
+        },
+        {
+          "value": "no",
+          "label": "没有",
+          "signals": []
+        },
+        {
+          "value": "unsure",
+          "label": "不确定",
+          "signals": [
+            "urgent"
+          ]
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 1,
+      "userAnswerable": true,
+      "kind": "safety",
+      "repairFor": null
+    },
+    {
+      "id": "q_dizziness_type",
+      "factKey": "dizziness_type",
+      "prompt": "“晕”最接近哪种感觉？",
+      "options": [
+        {
+          "value": "spin",
+          "label": "自己或周围在转",
+          "signals": [
+            "spinning"
+          ]
+        },
+        {
+          "value": "faint",
+          "label": "发飘、眼前发黑，像要晕倒",
+          "signals": [
+            "lightheaded"
+          ]
+        },
+        {
+          "value": "heavy",
+          "label": "头重昏沉，不清醒",
+          "signals": [
+            "fatigue"
+          ]
+        },
+        {
+          "value": "unstable",
+          "label": "走路不稳",
+          "signals": [
+            "loss_function"
+          ]
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_headache_character",
+      "factKey": "headache_character",
+      "prompt": "头痛最接近哪一种？",
+      "options": [
+        {
+          "value": "throb",
+          "label": "一跳一跳",
+          "signals": [
+            "throbbing"
+          ]
+        },
+        {
+          "value": "band",
+          "label": "紧箍/压迫",
+          "signals": [
+            "bandlike"
+          ]
+        },
+        {
+          "value": "stabbing",
+          "label": "固定刺痛",
+          "signals": [
+            "fixed_stabbing"
+          ]
+        },
+        {
+          "value": "sudden",
+          "label": "突然达到最剧烈",
+          "signals": [
+            "sudden_worst",
+            "urgent"
+          ]
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_position_trigger",
+      "factKey": "position_trigger",
+      "prompt": "转头、翻身或站起来时会立刻诱发吗？每次持续多久？",
+      "options": [
+        {
+          "value": "head_brief",
+          "label": "转头/翻身诱发，通常不到1分钟",
+          "signals": [
+            "head_position",
+            "brief_episode"
+          ]
+        },
+        {
+          "value": "stand",
+          "label": "站起时眼前发黑",
+          "signals": [
+            "standing_trigger",
+            "lightheaded"
+          ]
+        },
+        {
+          "value": "long",
+          "label": "与体位无关，持续较久",
+          "signals": []
+        },
+        {
+          "value": "none",
+          "label": "无明显关系",
+          "signals": []
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_sensory_change",
+      "factKey": "sensory_change",
+      "prompt": "是否同时耳鸣听力变化、怕光、视物变化或鼻窦胀痛？",
+      "options": [
+        {
+          "value": "ear",
+          "label": "耳鸣/听力变化",
+          "signals": [
+            "hearing_change"
+          ]
+        },
+        {
+          "value": "light",
+          "label": "怕光或恶心",
+          "signals": [
+            "light_sensitive",
+            "nausea"
+          ]
+        },
+        {
+          "value": "vision",
+          "label": "视物变化",
+          "signals": [
+            "vision_change"
+          ]
+        },
+        {
+          "value": "sinus",
+          "label": "面颊/额头胀痛鼻塞",
+          "signals": [
+            "sinus_pressure"
+          ]
+        },
+        {
+          "value": "none",
+          "label": "都没有",
+          "signals": []
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_measured_temperature",
+      "factKey": "measured_temperature",
+      "prompt": "你说的“发热/忽冷忽热”有量过体温吗？",
+      "options": [
+        {
+          "value": "measured_high",
+          "label": "量到过升高",
+          "signals": [
+            "fever"
+          ]
+        },
+        {
+          "value": "normal",
+          "label": "量过，体温正常",
+          "signals": []
+        },
+        {
+          "value": "not_measured",
+          "label": "没量过",
+          "signals": []
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_temperature_cluster",
+      "factKey": "temperature_pattern",
+      "prompt": "这种冷热感更接近哪一种？",
+      "options": [
+        {
+          "value": "cold",
+          "label": "别人不冷我也冷，喜欢热的",
+          "signals": [
+            "cold_intolerance",
+            "warm_relief"
+          ]
+        },
+        {
+          "value": "heat",
+          "label": "别人不热我也热，想吹凉风",
+          "signals": [
+            "heat_intolerance"
+          ]
+        },
+        {
+          "value": "episodes",
+          "label": "一阵阵忽冷忽热",
+          "signals": [
+            "variable_course"
+          ]
+        },
+        {
+          "value": "hands",
+          "label": "主要只是手脚凉",
+          "signals": []
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_sweat_pattern",
+      "factKey": "sweat_context",
+      "prompt": "出汗发生在什么时候、哪里？",
+      "options": [
+        {
+          "value": "day_easy",
+          "label": "白天稍动就出汗",
+          "signals": [
+            "spontaneous_sweat",
+            "exertion"
+          ]
+        },
+        {
+          "value": "night",
+          "label": "睡着后出汗，醒来减轻",
+          "signals": [
+            "night_sweat"
+          ]
+        },
+        {
+          "value": "local",
+          "label": "手脚/头面局部",
+          "signals": []
+        },
+        {
+          "value": "none",
+          "label": "并不多汗",
+          "signals": []
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_thirst_drinking",
+      "factKey": "thirst_and_intake",
+      "prompt": "口干时是真的想喝水吗？更想喝冷的、热的，还是只想润一口？",
+      "options": [
+        {
+          "value": "cold_much",
+          "label": "很渴，想大量喝冷水",
+          "signals": [
+            "dry_thirst",
+            "heat_intolerance"
+          ]
+        },
+        {
+          "value": "warm",
+          "label": "想喝温热的",
+          "signals": [
+            "cold_intolerance"
+          ]
+        },
+        {
+          "value": "sip",
+          "label": "口干但只小口润一下",
+          "signals": []
+        },
+        {
+          "value": "no_thirst",
+          "label": "并不想喝",
+          "signals": []
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_weight_change",
+      "factKey": "weight_change",
+      "prompt": "最近1–3个月体重有没有在没刻意控制的情况下明显变化？",
+      "options": [
+        {
+          "value": "loss",
+          "label": "明显下降",
+          "signals": [
+            "weight_loss"
+          ]
+        },
+        {
+          "value": "gain",
+          "label": "明显增加",
+          "signals": [
+            "weight_change"
+          ]
+        },
+        {
+          "value": "stable",
+          "label": "基本稳定",
+          "signals": []
+        },
+        {
+          "value": "unknown",
+          "label": "没称过",
+          "signals": []
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.9,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_medication_change",
+      "factKey": "medication_change",
+      "prompt": "发作前是否新用了药、保健品、减肥产品，或调整了原有药量？",
+      "options": [
+        {
+          "value": "yes",
+          "label": "是",
+          "signals": [
+            "medication_change",
+            "new_exposure"
+          ]
+        },
+        {
+          "value": "no",
+          "label": "没有",
+          "signals": []
+        },
+        {
+          "value": "unsure",
+          "label": "不确定",
+          "signals": []
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_pain_alarm",
+      "factKey": "pain_red_flag",
+      "prompt": "疼痛前是否有明显外伤，或同时发热、肢体无力、大小便控制异常？",
+      "options": [
+        {
+          "value": "yes",
+          "label": "有",
+          "signals": [
+            "trauma",
+            "fever",
+            "loss_function",
+            "urgent"
+          ]
+        },
+        {
+          "value": "no",
+          "label": "没有",
+          "signals": []
+        },
+        {
+          "value": "unsure",
+          "label": "不确定",
+          "signals": [
+            "urgent"
+          ]
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 1,
+      "userAnswerable": true,
+      "kind": "safety",
+      "repairFor": null
+    },
+    {
+      "id": "q_pain_mechanical",
+      "factKey": "movement_relation",
+      "prompt": "疼痛和动作/负重是什么关系？",
+      "options": [
+        {
+          "value": "move_worse",
+          "label": "一动或负重就加重",
+          "signals": [
+            "movement_linked",
+            "overuse"
+          ]
+        },
+        {
+          "value": "rest_worse",
+          "label": "久坐久躺后更明显，活动开会缓解",
+          "signals": [
+            "morning_stiffness"
+          ]
+        },
+        {
+          "value": "rest_relief",
+          "label": "休息后减轻",
+          "signals": [
+            "rest_relief"
+          ]
+        },
+        {
+          "value": "none",
+          "label": "无明显关系",
+          "signals": []
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_pain_inflammatory",
+      "factKey": "joint_inflammation",
+      "prompt": "关节有没有明显红、肿、热，或早晨僵硬超过半小时？",
+      "options": [
+        {
+          "value": "yes",
+          "label": "有",
+          "signals": [
+            "swollen_hot",
+            "morning_stiffness"
+          ]
+        },
+        {
+          "value": "no",
+          "label": "没有",
+          "signals": []
+        },
+        {
+          "value": "unsure",
+          "label": "说不准",
+          "signals": []
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_pain_quality",
+      "factKey": "pain_quality",
+      "prompt": "最接近酸胀、刺痛、灼痛、电击样，还是抽筋？",
+      "options": [
+        {
+          "value": "ache",
+          "label": "酸胀",
+          "signals": []
+        },
+        {
+          "value": "stabbing",
+          "label": "固定刺痛",
+          "signals": [
+            "fixed_stabbing"
+          ]
+        },
+        {
+          "value": "burn_electric",
+          "label": "灼痛/电击样",
+          "signals": [
+            "radiating"
+          ]
+        },
+        {
+          "value": "cramp",
+          "label": "抽筋或拘紧",
+          "signals": []
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_numb_weak",
+      "factKey": "weakness_or_numbness",
+      "prompt": "是否有从腰/颈向手脚放射的痛麻，或真正拿不住、抬不动？",
+      "options": [
+        {
+          "value": "radiate",
+          "label": "有放射痛麻",
+          "signals": [
+            "radiating",
+            "numbness"
+          ]
+        },
+        {
+          "value": "weak",
+          "label": "有明确无力",
+          "signals": [
+            "weakness_focal",
+            "loss_function"
+          ]
+        },
+        {
+          "value": "both",
+          "label": "两者都有",
+          "signals": [
+            "radiating",
+            "weakness_focal"
+          ]
+        },
+        {
+          "value": "no",
+          "label": "都没有",
+          "signals": []
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_weather_relation",
+      "factKey": "weather_relation",
+      "prompt": "是否每逢受凉、阴雨潮湿就明显加重，保暖后减轻？",
+      "options": [
+        {
+          "value": "yes",
+          "label": "是",
+          "signals": [
+            "cold_trigger",
+            "damp_weather",
+            "warm_relief"
+          ]
+        },
+        {
+          "value": "no",
+          "label": "不是",
+          "signals": []
+        },
+        {
+          "value": "unsure",
+          "label": "没留意",
+          "signals": []
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_urine_alarm",
+      "factKey": "urinary_red_flag",
+      "prompt": "有没有肉眼血尿、发热伴腰背剧痛、完全尿不出，或妊娠期尿痛？",
+      "options": [
+        {
+          "value": "yes",
+          "label": "有",
+          "signals": [
+            "blood_urine",
+            "fever_flank",
+            "retention",
+            "urgent"
+          ]
+        },
+        {
+          "value": "no",
+          "label": "没有",
+          "signals": []
+        },
+        {
+          "value": "unsure",
+          "label": "不确定",
+          "signals": [
+            "urgent"
+          ]
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 1,
+      "userAnswerable": true,
+      "kind": "safety",
+      "repairFor": null
+    },
+    {
+      "id": "q_urine_pattern",
+      "factKey": "urine_volume_pattern",
+      "prompt": "每次尿量和排尿过程最接近哪种？",
+      "options": [
+        {
+          "value": "large",
+          "label": "次数多且每次量也多",
+          "signals": [
+            "large_volume"
+          ]
+        },
+        {
+          "value": "small_urgent",
+          "label": "次数多但每次很少、很急",
+          "signals": [
+            "small_volume",
+            "urgency"
+          ]
+        },
+        {
+          "value": "weak",
+          "label": "等待、尿线细或断续",
+          "signals": [
+            "hesitancy",
+            "weak_stream"
+          ]
+        },
+        {
+          "value": "incomplete",
+          "label": "排完仍觉得没排净",
+          "signals": [
+            "incomplete_emptying"
+          ]
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_urine_pain",
+      "factKey": "urine_pain_or_urgency",
+      "prompt": "排尿时有没有灼痛、尿急或下腹痛？",
+      "options": [
+        {
+          "value": "burn",
+          "label": "灼痛",
+          "signals": [
+            "burning_urine"
+          ]
+        },
+        {
+          "value": "urgent",
+          "label": "尿急明显",
+          "signals": [
+            "urgency"
+          ]
+        },
+        {
+          "value": "pelvic",
+          "label": "下腹/会阴不适",
+          "signals": [
+            "pelvic_discomfort"
+          ]
+        },
+        {
+          "value": "none",
+          "label": "都没有",
+          "signals": []
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_fluid_diuretic",
+      "factKey": "fluid_and_diuretic_intake",
+      "prompt": "尿多/尿黄前，喝水、啤酒、咖啡、浓茶或利尿药有什么变化？",
+      "options": [
+        {
+          "value": "diuretic",
+          "label": "酒/咖啡/茶或利尿药增加",
+          "signals": [
+            "caffeine_alcohol",
+            "high_intake"
+          ]
+        },
+        {
+          "value": "low_water",
+          "label": "喝水少、出汗多",
+          "signals": [
+            "low_intake",
+            "dark_urine"
+          ]
+        },
+        {
+          "value": "none",
+          "label": "没有明显变化",
+          "signals": []
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_nocturia",
+      "factKey": "night_frequency",
+      "prompt": "夜里通常起几次？每次尿量多不多？",
+      "options": [
+        {
+          "value": "zero_one",
+          "label": "0–1次",
+          "signals": []
+        },
+        {
+          "value": "two_plus_large",
+          "label": "2次以上且量多",
+          "signals": [
+            "nocturia",
+            "large_volume"
+          ]
+        },
+        {
+          "value": "two_plus_small",
+          "label": "2次以上但量少",
+          "signals": [
+            "nocturia",
+            "small_volume"
+          ]
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_sexual_context",
+      "factKey": "sexual_context",
+      "prompt": "变化是突然还是逐渐？晨间状态、欲望和压力是否一起变化？",
+      "options": [
+        {
+          "value": "sudden_stress",
+          "label": "突然且与压力明显相关",
+          "signals": [
+            "stress_linked"
+          ]
+        },
+        {
+          "value": "gradual",
+          "label": "逐渐变化",
+          "signals": [
+            "chronic"
+          ]
+        },
+        {
+          "value": "pain",
+          "label": "伴疼痛或明显弯曲",
+          "signals": [
+            "pelvic_discomfort"
+          ]
+        },
+        {
+          "value": "unsure",
+          "label": "说不清",
+          "signals": []
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_gyn_alarm",
+      "factKey": "gynecology_red_flag",
+      "prompt": "是否可能怀孕，并有单侧剧烈小腹痛、晕厥，或出血量大到连续每小时浸透一片卫生巾？",
+      "options": [
+        {
+          "value": "yes",
+          "label": "有其中一项",
+          "signals": [
+            "pregnancy_possible",
+            "one_side_pain",
+            "heavy_bleeding",
+            "urgent"
+          ]
+        },
+        {
+          "value": "no",
+          "label": "都没有",
+          "signals": []
+        },
+        {
+          "value": "unsure",
+          "label": "不确定是否怀孕",
+          "signals": [
+            "pregnancy_possible"
+          ]
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 1,
+      "userAnswerable": true,
+      "kind": "safety",
+      "repairFor": null
+    },
+    {
+      "id": "q_cycle_relation",
+      "factKey": "cycle_relation",
+      "prompt": "不适主要出现在月经前、经期、经后，还是和周期无关？",
+      "options": [
+        {
+          "value": "before",
+          "label": "经前",
+          "signals": [
+            "cycle_linked",
+            "stress_linked"
+          ]
+        },
+        {
+          "value": "during",
+          "label": "经期",
+          "signals": [
+            "cycle_linked"
+          ]
+        },
+        {
+          "value": "after",
+          "label": "经后",
+          "signals": [
+            "fatigue"
+          ]
+        },
+        {
+          "value": "unrelated",
+          "label": "无明显关系",
+          "signals": []
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_bleeding_amount",
+      "factKey": "bleeding_amount",
+      "prompt": "和你平时相比，量怎样？有没有大血块、头晕心慌？",
+      "options": [
+        {
+          "value": "heavy",
+          "label": "明显增多/大血块",
+          "signals": [
+            "heavy_bleeding",
+            "clots"
+          ]
+        },
+        {
+          "value": "light",
+          "label": "明显减少",
+          "signals": []
+        },
+        {
+          "value": "usual",
+          "label": "和平时差不多",
+          "signals": []
+        },
+        {
+          "value": "dizzy",
+          "label": "量多并头晕心慌",
+          "signals": [
+            "heavy_bleeding",
+            "lightheaded",
+            "palpitation"
+          ]
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_cycle_regular",
+      "factKey": "cycle_regularity",
+      "prompt": "最近三次月经间隔是否大致稳定？",
+      "options": [
+        {
+          "value": "stable",
+          "label": "大致稳定",
+          "signals": []
+        },
+        {
+          "value": "early",
+          "label": "经常提前",
+          "signals": [
+            "irregular_cycle"
+          ]
+        },
+        {
+          "value": "late",
+          "label": "经常推迟",
+          "signals": [
+            "irregular_cycle"
+          ]
+        },
+        {
+          "value": "variable",
+          "label": "忽早忽晚",
+          "signals": [
+            "irregular_cycle",
+            "variable_course"
+          ]
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_discharge",
+      "factKey": "discharge_change",
+      "prompt": "白带与平时相比，颜色、气味、量和瘙痒有什么变化？",
+      "options": [
+        {
+          "value": "clear",
+          "label": "清稀量多，无明显异味",
+          "signals": [
+            "discharge_change"
+          ]
+        },
+        {
+          "value": "yellow_odor",
+          "label": "黄/黄绿且有异味",
+          "signals": [
+            "odor"
+          ]
+        },
+        {
+          "value": "curd_itch",
+          "label": "豆渣样并瘙痒",
+          "signals": [
+            "itch"
+          ]
+        },
+        {
+          "value": "none",
+          "label": "没明显变化",
+          "signals": []
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_pregnancy_possible",
+      "factKey": "pregnancy_possibility",
+      "prompt": "这次月经变化是否存在怀孕可能？",
+      "options": [
+        {
+          "value": "yes",
+          "label": "有可能",
+          "signals": [
+            "pregnancy_possible"
+          ]
+        },
+        {
+          "value": "no",
+          "label": "确定没有",
+          "signals": []
+        },
+        {
+          "value": "unsure",
+          "label": "不确定",
+          "signals": [
+            "pregnancy_possible"
+          ]
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 1,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_skin_alarm",
+      "factKey": "skin_red_flag",
+      "prompt": "皮疹/肿胀是否伴呼吸困难、嘴唇舌头肿、大片起泡脱皮、高热或眼口黏膜疼？",
+      "options": [
+        {
+          "value": "yes",
+          "label": "有",
+          "signals": [
+            "urgent",
+            "face_swelling",
+            "breathlessness"
+          ]
+        },
+        {
+          "value": "no",
+          "label": "没有",
+          "signals": []
+        },
+        {
+          "value": "unsure",
+          "label": "不确定",
+          "signals": [
+            "urgent"
+          ]
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 1,
+      "userAnswerable": true,
+      "kind": "safety",
+      "repairFor": null
+    },
+    {
+      "id": "q_skin_appearance",
+      "factKey": "appearance",
+      "prompt": "皮肤现在最接近哪种样子？",
+      "options": [
+        {
+          "value": "red_hot",
+          "label": "红、热、痒",
+          "signals": [
+            "red_hot",
+            "itch"
+          ]
+        },
+        {
+          "value": "wet",
+          "label": "水疱、渗液或糜烂",
+          "signals": [
+            "oozing",
+            "blister"
+          ]
+        },
+        {
+          "value": "dry",
+          "label": "干燥、脱屑或裂口",
+          "signals": [
+            "dry_scale",
+            "crack"
+          ]
+        },
+        {
+          "value": "dark_thick",
+          "label": "颜色暗、皮肤增厚",
+          "signals": [
+            "dark_color",
+            "thickened"
+          ]
+        },
+        {
+          "value": "none",
+          "label": "外观看不明显",
+          "signals": []
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_skin_spread",
+      "factKey": "distribution",
+      "prompt": "它分布在哪里，扩散速度怎样？",
+      "options": [
+        {
+          "value": "local",
+          "label": "局限一小片",
+          "signals": [
+            "localized"
+          ]
+        },
+        {
+          "value": "symmetric",
+          "label": "两侧大致对称",
+          "signals": [
+            "chronic"
+          ]
+        },
+        {
+          "value": "rapid",
+          "label": "短时间迅速扩散",
+          "signals": [
+            "sudden_spread"
+          ]
+        },
+        {
+          "value": "whole",
+          "label": "全身多处",
+          "signals": [
+            "progressive"
+          ]
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_skin_exposure",
+      "factKey": "new_exposure_or_medication",
+      "prompt": "发作前是否换了药、护肤品、洗涤剂、食物，或接触新环境？",
+      "options": [
+        {
+          "value": "yes",
+          "label": "有",
+          "signals": [
+            "new_exposure",
+            "medication_change"
+          ]
+        },
+        {
+          "value": "no",
+          "label": "没有",
+          "signals": []
+        },
+        {
+          "value": "unsure",
+          "label": "记不清",
+          "signals": []
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_edema_pattern",
+      "factKey": "edema_pattern",
+      "prompt": "肿胀主要何时出现，按下去会不会留下凹坑？",
+      "options": [
+        {
+          "value": "morning_face",
+          "label": "早晨脸/眼皮明显",
+          "signals": [
+            "face_swelling"
+          ]
+        },
+        {
+          "value": "evening_leg",
+          "label": "傍晚脚踝明显",
+          "signals": [
+            "edema"
+          ]
+        },
+        {
+          "value": "pitting",
+          "label": "按压后凹坑一会不恢复",
+          "signals": [
+            "edema"
+          ]
+        },
+        {
+          "value": "not_sure",
+          "label": "说不清",
+          "signals": []
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_general_alarm",
+      "factKey": "general_red_flag",
+      "prompt": "是否有持续高热、明显出血、短期体重骤降、意识变化或虚弱到无法站立？",
+      "options": [
+        {
+          "value": "yes",
+          "label": "有",
+          "signals": [
+            "urgent",
+            "fever",
+            "bleeding",
+            "weight_loss",
+            "loss_function"
+          ]
+        },
+        {
+          "value": "no",
+          "label": "没有",
+          "signals": []
+        },
+        {
+          "value": "unsure",
+          "label": "不确定",
+          "signals": [
+            "urgent"
+          ]
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 1,
+      "userAnswerable": true,
+      "kind": "safety",
+      "repairFor": null
+    },
+    {
+      "id": "q_fatigue_pattern",
+      "factKey": "fatigue_pattern",
+      "prompt": "你说的“虚/没力”，更接近哪一种？",
+      "options": [
+        {
+          "value": "sleepy",
+          "label": "困、想睡",
+          "signals": [
+            "poor_sleep"
+          ]
+        },
+        {
+          "value": "muscle",
+          "label": "肌肉没力，活动耐力差",
+          "signals": [
+            "weakness",
+            "exertion"
+          ]
+        },
+        {
+          "value": "breath",
+          "label": "一动就气短心慌",
+          "signals": [
+            "short_breath_exertion",
+            "palpitation"
+          ]
+        },
+        {
+          "value": "motivation",
+          "label": "身体能动，但提不起精神",
+          "signals": [
+            "stress_linked"
+          ]
+        },
+        {
+          "value": "unclear",
+          "label": "暂时分不清",
+          "signals": []
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    },
+    {
+      "id": "q_appetite_weight",
+      "factKey": "appetite_weight",
+      "prompt": "食量和体重最近有什么变化？",
+      "options": [
+        {
+          "value": "less_loss",
+          "label": "吃得少且变瘦",
+          "signals": [
+            "poor_appetite",
+            "weight_loss"
+          ]
+        },
+        {
+          "value": "more_loss",
+          "label": "吃得多却变瘦",
+          "signals": [
+            "heat_intolerance",
+            "weight_loss"
+          ]
+        },
+        {
+          "value": "gain",
+          "label": "食量没少但体重增加",
+          "signals": [
+            "weight_change"
+          ]
+        },
+        {
+          "value": "stable",
+          "label": "都稳定",
+          "signals": []
+        }
+      ],
+      "reliability": 0.9,
+      "burden": 1,
+      "decisionImpact": 0.8,
+      "userAnswerable": true,
+      "kind": "discriminator",
+      "repairFor": null
+    }
+  ]
+}

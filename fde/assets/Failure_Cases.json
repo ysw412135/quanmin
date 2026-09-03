@@ -1,0 +1,163 @@
+{
+  "schemaVersion": "0.1.0",
+  "testedAt": "2026-09-02",
+  "patientCount": 1708,
+  "rounds": [
+    {
+      "round": "R0_legacy_single_tree",
+      "cases": 1708,
+      "earlyAnchoring": 1708,
+      "missedCriticalQuestion": 342,
+      "ineffectiveQuestion": 512,
+      "repeatedQuestion": 0,
+      "unreliableUserQuestion": 682,
+      "unhandledContradiction": 122,
+      "frameworkConflictUnsurfaced": 1708,
+      "frameworkConflictsDetected": 1708,
+      "frameworkConflictsSurfaced": 0,
+      "summaryInferenceLeak": 244,
+      "formulaOrDoseLeak": 1708,
+      "unknownTreatedAsNegative": 0,
+      "urgentHandoffs": 0,
+      "averageQuestions": 6
+    },
+    {
+      "round": "R1_multi_hypothesis_fixed_order",
+      "cases": 1708,
+      "earlyAnchoring": 0,
+      "missedCriticalQuestion": 122,
+      "ineffectiveQuestion": 366,
+      "repeatedQuestion": 0,
+      "unreliableUserQuestion": 0,
+      "unhandledContradiction": 122,
+      "frameworkConflictUnsurfaced": 0,
+      "frameworkConflictsDetected": 0,
+      "frameworkConflictsSurfaced": 0,
+      "summaryInferenceLeak": 122,
+      "formulaOrDoseLeak": 0,
+      "unknownTreatedAsNegative": 0,
+      "urgentHandoffs": 0,
+      "averageQuestions": 9
+    },
+    {
+      "round": "R2_information_gain_guarded",
+      "cases": 1708,
+      "earlyAnchoring": 0,
+      "missedCriticalQuestion": 0,
+      "ineffectiveQuestion": 0,
+      "repeatedQuestion": 0,
+      "unreliableUserQuestion": 0,
+      "unhandledContradiction": 0,
+      "frameworkConflictUnsurfaced": 0,
+      "frameworkConflictsDetected": 4984,
+      "frameworkConflictsSurfaced": 4984,
+      "summaryInferenceLeak": 0,
+      "formulaOrDoseLeak": 0,
+      "unknownTreatedAsNegative": 0,
+      "urgentHandoffs": 127,
+      "averageQuestions": 7.99
+    }
+  ],
+  "ruleMutations": [
+    {
+      "from": "R0",
+      "to": "R1",
+      "changes": [
+        "增加独立安全门",
+        "从唯一树叶改为多竞争假设",
+        "禁止方剂和剂量进入摘要",
+        "专业脉腹诊改为医生核实项"
+      ]
+    },
+    {
+      "from": "R1",
+      "to": "R2",
+      "changes": [
+        "加入预期信息增益评分",
+        "加入回答可靠度/决策影响/负担",
+        "增加矛盾修复问题",
+        "unknown不作为阴性",
+        "停止条件改为覆盖度+边际价值+负担"
+      ]
+    }
+  ],
+  "representativeFailures": [
+    {
+      "patientId": "SP-0001",
+      "complaintId": "sleep_bad",
+      "adversarialType": "none",
+      "type": "earlyAnchoring",
+      "detail": "旧树在首个分支后可直接落入证型/方证节点"
+    },
+    {
+      "patientId": "SP-0001",
+      "complaintId": "sleep_bad",
+      "adversarialType": "none",
+      "type": "missedCriticalQuestion",
+      "detail": "没有独立安全门"
+    },
+    {
+      "patientId": "SP-0003",
+      "complaintId": "sleep_bad",
+      "adversarialType": "contradiction",
+      "type": "unhandledContradiction",
+      "detail": "固定树没有前后矛盾状态"
+    },
+    {
+      "patientId": "SP-0003",
+      "complaintId": "sleep_bad",
+      "adversarialType": "contradiction",
+      "type": "unreliableUserQuestion",
+      "detail": "要求用户判断脉象或正式腹证"
+    },
+    {
+      "patientId": "SP-0004",
+      "complaintId": "sleep_bad",
+      "adversarialType": "off_topic",
+      "type": "ineffectiveQuestion",
+      "detail": "固定顺序未比较信息增益"
+    },
+    {
+      "patientId": "SP-0005",
+      "complaintId": "sleep_bad",
+      "adversarialType": "self_diagnosis",
+      "type": "summaryInferenceLeak",
+      "detail": "把用户自我诊断当作证候事实"
+    },
+    {
+      "patientId": "SP-0002",
+      "complaintId": "sleep_bad",
+      "adversarialType": "missing",
+      "type": "ineffectiveQuestion",
+      "detail": "固定问题表不能因回答质量重新排序"
+    },
+    {
+      "patientId": "SP-0002",
+      "complaintId": "sleep_bad",
+      "adversarialType": "missing",
+      "type": "missedCriticalQuestion",
+      "detail": "缺失后仍按固定顺序停止"
+    },
+    {
+      "patientId": "SP-0003",
+      "complaintId": "sleep_bad",
+      "adversarialType": "contradiction",
+      "type": "unhandledContradiction",
+      "detail": "已保留多候选，但尚未增加矛盾修复问题"
+    },
+    {
+      "patientId": "SP-0005",
+      "complaintId": "sleep_bad",
+      "adversarialType": "self_diagnosis",
+      "type": "summaryInferenceLeak",
+      "detail": "内部候选标签仍可能进入摘要解释段"
+    }
+  ],
+  "remainingKnownRisks": [
+    "合成患者不能代表真实用户语言分布",
+    "三框架原文锚点仍需逐条人工校勘",
+    "信息增益似然目前是专家规则先验，需用真实会话校准",
+    "安全门是产品保护层，不是完整急诊分诊系统",
+    "医生可用性尚未经过执业中医师盲审"
+  ]
+}

@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>全民中医预问诊助手</title>
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <main class="shell">
+      <section class="workbench">
+        <div class="topbar">
+          <div>
+            <p class="eyebrow">全民中医 FDE 0.1.0</p>
+            <h1>就诊前，把症状说清楚</h1>
+          </div>
+          <div class="status" id="status">本地原型</div>
+        </div>
+
+        <nav class="app-tabs" aria-label="功能切换">
+          <button class="active" data-view="home">整理症状</button>
+          <button data-view="feedback">留言建议</button>
+          <button data-view="about">边界说明</button>
+        </nav>
+
+        <div class="view active" id="homeView">
+          <div class="input-row" id="openingPanel">
+            <input id="openingInput" autocomplete="off" placeholder="比如：胃不舒服、睡不好、胸痛、容易上火">
+            <button id="startBtn">开始整理</button>
+          </div>
+
+          <div class="quick-start" id="quickStart">
+            <button data-opening="胃不舒服">胃不舒服</button>
+            <button data-opening="睡不好">睡不好</button>
+            <button data-opening="容易上火">容易上火</button>
+            <button data-opening="胸痛">胸痛</button>
+          </div>
+
+          <section class="panel question-panel" id="questionPanel" hidden>
+            <div class="question-head">
+              <p id="complaintLine"></p>
+              <div id="progressText"></div>
+            </div>
+            <h2 id="questionText"></h2>
+            <div class="options" id="options"></div>
+            <textarea id="freeText" rows="3" placeholder="可以补一句自己的原话，不填也行"></textarea>
+          </section>
+
+          <section class="panel urgent" id="urgentPanel" hidden>
+            <h2>先处理安全问题</h2>
+            <p>你刚才报告了需要优先排除的危险信号。这个工具不继续做症状整理，建议立即联系当地急救或线下医疗机构。</p>
+          </section>
+
+          <section class="panel summary-panel" id="summaryPanel" hidden>
+            <div class="summary-head">
+              <h2>中医就诊前症状摘要</h2>
+              <div class="share-actions">
+                <button id="shareBtn">分享给家人/朋友</button>
+                <button id="copyBtn">复制摘要</button>
+                <button id="copyLinkBtn">复制链接</button>
+              </div>
+            </div>
+            <div class="summary-grid">
+              <div>
+                <h3>已报告事实</h3>
+                <ul id="factsList"></ul>
+              </div>
+              <div>
+                <h3>仍不确定</h3>
+                <ul id="uncertaintyList"></ul>
+              </div>
+              <div>
+                <h3>医生待核实</h3>
+                <ul id="verifyList"></ul>
+              </div>
+              <div>
+                <h3>边界检查</h3>
+                <ul id="boundaryList"></ul>
+              </div>
+            </div>
+            <pre id="summaryJson"></pre>
+          </section>
+        </div>
+
+        <section class="view panel feedback-panel" id="feedbackView" hidden>
+          <div class="section-head">
+            <p class="eyebrow">留言建议</p>
+            <h2>哪里不好用，直接说</h2>
+          </div>
+          <div class="feedback-row">
+            <label>
+              类型
+              <select id="feedbackCategory">
+                <option value="question">问题问得不好</option>
+                <option value="result">摘要看不懂</option>
+                <option value="share">分享/转发有问题</option>
+                <option value="ui">界面不好用</option>
+                <option value="general">其他建议</option>
+              </select>
+            </label>
+            <label>
+              评分
+              <select id="feedbackRating">
+                <option value="5">5 很顺</option>
+                <option value="4">4 还行</option>
+                <option value="3">3 一般</option>
+                <option value="2">2 难用</option>
+                <option value="1">1 很差</option>
+              </select>
+            </label>
+          </div>
+          <textarea id="feedbackMessage" rows="5" placeholder="比如：哪一题看不懂、哪一步卡住、你希望它怎么改"></textarea>
+          <input id="feedbackContact" autocomplete="off" placeholder="联系方式，可不填">
+          <button id="submitFeedbackBtn">提交建议</button>
+          <p class="feedback-status" id="feedbackStatus"></p>
+        </section>
+
+        <section class="view panel about-panel" id="aboutView" hidden>
+          <p class="eyebrow">边界说明</p>
+          <h2>这是预问诊助手，不是诊断器</h2>
+          <div class="summary-grid">
+            <div>
+              <h3>它能做</h3>
+              <ul>
+                <li>把模糊主诉拆成可回答的问题</li>
+                <li>整理就诊前症状摘要</li>
+                <li>提示危险信号优先处理</li>
+              </ul>
+            </div>
+            <div>
+              <h3>它不做</h3>
+              <ul>
+                <li>不输出证型</li>
+                <li>不输出方剂和剂量</li>
+                <li>不替代线下医生判断</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <aside class="side">
+        <h2>不是诊断器</h2>
+        <p>这里只做症状表达和就诊前整理，不给证型、方剂、剂量，也不替代医生判断。</p>
+        <div class="metrics" id="metrics">
+          <div><strong>120</strong><span>主诉入口</span></div>
+          <div><strong>1680</strong><span>合成回归</span></div>
+          <div><strong>96</strong><span>金标用例</span></div>
+        </div>
+      </aside>
+    </main>
+
+    <nav class="bottom-nav" aria-label="移动端功能切换">
+      <button class="active" data-view="home">整理</button>
+      <button data-view="feedback">留言</button>
+      <button data-view="about">说明</button>
+    </nav>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

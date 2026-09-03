@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://laoyetools.com/schemas/tcm-previsit-summary-0.1.0.json",
+  "title": "中医就诊前症状摘要",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "purpose",
+    "notDiagnosis",
+    "chiefComplaint",
+    "reportedFacts",
+    "rawUserPhrases",
+    "aiOrganization",
+    "uncertainties",
+    "contradictions",
+    "clinicianToVerify",
+    "safety",
+    "prohibitedOutputCheck"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "0.1.0"
+    },
+    "purpose": {
+      "const": "中医就诊前症状摘要"
+    },
+    "notDiagnosis": {
+      "const": true
+    },
+    "chiefComplaint": {
+      "type": "object",
+      "required": [
+        "complaintId",
+        "userLabel"
+      ],
+      "properties": {
+        "complaintId": {
+          "type": "string"
+        },
+        "userLabel": {
+          "type": "string"
+        }
+      }
+    },
+    "reportedFacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "key",
+          "value",
+          "source"
+        ],
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "value": {
+            "type": [
+              "string",
+              "number",
+              "boolean"
+            ]
+          },
+          "source": {
+            "const": "user_report"
+          }
+        }
+      }
+    },
+    "rawUserPhrases": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "aiOrganization": {
+      "type": "object",
+      "required": [
+        "timelineComplete",
+        "groupedBy",
+        "transformations"
+      ]
+    },
+    "uncertainties": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "contradictions": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "clinicianToVerify": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "safety": {
+      "type": "object",
+      "required": [
+        "status"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "urgent_handoff",
+            "screened_no_reported_red_flag",
+            "not_completed"
+          ]
+        }
+      }
+    },
+    "prohibitedOutputCheck": {
+      "type": "object",
+      "required": [
+        "syndromeConclusionPresent",
+        "formulaRecommendationPresent",
+        "dosagePresent",
+        "professionalPulseClaimPresent",
+        "professionalAbdominalClaimPresent"
+      ],
+      "properties": {
+        "syndromeConclusionPresent": {
+          "const": false
+        },
+        "formulaRecommendationPresent": {
+          "const": false
+        },
+        "dosagePresent": {
+          "const": false
+        },
+        "professionalPulseClaimPresent": {
+          "const": false
+        },
+        "professionalAbdominalClaimPresent": {
+          "const": false
+        }
+      }
+    }
+  }
+}

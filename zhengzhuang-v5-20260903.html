@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>就诊前症状整理 — 把身体发生了什么说清楚</title>
+<meta name="description" content="看中医前，先花 5 分钟把自己的症状整理成医生能快速看懂的摘要。不用学中医，不用知道自己是哪一类，把身体发生了什么说清楚就够了。">
+<meta name="theme-color" content="#166534">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Microsoft YaHei",sans-serif;background:#f0fdf4;color:#1e293b;min-height:100vh}
+.container{max-width:500px;margin:0 auto;padding:16px}
+.header{text-align:center;padding:24px 0 12px}
+.header h1{font-size:24px;color:#166534;margin-bottom:6px}
+.header .sub{font-size:13px;color:#64748b;line-height:1.7}
+.step-dots{display:flex;justify-content:center;gap:5px;margin:14px 0}
+.step-dots .dot{width:7px;height:7px;border-radius:50%;background:#d1d5db}
+.step-dots .dot.on{background:#16a34a}
+
+.screen{display:none}
+.screen.active{display:block}
+
+.hero-card{background:#fff;border-radius:16px;padding:28px 22px;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.05);margin-top:10px}
+.hero-card .big{font-size:20px;font-weight:800;color:#166534;line-height:1.5;margin-bottom:8px}
+.hero-card .small{font-size:14px;color:#64748b;line-height:1.8;margin-bottom:20px}
+.hero-card .hint-box{background:#fffbeb;border:1.5px solid #fcd34d;border-radius:12px;padding:12px;font-size:12px;color:#92400e;line-height:1.7;margin-bottom:20px;text-align:left}
+
+.btn-primary{display:block;width:100%;padding:16px;background:#16a34a;color:#fff;border:none;border-radius:14px;font-size:17px;font-weight:700;cursor:pointer;font-family:inherit}
+.btn-primary:active{background:#15803d}
+.btn-ghost{display:block;width:100%;padding:13px;background:#fff;color:#16a34a;border:2px solid #86efac;border-radius:14px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;margin-top:10px}
+
+.q-box{background:#fff;border-radius:16px;padding:22px 20px;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+.q-num{font-size:12px;color:#94a3b8;margin-bottom:8px}
+.q-text{font-size:19px;font-weight:700;color:#1e293b;margin-bottom:6px;line-height:1.5}
+.q-desc{font-size:13px;color:#64748b;line-height:1.7;margin-bottom:16px}
+.opt-btn{display:block;width:100%;padding:14px 16px;margin-bottom:9px;border:2px solid #e2e8f0;border-radius:12px;background:#fff;font-size:15px;text-align:left;cursor:pointer;font-family:inherit;color:#1e293b;line-height:1.5}
+.opt-btn:active{border-color:#16a34a;background:#f0fdf4}
+.opt-btn .o-icon{margin-right:8px}
+.opt-btn.single{display:flex;justify-content:space-between;align-items:center}
+
+.main-input{width:100%;min-height:110px;padding:14px;border:2px solid #bbf7d0;border-radius:12px;font-size:16px;font-family:inherit;resize:none;background:#fff;color:#1e293b;margin-bottom:10px}
+.main-input:focus{outline:none;border-color:#16a34a}
+.back-btn{padding:10px 14px;border:none;background:none;color:#64748b;font-size:14px;cursor:pointer;font-family:inherit;margin-bottom:10px}
+
+/* 摘要 */
+.report-wrap{background:#fff;border-radius:16px;padding:20px;box-shadow:0 2px 10px rgba(0,0,0,.06)}
+.report-title{font-size:18px;font-weight:800;color:#166534;margin-bottom:4px}
+.report-sub{font-size:12px;color:#94a3b8;margin-bottom:14px}
+.sum-line{font-size:14px;color:#334155;line-height:1.9;padding:7px 0;border-bottom:1px dashed #e5e7eb}
+.sum-line b{color:#166534}
+.sum-line .val{color:#334155}
+.sum-line .no{color:#cbd5e1}
+.actions{margin-top:16px}
+.btn-copy{display:block;width:100%;padding:15px;background:#16a34a;color:#fff;border:none;border-radius:14px;font-size:16px;font-weight:700;cursor:pointer;font-family:inherit}
+.btn-save{display:block;width:100%;padding:13px;background:#fff;color:#16a34a;border:2px solid #86efac;border-radius:14px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;margin-top:9px}
+.btn-compare{display:block;width:100%;padding:13px;background:#eff6ff;color:#1e40af;border:2px solid #bfdbfe;border-radius:14px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;margin-top:9px}
+.done-tip{text-align:center;font-size:13px;color:#16a34a;margin-top:10px;display:none}
+
+/* 历史 */
+.hist-item{background:#fff;border-radius:12px;padding:14px;margin-bottom:10px;box-shadow:0 1px 3px rgba(0,0,0,.04);cursor:pointer}
+.hist-item .h-date{font-size:13px;color:#64748b;margin-bottom:4px}
+.hist-item .h-main{font-size:15px;font-weight:600;color:#166534}
+
+.footer{text-align:center;padding:20px;font-size:11px;color:#94a3b8;line-height:1.8}
+.disclaimer{background:#fef2f2;border-radius:10px;padding:12px;font-size:11px;color:#dc2626;margin-top:14px;line-height:1.7;text-align:center}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>🌿 就诊前症状整理</h1>
+  <div class="sub">把身体发生了什么说清楚<br>医生负责看病，你负责把信息给对</div>
+</div>
+<div class="step-dots" id="stepDots"></div>
+
+<!-- 首页 -->
+<div class="screen active" id="s0">
+  <div class="hero-card">
+    <div class="big">不知道怎么跟中医描述自己的症状？</div>
+    <div class="small">不用学中医，不用知道自己是什么证。<br>跟着问 10 个问题，5 分钟整理成医生能快速看懂的摘要。</div>
+    <div class="hint-box">💡 医生最头疼的不是患者没症状，而是患者说不清：<br>「有点上火」「胃不好」——到底是口干还是口苦？胀还是痛？饭前还是饭后？<br>这里帮你把信息一次问齐。</div>
+    <button class="btn-primary" onclick="startScreen()">开始整理</button>
+    <button class="btn-ghost" onclick="showHistory()">📁 我的历史记录</button>
+  </div>
+</div>
+
+<!-- 主诉 -->
+<div class="screen" id="s1">
+  <button class="back-btn" onclick="goHome()">← 返回</button>
+  <div class="q-box">
+    <div class="q-num">第 1 步</div>
+    <div class="q-text">最近哪里不舒服？随便说，不用专业</div>
+    <div class="q-desc">比如：「睡不好，白天没精神」「胃胀，吃点东西就堵」「口干，老想喝水」<br>说不清就写最明显的那一个。</div>
+    <textarea id="mainComplaint" class="main-input" placeholder="在这里描述你的不舒服…"></textarea>
+    <div class="q-desc" style="margin-bottom:8px">这种情况持续多久了？</div>
+    <div id="durationOpts"></div>
+    <button class="btn-primary" onclick="nextFromComplaint()">下一步</button>
+  </div>
+</div>
+
+<!-- 动态问诊 -->
+<div class="screen" id="s2">
+  <button class="back-btn" id="backBtn2" onclick="goBackQuestion()">← 上一步</button>
+  <div class="q-box">
+    <div class="q-num" id="qNum"></div>
+    <div class="q-text" id="qText"></div>
+    <div class="q-desc" id="qDesc"></div>
+    <div id="qOpts"></div>
+  </div>
+</div>
+
+<!-- 结果 -->
+<div class="screen" id="s3">
+  <div class="report-wrap">
+    <div class="report-title">📋 我的中医就诊摘要</div>
+    <div class="report-sub">看诊时复制给医生，或直接展示。生成于 <span id="genDate"></span></div>
+    <div id="summaryContent"></div>
+    <div class="actions">
+      <button class="btn-copy" onclick="copySummary()">📋 复制给医生</button>
+      <button class="btn-save" onclick="saveRecord()">💾 保存，下次复诊比较</button>
+      <button class="btn-compare" onclick="showHistory()">📁 查看历史 / 对比变化</button>
+    </div>
+    <div class="done-tip" id="doneTip">已复制 ✓</div>
+  </div>
+</div>
+
+<!-- 历史 -->
+<div class="screen" id="s4">
+  <button class="back-btn" onclick="goHome()">← 返回</button>
+  <div class="q-box">
+    <div class="q-text" style="font-size:17px">📁 我的就诊记录</div>
+    <div class="q-desc">保存过的摘要，点开可对比前后变化（复诊时最有用）。</div>
+    <div id="histList"></div>
+  </div>
+</div>
+
+<div class="disclaimer">
+  ⚠️ 本工具只帮你整理症状信息，不提供诊断、不指导用药。<br>看诊请以医生的面诊、舌诊、脉诊和检查为准。
+</div>
+<div class="footer">
+  全民中医 · laoyetools.com/quanmin<br><a href="/quanmin/" style="color:#64748b;">← 返回全民中医主页</a>
+</div>
+</div>
+
+<script>
+// ==================== 问诊配置 ====================
+// 每个维度：key / 题目 / 说明 / 选项（值用于摘要）
+var DIMS = [
+  { key:'hanre', title:'怕冷还是怕热？', desc:'医生判断寒热最看这个。怕冷的话，说清楚加衣盖被后还冷不冷。', opts:[
+    { v:'怕冷明显，加衣盖被后还是冷', t:'怕冷，加衣盖被后还是冷', i:'🥶' },
+    { v:'怕风怕吹，风吹难受', t:'怕风、怕吹风，加衣能缓解', i:'💨' },
+    { v:'怕热，容易出汗，喜欢凉快', t:'怕热，想吹凉、盖少', i:'🥵' },
+    { v:'一阵冷一阵热', t:'一阵冷一阵热，来回变', i:'🎢' },
+    { v:'不怕冷也不怕热', t:'都不明显，正常', i:'😐' },
+    { v:'说不太清楚', t:'说不太清楚', i:'🤔' }
+  ]},
+  { key:'handfoot', title:'手脚是凉的还是热的？', desc:'躺着半天手脚冰凉，和手心脚心发热，是两个方向。', opts:[
+    { v:'手脚偏凉', t:'手脚偏凉，尤其冬天', i:'🧊' },
+    { v:'手脚心发热', t:'手心脚心发热', i:'🔥' },
+    { v:'正常', t:'正常，没感觉', i:'😐' }
+  ]},
+  { key:'sweat', title:'容易出汗吗？', desc:'正常走动就出汗，还是几乎不出汗？', opts:[
+    { v:'容易出汗，白天动一动就出', t:'容易出汗，白天活动就出', i:'💦' },
+    { v:'晚上睡觉出汗，醒了就停', t:'睡觉时出汗（盗汗），醒了停', i:'🌙' },
+    { v:'几乎不出汗', t:'很少出汗', i:'🚫' },
+    { v:'正常', t:'正常', i:'😐' }
+  ]},
+  { key:'thirst', title:'口渴想喝水吗？想喝什么？', desc:'这是医生鉴别"哪种渴"的关键——想不想喝、喝多少、想喝凉的还是热的。', opts:[
+    { v:'口渴，很想喝大量凉水', t:'很渴，想大量喝凉水', i:'💧' },
+    { v:'想喝水，但喝不了多少', t:'想喝，但喝不多', i:'🥤' },
+    { v:'口干，但不太想喝水', t:'嘴巴干，但不太想喝', i:'😶' },
+    { v:'喜欢喝热水', t:'喜欢喝热水', i:'♨️' },
+    { v:'不渴', t:'不渴，不特别想喝', i:'😐' }
+  ]},
+  { key:'appetite', title:'食欲和口味怎么样？', desc:'想不想吃饭？嘴里有没有特别的味道？', opts:[
+    { v:'食欲正常', t:'食欲正常', i:'🍚' },
+    { v:'没胃口，不想吃', t:'没胃口，不想吃', i:'😞' },
+    { v:'吃一点就胀', t:'吃一点就胀、堵', i:'🎈' },
+    { v:'胃口很好，容易饿', t:'胃口好，容易饿', i:'😋' },
+    { v:'口苦', t:'嘴里发苦', i:'😖' },
+    { v:'口淡没味', t:'嘴里没味道', i:'🫥' },
+    { v:'口黏腻', t:'嘴里黏黏的', i:'🫠' }
+  ]},
+  { key:'stomach', title:'胃和肚子：胀还是痛？', desc:'分清"胀、痛、闷"很重要，医生问"胃不好"其实想知道的是这些。', opts:[
+    { v:'胃胀堵闷', t:'胃胀、堵、闷', i:'🎈' },
+    { v:'胃痛', t:'胃痛（按着舒服还是按着更痛？）', i:'💢' },
+    { v:'反酸烧心', t:'反酸、烧心', i:'🔥' },
+    { v:'嗳气打嗝', t:'嗳气、打嗝多', i:'💨' },
+    { v:'恶心呕吐', t:'恶心、想吐', i:'🤢' },
+    { v:'没有胃不舒服', t:'胃没什么不舒服', i:'😐' }
+  ]},
+  { key:'bowel', title:'大便怎么样？', desc:'中医看大便极重。先说次数和干稀；拉稀的话，重点说清楚肛门烧不烧。', opts:[
+    { v:'正常，一天一次', t:'正常，一天一次', i:'✅' },
+    { v:'便秘，干硬难解', t:'便秘，干硬、难拉', i:'🚽' },
+    { v:'拉稀，肛门不烧', t:'拉稀，肛门不烧不热', i:'💧' },
+    { v:'拉稀，肛门灼热', t:'拉稀，但肛门灼热', i:'🔥' },
+    { v:'先干后稀', t:'前面干、后面稀', i:'🌊' },
+    { v:'大便黏，冲不干净', t:'大便黏、冲不干净', i:'🫠' },
+    { v:'次数多，一天好几次', t:'次数多，一天几次', i:'🔁' }
+  ]},
+  { key:'urine', title:'小便呢？颜色、次数有什么特别吗？', desc:'夜尿多、尿黄、尿频，都是重要线索。', opts:[
+    { v:'正常', t:'正常', i:'✅' },
+    { v:'夜尿多', t:'晚上起夜多', i:'🌙' },
+    { v:'尿黄/有灼热感', t:'尿黄或小便热痛', i:'🔥' },
+    { v:'尿频、尿不尽', t:'尿频、尿不尽', i:'🚰' }
+  ]},
+  { key:'sleep', title:'睡眠怎么样？', desc:'说清楚是哪种：睡不着？多梦？易醒？还是早醒？', opts:[
+    { v:'入睡困难', t:'躺着睡不着，入睡难', i:'🌙' },
+    { v:'多梦', t:'梦多', i:'💭' },
+    { v:'容易醒，醒了难再睡', t:'容易醒，醒了难再睡', i:'⏰' },
+    { v:'早醒', t:'天没亮就醒', i:'🌄' },
+    { v:'睡眠正常', t:'睡眠正常', i:'✅' }
+  ]},
+  { key:'mood', title:'情绪和压力呢？', desc:'中医很看情绪：急躁、低落、焦虑、压力大，都是线索。', opts:[
+    { v:'急躁易怒', t:'容易急躁、发火', i:'😠' },
+    { v:'情绪低落/想哭', t:'情绪低落、想哭', i:'😢' },
+    { v:'焦虑紧张', t:'焦虑、紧张', i:'😰' },
+    { v:'压力大', t:'最近压力大', i:'📚' },
+    { v:'情绪还好', t:'情绪还好', i:'😐' }
+  ]},
+  { key:'pain', title:'还有哪里痛或不舒服吗？', desc:'位置、怎么个痛法（胀痛/刺痛/酸痛/隐痛），说清楚点。', opts:[
+    { v:'头痛', t:'头痛', i:'🤕' },
+    { v:'腰痛', t:'腰痛', i:'🧎' },
+    { v:'关节痛', t:'关节痛', i:'🦿' },
+    { v:'胸胁胀闷', t:'胸口或两肋胀闷', i:'🫁' },
+    { v:'心悸心慌', t:'心慌、心跳明显', i:'💓' },
+    { v:'头晕', t:'头晕', i:'🌀' },
+    { v:'其他/没有', t:'其他或没有', i:'😐' }
+  ]},
+  { key:'female', title:'月经情况（女性填写）', desc:'周期、量、颜色、痛不痛，对女性辨证很重要。', opts:[
+    { v:'周期规律，量色正常', t:'规律正常', i:'✅' },
+    { v:'月经不调（提前/推迟/量少）', t:'不调（提前/推迟/量少）', i:'📅' },
+    { v:'痛经', t:'痛经', i:'😖' },
+    { v:'血块多/色深', t:'血块多或颜色深', i:'🩸' },
+    { v:'不适用', t:'不适用', i:'🙅' }
+  ]},
+  { key:'cough', title:'有咳嗽或咳痰吗？', desc:'咳不咳、痰是什么样——这是张仲景鉴别方向的关键线索。', opts:[
+    { v:'干咳，没痰', t:'干咳，没有痰', i:'😤' },
+    { v:'咳白痰、清稀', t:'咳白痰、清稀', i:'🤍' },
+    { v:'咳黄痰、浓稠', t:'咳黄痰、浓稠', i:'💛' },
+    { v:'痰多、泡沫状', t:'痰多，像泡沫', i:'🫧' },
+    { v:'痰少，难咳出来', t:'痰少，咳不出', i:'🫁' },
+    { v:'不咳嗽', t:'不咳嗽', i:'✅' }
+  ]},
+  { key:'headbody', title:'头或身体还有哪里不舒服？', desc:'头痛在哪、脖子僵不僵、身上酸不酸，别笼统说"头不舒服"。', opts:[
+    { v:'头痛（前额/头顶/两侧/后脑）', t:'头痛（具体哪一块）', i:'🤕' },
+    { v:'脖子后脑发僵', t:'脖子、后脑发僵', i:'🧣' },
+    { v:'全身酸痛', t:'全身酸痛', i:'💢' },
+    { v:'身体沉重，懒得动', t:'身体沉重、懒得动', i:'🪨' },
+    { v:'以上都没有', t:'都没有', i:'✅' }
+  ]},
+  { key:'ear_eye', title:'耳朵、眼睛有没有不舒服？', desc:'眩晕看东西转、耳鸣、眼干眼涩，都是重要信号。', opts:[
+    { v:'头晕目眩，看东西转', t:'头晕目眩、看东西转', i:'🌀' },
+    { v:'耳鸣', t:'耳鸣', i:'👂' },
+    { v:'眼睛干涩', t:'眼睛干涩', i:'👁️' },
+    { v:'眼睛发红', t:'眼睛发红', i:'🔴' },
+    { v:'都正常', t:'都正常', i:'✅' }
+  ]},
+  { key:'nosethroat', title:'鼻子、喉咙有感觉吗？', desc:'流清涕还是黄涕、咽干还是咽痛、有没有异物感——都要分清。', opts:[
+    { v:'鼻塞流清涕', t:'鼻塞、流清鼻涕', i:'🤧' },
+    { v:'流黄稠鼻涕', t:'流黄稠鼻涕', i:'💛' },
+    { v:'咽干', t:'喉咙干', i:'🏜️' },
+    { v:'咽痛', t:'喉咙痛', i:'🗡️' },
+    { v:'喉咙异物感（咳不出咽不下）', t:'喉咙有东西卡着的感觉', i:'🫧' },
+    { v:'都正常', t:'都正常', i:'✅' }
+  ]},
+  { key:'timing', title:'不舒服什么时候最明显？', desc:'固定时间加重是张仲景很看重的线索（潮热、往来寒热都在时间上做文章）。', opts:[
+    { v:'下午3-5点或傍晚加重', t:'下午/傍晚加重', i:'🌆' },
+    { v:'一阵冷一阵热，来回变', t:'一阵冷一阵热来回变', i:'🎢' },
+    { v:'夜间加重', t:'夜间加重', i:'🌙' },
+    { v:'早上起来明显', t:'早上起来明显', i:'🌅' },
+    { v:'饭后明显', t:'饭后明显', i:'🍽️' },
+    { v:'没有固定时间', t:'没固定时间', i:'⏱️' }
+  ]},
+  { key:'trigger', title:'最近有什么可能的原因吗？', desc:'受凉、吃错东西、生气、劳累……诱因常常就是辨证的钥匙。', opts:[
+    { v:'受凉/吹风后', t:'受凉、吹风后', i:'💨' },
+    { v:'吃了生冷/辛辣/油腻', t:'吃了生冷/辛辣/油腻', i:'🍲' },
+    { v:'情绪波动/生气后', t:'情绪波动、生气后', i:'😤' },
+    { v:'劳累/熬夜后', t:'劳累、熬夜后', i:'😴' },
+    { v:'生病后（感冒/手术后）', t:'生病后（感冒/手术）', i:'🏥' },
+    { v:'没有明显原因', t:'没有明显原因', i:'❓' }
+  ]},
+  { key:'history', title:'最近用过什么药，或生过什么病吗？', desc:'张仲景特别在意"之前发过汗、吐、下过吗"——用药史影响判断。', opts:[
+    { v:'近期感冒过', t:'近期感冒过', i:'🤧' },
+    { v:'吃过西药（抗生素/退烧药等）', t:'吃过西药（抗生素/退烧等）', i:'💊' },
+    { v:'吃过中药/中成药', t:'吃过中药/中成药', i:'🌿' },
+    { v:'有慢性病（血压/血糖等）', t:'有慢性病（血压/血糖等）', i:'🫀' },
+    { v:'做过手术', t:'做过手术', i:'🔪' },
+    { v:'都没有', t:'都没有', i:'✅' }
+  ]},
+  { key:'skin', title:'皮肤有没有异常？', desc:'痒、起疹、干燥、局部发热，别只说"皮肤不好"。', opts:[
+    { v:'痒', t:'痒', i:'😖' },
+    { v:'起疹/湿疹', t:'起疹、湿疹', i:'🖐️' },
+    { v:'干燥脱屑', t:'干燥脱屑', i:'🏜️' },
+    { v:'局部发热/发红', t:'局部发热发红', i:'🔴' },
+    { v:'皮肤正常', t:'皮肤正常', i:'✅' }
+  ]},
+  { key:'abdomen', title:'自己按按肚子：按着是舒服还是更难受？', desc:'"喜按还是拒按"是中医辨虚实的铁标准，医生一定会问。', opts:[
+    { v:'按着舒服', t:'按着舒服', i:'👍' },
+    { v:'按着更痛', t:'按着更痛', i:'🚫' },
+    { v:'肚子发凉', t:'肚子发凉', i:'🧊' },
+    { v:'肚子胀', t:'肚子胀', i:'🎈' },
+    { v:'没特别感觉', t:'没特别感觉', i:'😐' }
+  ]}
+];
+
+// 主诉关键词 → 优先维度排序（简单的 adaptive：先问最相关的）
+var PRIORITY = {
+  '睡':['sleep','mood','hanre','thirst'],
+  '失眠':['sleep','mood','hanre','thirst'],
+  '胃':['stomach','appetite','bowel','hanre'],
+  '吃':['appetite','stomach','bowel'],
+  '口干':['thirst','hanre','appetite'],
+  '渴':['thirst'],
+  '大便':['bowel','stomach','appetite'],
+  '拉':['bowel'],
+  '便秘':['bowel','thirst'],
+  '痛':['pain','hanre','stomach'],
+  '腰':['pain','urine','hanre'],
+  '头':['pain','sleep','hanre'],
+  '心慌':['pain','sleep','mood'],
+  '月':['female','mood'],
+  '怕':['hanre','handfoot','sweat']
+};
+
+// ==================== 状态 ====================
+var answers = {};       // key → 选的 v
+var dimOrder = [];      // 问诊维度顺序
+var dimIdx = 0;
+var complaint = '';
+
+// ==================== 主诉 → 维度匹配（张仲景"随证治之"） ====================
+// 通用核心维度：任何病都要的基础信息（辨寒热虚实）
+var CORE_DIMS = ['hanre','sweat','thirst','bowel','sleep','mood','pain','timing','trigger','history'];
+// 主诉关键词 → 专科相关维度（肛裂只问肛裂相关的，月经/耳目等直接不问）
+var KEYWORD_SPECIALTY = {
+  '肛裂':['bowel','pain','abdomen','thirst','appetite','timing','trigger','history'],
+  '痔疮':['bowel','pain','abdomen','thirst','appetite','timing','trigger','history'],
+  '便血':['bowel','abdomen','pain','appetite','thirst'],
+  '便秘':['bowel','thirst','appetite','abdomen','timing'],
+  '拉稀':['bowel','abdomen','appetite','thirst','timing'],
+  '拉肚子':['bowel','abdomen','appetite','thirst','timing'],
+  '腹泻':['bowel','abdomen','appetite','thirst','timing'],
+  '咳嗽':['cough','nosethroat','headbody','timing','trigger','sweat'],
+  '咳':['cough','nosethroat','headbody','timing','trigger'],
+  '感冒':['cough','nosethroat','headbody','timing','trigger','sweat'],
+  '发烧':['cough','nosethroat','headbody','timing','trigger','sweat'],
+  '发热':['cough','nosethroat','headbody','timing','trigger','sweat'],
+  '睡':['sleep','mood','timing','thirst'],
+  '失眠':['sleep','mood','timing','thirst'],
+  '胃':['stomach','appetite','bowel','timing','trigger','thirst'],
+  '吃':['appetite','stomach','bowel','timing'],
+  '反酸':['stomach','appetite','bowel','timing'],
+  '烧心':['stomach','appetite','bowel','timing'],
+  '月经':['female','pain','mood','bowel','timing'],
+  '痛经':['female','pain','mood','bowel'],
+  '皮肤':['skin','bowel','appetite','trigger'],
+  '痒':['skin','bowel','appetite','trigger'],
+  '疹':['skin','bowel','appetite','trigger'],
+  '湿疹':['skin','bowel','appetite','trigger'],
+  '头':['headbody','ear_eye','timing','trigger'],
+  '头痛':['headbody','ear_eye','timing','trigger'],
+  '晕':['ear_eye','headbody','trigger','timing'],
+  '眩晕':['ear_eye','headbody','trigger','timing'],
+  '耳鸣':['ear_eye','headbody'],
+  '腰':['pain','headbody','urine','timing','trigger'],
+  '腰痛':['pain','headbody','urine','timing'],
+  '关节':['pain','headbody','urine','timing'],
+  '腿':['pain','headbody','urine'],
+  '口':['nosethroat','thirst','appetite','stomach'],
+  '咽':['nosethroat','thirst','timing'],
+  '喉咙':['nosethroat','thirst','timing','cough'],
+  '鼻':['nosethroat','headbody','trigger','cough'],
+  '心慌':['pain','sleep','mood','sweat'],
+  '胸闷':['pain','sleep','mood','cough'],
+  '尿':['urine','bowel','timing','hanre'],
+  '小便':['urine','bowel','timing'],
+  '汗':['sweat','hanre','timing'],
+  '怕冷':['hanre','handfoot','sweat','timing'],
+  '怕热':['hanre','sweat','handfoot'],
+  '忽冷忽热':['hanre','timing','sweat'],
+  '手脚凉':['handfoot','hanre'],
+  '冰凉':['handfoot','hanre'],
+  '手脚发麻':['pain','headbody'],
+  '肚子':['stomach','bowel','appetite','abdomen','timing'],
+  '小腹':['female','stomach','bowel','pain'],
+  // —— FDE 语料反哺 2026-09-02：高频主诉补路由（仅新增，不改动原维度） ——
+  '梦':['sleep','mood'],
+  '早醒':['sleep','mood'],
+  '焦虑':['mood','sleep'],
+  '低落':['mood','sleep'],
+  '想哭':['mood','sleep'],
+  '心烦':['mood','sleep'],
+  '恶心':['stomach','appetite','timing'],
+  '呕吐':['stomach','appetite','trigger'],
+  '痰':['cough','nosethroat'],
+  '喘':['cough','nosethroat','timing'],
+  '气短':['cough','pain','sweat'],
+  '胸':['pain','mood','cough'],
+  '心悸':['pain','sleep','mood','sweat'],
+  '心跳':['pain','sleep','mood'],
+  '眼干':['ear_eye','nosethroat'],
+  '视力':['ear_eye','headbody'],
+  '喷嚏':['nosethroat','trigger','cough'],
+  '脖子':['headbody','pain','trigger'],
+  '肩':['pain','headbody','trigger'],
+  '膝盖':['pain','headbody','urine'],
+  '乏力':['mood','sleep','appetite','hanre'],
+  '虚':['mood','sleep','appetite','hanre'],
+  '累':['sleep','trigger','mood'],
+  '上火':['appetite','nosethroat','thirst','skin','bowel'],
+  '湿气':['appetite','bowel','headbody','skin'],
+  '肿':['urine','skin','hanre'],
+  '白带':['female','bowel']
+};
+
+// ==================== 初始化 ====================
+function initDots() {
+  var d = document.getElementById('stepDots');
+  var total = DIMS.length;
+  var html = '';
+  for (var i = 0; i < total; i++) html += '<span class="dot" id="dot_' + i + '"></span>';
+  d.innerHTML = html;
+  d.style.display = 'none';
+}
+
+function show(id) {
+  var screens = document.querySelectorAll('.screen');
+  for (var i = 0; i < screens.length; i++) screens[i].classList.remove('active');
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0, 0);
+}
+function goHome() { answers = {}; dimOrder = []; dimIdx = 0; complaint = ''; document.getElementById('mainComplaint').value = ''; show('s0'); }
+
+function startScreen() {
+  // 病程选项
+  var dur = document.getElementById('durationOpts');
+  var items = [['<1周','不到一周'],['1-4周','一两周到一个月'],['1-3月','一两个月'],['>3月','超过三个月'],['?','说不清']];
+  var html = '';
+  for (var i = 0; i < items.length; i++) {
+    html += '<button class="opt-btn single" onclick="pickDuration(\'' + items[i][0] + '\',\'' + items[i][1] + '\')"><span>' + items[i][1] + '</span><span id="dur_' + items[i][0] + '" style="color:#16a34a;font-weight:700;">○</span></button>';
+  }
+  dur.innerHTML = html;
+  window.__dur = '';
+  show('s1');
+}
+function pickDuration(k, label) {
+  window.__dur = label;
+  var items = document.querySelectorAll('#durationOpts .opt-btn');
+  for (var i = 0; i < items.length; i++) items[i].style.borderColor = '#e2e8f0';
+  var btn = document.getElementById('dur_' + k).parentElement;
+  btn.style.borderColor = '#16a34a';
+}
+
+function nextFromComplaint() {
+  complaint = document.getElementById('mainComplaint').value.trim();
+  if (!complaint) { alert('先简单说一句哪里不舒服，写最明显的那一个就行'); return; }
+  answers['main'] = complaint;
+  answers['dur'] = window.__dur || '未说明';
+  // 按主诉匹配专科维度（张仲景：随证治之，不问无关的）
+  var order = [];
+  var lower = complaint.toLowerCase();
+  for (var kw in KEYWORD_SPECIALTY) {
+    if (lower.indexOf(kw) >= 0) {
+      var s = KEYWORD_SPECIALTY[kw];
+      for (var i = 0; i < s.length; i++) if (order.indexOf(s[i]) < 0) order.push(s[i]);
+    }
+  }
+  // 补通用核心维度（寒热/汗/渴/大便/睡眠/情绪/痛/时间/诱因/病史）
+  for (var j = 0; j < CORE_DIMS.length; j++) if (order.indexOf(CORE_DIMS[j]) < 0) order.push(CORE_DIMS[j]);
+  dimOrder = order;
+  dimIdx = 0;
+  showQuestion();
+}
+
+function showQuestion() {
+  var d = document.getElementById('stepDots');
+  d.style.display = 'flex';
+  var dots = d.children;
+  for (var i = 0; i < dots.length; i++) dots[i].className = 'dot' + (i <= dimIdx ? ' on' : '');
+  // 自由补充（最后一步）：直接按 key 判断，不经过 getDim
+  if (dimOrder[dimIdx] === '__free__') {
+    document.getElementById('qNum').textContent = '最后一步';
+    document.getElementById('qText').textContent = '还有没问到的吗？写在这里';
+    document.getElementById('qDesc').textContent = '任何想说的都能写：其他症状、以前的情况、想补充的话……没有就点完成。';
+    var h = '<textarea id="freeInput" class="main-input" placeholder="还有什么不舒服或想补充的？"></textarea>';
+    h += '<button class="btn-primary" onclick="finishFree()">完成，生成摘要</button>';
+    document.getElementById('qOpts').innerHTML = h;
+    show('s2');
+    return;
+  }
+  var dim = getDim(dimOrder[dimIdx]);
+  document.getElementById('qNum').textContent = '第 ' + (dimIdx + 2) + ' 步 · 共 ' + (dimOrder.length + 2) + ' 步';
+  document.getElementById('qText').textContent = dim.title;
+  document.getElementById('qDesc').textContent = dim.desc;
+  var html = '';
+  for (var i = 0; i < dim.opts.length; i++) {
+    var o = dim.opts[i];
+    html += '<button class="opt-btn" onclick="pickOpt(\'' + dim.key + '\',\'' + o.v.replace(/'/g, '') + '\',this)"><span class="o-icon">' + o.i + '</span>' + o.t + '</button>';
+  }
+  // 兜底：说不清/都不是，可跳过
+  html += '<button class="opt-btn" style="color:#94a3b8;border-style:dashed;" onclick="pickOpt(\'' + dim.key + '\',\'说不太清，跳过\',this)"><span class="o-icon">🤷</span>说不太清 / 都不是，跳过</button>';
+  document.getElementById('qOpts').innerHTML = html;
+  show('s2');
+}
+function finishFree() {
+  answers['__free__'] = document.getElementById('freeInput') ? document.getElementById('freeInput').value.trim() : '';
+  buildSummary();
+}
+function getDim(key) { for (var i = 0; i < DIMS.length; i++) if (DIMS[i].key === key) return DIMS[i]; return DIMS[0]; }
+
+function pickOpt(key, val, btn) {
+  answers[key] = val;
+  // 六经闭环：按已答线索动态补问缺失的经诊维度
+  updateOrderByLiujing();
+  var btns = btn.parentElement.children;
+  for (var i = 0; i < btns.length; i++) btns[i].style.borderColor = '#e2e8f0';
+  btn.style.borderColor = '#16a34a';
+  btn.style.background = '#f0fdf4';
+  setTimeout(function() { nextQuestion(); }, 150);
+}
+function nextQuestion() {
+  dimIdx++;
+  if (dimIdx < dimOrder.length) { showQuestion(); return; }
+  // 维度问完 → 自由补充（避免重复 push）
+  if (dimOrder[dimOrder.length - 1] !== '__free__') dimOrder.push('__free__');
+  dimIdx = dimOrder.length - 1;
+  showQuestion();
+}
+
+function goBackQuestion() {
+  if (dimIdx > 0) { dimIdx--; showQuestion(); }
+  else { show('s1'); }
+}
+
+// ==================== 六经框架（张仲景） ====================
+// 后台只用于：① 决定下一题问什么（缺哪经关键信息补哪经）② 整理"方向线索"给医生
+// 前台永远不下结论（不说"你是少阳病"）
+var LIUJING = {
+  taiyang:{ name:'太阳', dims:['hanre','sweat','headbody'], evi:[
+    { dim:'hanre', match:'怕冷明显，加衣盖被后还是冷', label:'恶寒' },
+    { dim:'sweat', match:'几乎不出汗', label:'无汗' },
+    { dim:'sweat', match:'容易出汗，白天活动就出', label:'自汗' },
+    { dim:'headbody', match:'脖子后脑发僵', label:'项强' },
+    { dim:'headbody', match:'头痛', label:'头痛' }
+  ]},
+  yangming:{ name:'阳明', dims:['thirst','bowel','timing','appetite'], evi:[
+    { dim:'thirst', match:'口渴，很想喝大量凉水', label:'大渴喜冷饮' },
+    { dim:'bowel', match:'便秘，干硬难解', label:'大便燥结' },
+    { dim:'timing', match:'下午3-5点或傍晚加重', label:'日晡潮热' },
+    { dim:'appetite', match:'胃口很好，容易饿', label:'消谷善饥' }
+  ]},
+  shaoyang:{ name:'少阳', dims:['appetite','nosethroat','ear_eye','timing','pain'], evi:[
+    { dim:'appetite', match:'口苦', label:'口苦' },
+    { dim:'nosethroat', match:'咽干', label:'咽干' },
+    { dim:'ear_eye', match:'头晕目眩，看东西转', label:'目眩' },
+    { dim:'timing', match:'一阵冷一阵热，来回变', label:'往来寒热' },
+    { dim:'pain', match:'胸胁胀闷', label:'胸胁苦满' }
+  ]},
+  taiyin:{ name:'太阴', dims:['bowel','abdomen','appetite'], evi:[
+    { dim:'bowel', match:'拉稀', label:'便溏' },
+    { dim:'bowel', match:'大便黏', label:'便黏' },
+    { dim:'abdomen', match:'按着舒服', label:'腹满喜按' },
+    { dim:'appetite', match:'没胃口，不想吃', label:'食少' }
+  ]},
+  shaoyin:{ name:'少阴', dims:['handfoot','sleep','hanre'], evi:[
+    { dim:'handfoot', match:'手脚偏凉', label:'四肢逆冷' },
+    { dim:'hanre', match:'怕冷明显，加衣盖被后还是冷', label:'恶寒' },
+    { dim:'sleep', match:'入睡困难', label:'难寐' }
+  ]},
+  jueyin:{ name:'厥阴', dims:['hanre','thirst','bowel'], evi:[
+    { dim:'hanre', match:'一阵冷一阵热', label:'寒热错杂' },
+    { dim:'thirst', match:'口干，但不太想喝水', label:'消渴' },
+    { dim:'bowel', match:'先干后稀', label:'下利' }
+  ]}
+};
+
+// 六经动态补问：根据已答线索，把命中的经还没问的关键维度插入后续问题
+function updateOrderByLiujing() {
+  for (var jing in LIUJING) {
+    var j = LIUJING[jing];
+    var hit = false;
+    for (var i = 0; i < j.evi.length; i++) {
+      var e = j.evi[i];
+      var av = answers[e.dim];
+      if (av && av.indexOf(e.match) >= 0) { hit = true; break; }
+    }
+    if (hit) {
+      // 该经未问的关键维度 → 插到当前题后面
+      var insertAt = dimIdx + 1;
+      for (var d = 0; d < j.dims.length; d++) {
+        var k = j.dims[d];
+        if (dimOrder.indexOf(k) < 0) { dimOrder.splice(insertAt, 0, k); insertAt++; }
+      }
+    }
+  }
+}
+
+// 六经方向线索（摘要用，≥2 条证据才提示，措辞"供医生参考"非结论）
+function liujingLines() {
+  var out = [];
+  for (var jing in LIUJING) {
+    var j = LIUJING[jing];
+    var evs = [];
+    for (var i = 0; i < j.evi.length; i++) {
+      var e = j.evi[i];
+      var av = answers[e.dim];
+      if (av && av.indexOf(e.match) >= 0) evs.push(e.label);
+    }
+    if (evs.length >= 2) out.push(j.name + '方向线索：' + evs.join(' + ') + '（供医生参考，非结论）');
+  }
+  return out;
+}
+
+// ==================== 医生重点关注（鉴别线索自动提取） ====================
+function keyPoints() {
+  var pts = [];
+  var a = answers;
+  if (a.thirst === '口干，但不太想喝水') pts.push('口干但不太想喝水——津液分布关键点，医生会重点问');
+  if (a.bowel === '拉稀，但肛门灼热') pts.push('拉稀但肛门灼热——寒热利鉴别关键');
+  if (a.bowel === '拉稀，肛门不烧' && a.hanre === '怕冷明显，加衣盖被后还是冷') pts.push('拉稀+明显怕冷——医生会重点考虑寒性方向');
+  if (a.headbody === '脖子后脑发僵' && a.hanre === '怕冷明显，加衣盖被后还是冷') pts.push('项强+恶寒——太阳病经典线索');
+  if (a.appetite === '口苦') pts.push('口苦——少阳经线索，医生会追问');
+  if (a.urine === '夜尿多' && a.hanre === '怕冷明显，加衣盖被后还是冷') pts.push('夜尿多+怕冷——肾阳方向线索');
+  if (a.timing === '下午3-5点或傍晚加重') pts.push('固定下午/傍晚加重——阳明潮热线索');
+  if (a.timing === '一阵冷一阵热，来回变') pts.push('往来寒热——少阳病经典线索');
+  if (a.sweat === '几乎不出汗' && a.hanre === '怕冷明显，加衣盖被后还是冷') pts.push('无汗+恶寒——表实线索（麻黄类方方向）');
+  if (a.sweat === '容易出汗，白天活动就出' && a.hanre === '怕风怕吹，风吹难受') pts.push('出汗+怕风——表虚线索（桂枝类方方向）');
+  if (a.mood === '急躁易怒' && a.timing === '一阵冷一阵热，来回变') pts.push('急躁+往来寒热——少阳枢机不畅线索');
+  return pts;
+}
+
+// ==================== 摘要生成 ====================
+function fmt(v) { return v || '未提及'; }
+function line(label, val) {
+  if (!val || val === '未提及' || val === '未说明') {
+    return '<div class="sum-line"><b>' + label + '：</b><span class="no">未提及</span></div>';
+  }
+  return '<div class="sum-line"><b>' + label + '：</b><span class="val">' + val + '</span></div>';
+}
+function valOf(key) { return answers[key] || ''; }
+
+function buildSummary() {
+  var date = new Date();
+  document.getElementById('genDate').textContent = date.getFullYear() + '-' + (date.getMonth()+1) + '-' + date.getDate() + ' ' + date.getHours() + ':' + (date.getMinutes()<10?'0':'') + date.getMinutes();
+  var h = '';
+  h += '<div class="sum-line"><b>主诉：</b><span class="val">' + (complaint || valOf('main')) + '</span></div>';
+  h += line('病程时长', valOf('dur'));
+  // 医生重点关注（鉴别线索）
+  var pts = keyPoints();
+  if (pts.length) {
+    h += '<div style="background:#eff6ff;border-left:4px solid #2563eb;border-radius:8px;padding:10px 14px;margin:10px 0;font-size:13px;color:#1e40af;line-height:1.8;">';
+    h += '<b>🔍 医生可能重点确认：</b><br>';
+    for (var p = 0; p < pts.length; p++) h += '· ' + pts[p] + '<br>';
+    h += '</div>';
+  }
+  // 六经方向线索（后台辨证整理，不给结论）
+  var lj = liujingLines();
+  if (lj.length) {
+    h += '<div style="background:#f0fdf4;border-left:4px solid #16a34a;border-radius:8px;padding:10px 14px;margin:10px 0;font-size:13px;color:#166534;line-height:1.8;">';
+    h += '<b>🧭 六经方向线索：</b><br>';
+    for (var li = 0; li < lj.length; li++) h += '· ' + lj[li] + '<br>';
+    h += '<span style="font-size:11px;color:#94a3b8;">以上仅供医生参考，不代表诊断结论。</span>';
+    h += '</div>';
+  }
+  // 只显示实际问过的维度（跳过未问和"说不太清"的）
+  for (var i = 0; i < dimOrder.length; i++) {
+    var k = dimOrder[i];
+    if (k === '__free__') continue;
+    var v = answers[k];
+    if (!v || v === '说不太清，跳过') continue;
+    var dim = getDim(k);
+    h += line(dim.title.replace('（女性填写）',''), v);
+  }
+  if (valOf('__free__')) h += '<div class="sum-line"><b>自由补充：</b><span class="val">' + valOf('__free__') + '</span></div>';
+  h += '<div class="sum-line"><b>舌苔：</b><span class="no">请就诊时让医生直接看舌（本工具不替你判断舌象）</span></div>';
+  h += '<div class="sum-line"><b>脉象：</b><span class="no">由医生诊脉，患者无法自报</span></div>';
+  document.getElementById('summaryContent').innerHTML = h;
+  show('s3');
+}
+
+function buildPlainText() {
+  var L = [];
+  L.push('【我的中医就诊摘要】');
+  L.push('主诉：' + (complaint || valOf('main')));
+  L.push('病程：' + (valOf('dur') || '未说明'));
+  var pts = keyPoints();
+  if (pts.length) {
+    L.push('【医生可能重点确认】');
+    for (var p = 0; p < pts.length; p++) L.push('· ' + pts[p]);
+  }
+  var lj = liujingLines();
+  if (lj.length) {
+    L.push('【六经方向线索（供参考）】');
+    for (var li = 0; li < lj.length; li++) L.push('· ' + lj[li]);
+  }
+  for (var i = 0; i < dimOrder.length; i++) {
+    var k = dimOrder[i];
+    if (k === '__free__') continue;
+    var v = answers[k];
+    if (!v || v === '说不太清，跳过') continue;
+    var dim = getDim(k);
+    L.push(dim.title.replace('（女性填写）','') + '：' + v);
+  }
+  if (valOf('__free__')) L.push('自由补充：' + valOf('__free__'));
+  L.push('');
+  L.push('（本摘要由工具按问答整理，供医生参考；舌脉以医生面诊为准）');
+  return L.join('\n');
+}
+function copySummary() {
+  var text = buildPlainText();
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(text).then(function() {
+      document.getElementById('doneTip').style.display = 'block';
+      setTimeout(function(){ document.getElementById('doneTip').style.display = 'none'; }, 2000);
+    });
+  } else { prompt('复制这段摘要：', text); }
+}
+
+// ==================== 历史/复诊 ====================
+function getRecords() { try { return JSON.parse(localStorage.getItem('qm_summaries') || '[]'); } catch (e) { return []; } }
+function saveRecord() {
+  var rec = { date: new Date().toISOString().slice(0,16).replace('T',' '), text: buildPlainText(), complaint: complaint, answers: JSON.parse(JSON.stringify(answers)) };
+  var list = getRecords();
+  list.push(rec);
+  localStorage.setItem('qm_summaries', JSON.stringify(list));
+  document.getElementById('doneTip').textContent = '已保存 ✓ 下次复诊可对比';
+  document.getElementById('doneTip').style.display = 'block';
+}
+function showHistory() {
+  var list = getRecords();
+  var box = document.getElementById('histList');
+  if (!list.length) {
+    box.innerHTML = '<div class="q-desc" style="text-align:center;padding:20px 0;">还没有保存过的记录。<br>完成一次整理后点「保存」就有了。</div>';
+  } else {
+    var html = '';
+    for (var i = list.length - 1; i >= 0; i--) {
+      html += '<div class="hist-item" onclick="showRecord(' + i + ')"><div class="h-date">' + list[i].date + '</div><div class="h-main">' + (list[i].complaint || '症状整理') + '</div></div>';
+    }
+    box.innerHTML = html;
+  }
+  show('s4');
+}
+function showRecord(idx) {
+  var rec = getRecords()[idx];
+  if (!rec) return;
+  document.getElementById('summaryContent').innerHTML = '<pre style="white-space:pre-wrap;font-family:inherit;font-size:13px;line-height:1.8;color:#334155;">' + rec.text + '</pre>';
+  document.getElementById('genDate').textContent = '保存于 ' + rec.date + '（历史记录）';
+  show('s3');
+}
+
+initDots();
+</script>
+</body>
+</html>

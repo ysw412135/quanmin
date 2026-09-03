@@ -1,0 +1,17 @@
+{
+  "builtAt": "2026-09-02",
+  "complaintCount": 122,
+  "languageMapCount": 525,
+  "questionCount": 68,
+  "syntheticPatientCount": 1708,
+  "goldenCount": 96,
+  "domainCount": 12,
+  "assertions": {
+    "complaintsAtLeast100": true,
+    "syntheticPatientsAtLeast1000": true,
+    "goldenSetFrozen": true,
+    "allComplaintsMultipleHypotheses": true,
+    "allComplaintsHaveFirstQuestion": true,
+    "allComplaintsSeparateClinicianOnly": true
+  }
+}
