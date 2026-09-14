@@ -1,501 +1,62 @@
-// 全民中医 · 应用逻辑
-// ==================== DISEASE LIST ====================
-var allDiseases = [
-  { id:"fever", icon:"🤒", name:"感冒发烧", hint:"怕冷·出汗·头痛·咳嗽", ready:true },
-  { id:"cough", icon:"😤", name:"咳嗽", hint:"干咳·痰多·气喘·咽痒", ready:true },
-  { id:"headache", icon:"🤕", name:"头痛", hint:"偏头痛·头顶痛·后脑勺痛·前额痛", ready:true },
-  { id:"stomach", icon:"🤢", name:"肠胃不适", hint:"胃痛·反酸·呕吐·腹泻", ready:true },
-  { id:"insomnia", icon:"😵", name:"睡不着", hint:"入睡难·多梦·易醒·早醒", ready:true },
-  { id:"constipation", icon:"😣", name:"拉不出来", hint:"便秘·腹胀·大便干结", ready:true },
-  { id:"dysmenorrhea", icon:"😖", name:"痛经", hint:"经期腹痛·腰酸·胀痛", ready:true },
-  { id:"acne", icon:"😟", name:"长痘痘", hint:"青春痘·痤疮·粉刺", ready:true },
-  { id:"ulcer", icon:"😬", name:"口腔溃疡", hint:"口疮·舌疮·反复发作", ready:true },
-  { id:"eczema", icon:"🖐️", name:"皮肤痒/起疹", hint:"湿疹·荨麻疹·皮炎", ready:true },
-  { id:"backpain", icon:"🧎", name:"腰酸背痛", hint:"腰痛·腿麻·活动受限", ready:true },
-  { id:"rhinitis", icon:"🤧", name:"鼻炎/打喷嚏", hint:"鼻塞·流涕·打喷嚏", ready:true },
-  { id:"hypertension", icon:"🫀", name:"血压高", hint:"头晕·头痛·心悸", ready:true },
-  { id:"diabetes", icon:"🍬", name:"血糖高/消渴", hint:"口渴·多饮·多尿·消瘦", ready:true },
-  { id:"gallbladder", icon:"😰", name:"胆结石/胆囊炎", hint:"右上腹痛·口苦·恶心", ready:true },
-  { id:"arthralgia", icon:"🦿", name:"关节痛/风湿", hint:"膝痛·肩痛·手指痛·怕风怕冷", ready:true },
-  { id:"hemorrhoids", icon:"🩸", name:"痔疮", hint:"便血·痔核脱出·肛痛", ready:true },
-  { id:"gout", icon:"🦶", name:"痛风/尿酸高", hint:"脚趾红肿·关节热痛·尿酸高", ready:true },
-  { id:"thyroid", icon:"🦋", name:"甲状腺结节", hint:"脖子结节·咽中堵·心慌怕热", ready:true },
-  { id:"breast", icon:"🎗️", name:"乳腺结节/胀痛", hint:"乳房胀痛·结节·经前加重", ready:true },
-  { id:"fattyliver", icon:"🥘", name:"脂肪肝/转氨酶高", hint:"右胁胀·口苦·油腻后不适", ready:true },
-  { id:"reflux", icon:"🔥", name:"反酸/烧心", hint:"吐酸水·嗳气·胸口灼热", ready:true },
-  { id:"pharyngitis", icon:"🗣️", name:"咽炎/喉咙不适", hint:"咽干·咽痛·异物感·干咳", ready:true },
-  { id:"urinary", icon:"🚽", name:"尿频/尿路不适", hint:"夜尿多·尿黄热痛·小便不利", ready:true },
-  { id:"premature", icon:"⏱️", name:"早泄/遗精", hint:"时间短·腰酸·怕冷·盗汗·阴囊潮湿", ready:true },
-  { id:"palpitation", icon:"💓", name:"心慌/胸闷", hint:"心悸·胸闷·容易受惊·头晕", ready:true },
-  { id:"fatigue", icon:"😴", name:"乏力虚劳", hint:"没精神·总想躺·出汗·怕冷", ready:true },
-  { id:"irregular_menses", icon:"🌙", name:"月经不调", hint:"提前·推迟·量少·血块·经前烦", ready:true },
-  { id:"symptoms", icon:"🧭", name:"找不到症状？", hint:"心慌·乏力·怕冷·出汗·口苦·尿频", ready:true },
-  { id:"vertigo", icon:"🌀", name:"头晕/眩晕", hint:"天旋地转·头重脚轻·昏沉·体位性眩晕", ready:true }
-];
+(function(){
+'use strict';
 
-// ==================== STATE ====================
-var currentNode = null, diseaseId = null, visitPath = [], visitAnswers = [], popStateHandled = false;
-
-// 相关病种推荐（结果页底部引导，提高留存）
-var relatedMap = {
-  fever:['cough','headache'], cough:['fever','pharyngitis'], headache:['hypertension','insomnia'],
-  insomnia:['palpitation','fatigue'], palpitation:['insomnia','fatigue'], fatigue:['insomnia','palpitation'],
-  backpain:['arthralgia','gout'], arthralgia:['backpain','gout'], gout:['arthralgia','urinary'],
-  reflux:['stomach','ulcer'], stomach:['reflux','ulcer'], ulcer:['reflux','stomach'],
-  constipation:['hemorrhoids','stomach'], hemorrhoids:['constipation','urinary'],
-  dysmenorrhea:['irregular_menses'], irregular_menses:['dysmenorrhea','fatigue'],
-  eczema:['acne','urinary'], acne:['eczema','ulcer'], rhinitis:['cough','pharyngitis'],
-  pharyngitis:['cough','rhinitis'], hypertension:['headache','palpitation'],
-  diabetes:['fatigue','urinary'], gallbladder:['reflux','fattyliver'], fattyliver:['gallbladder','reflux'],
-  thyroid:['palpitation','breast'], breast:['thyroid','irregular_menses'],
-  urinary:['gout','hemorrhoids','premature'], premature:['fatigue','urinary'], symptoms:['fatigue','palpitation'],
-  vertigo:['hypertension','fatigue','palpitation']
+var UI={
+'zh-CN':{brand:'全民经方中医',tagline:'不用懂辨证。先把身体感受说清楚，再整理成医生能快速阅读的摘要。',classic:'《伤寒杂病论》经方辨证体系',offline:'当前离线，已加载的问诊仍可使用。',openingTitle:'哪里不舒服？用自己的话说',openingHelp:'例如：胃里烧得慌，还有反酸和恶心；或昨天开始怕冷发热，现在又咳嗽。',openingPlaceholder:'症状、开始时间、什么情况下加重……',start:'开始动态整理',privacy:'无需注册 · 记录仅保存在本机 · 先排除紧急情况',common:'常见问题入口（病名只负责进门）',back:'← 返回',which:'你最想先整理哪一种不适？',whichHelp:'一句话可能包含多个问题。先选最困扰你的，摘要仍会保留其他描述。',newEpisode:'← 新建一次整理',footer:'本工具用于就诊前症状表达与经典经方知识学习，不提供诊断或处方。涉及用药，请由执业中医师面诊决定。',question:'动态追问',turn:'第 {n} 问',unknown:'暂时说不清',noMatch:'我还没准确听懂。请选择一个最接近的入口，或补充部位和主要感觉。',report:'就诊前症状摘要',chief:'主诉原话',answers:'已确认的症状事实',competition:'内部竞争方向（供继续追问，不等于诊断）',formula:'参考方与方证依据',support:'支持线索',missing:'尚缺或需核实',none:'暂无',combine:'合方审查',combineYes:'存在两个由不同症状线索分别支持的方证方向，可由执业中医师进一步判断是否合方。',combineNo:'目前没有足够的独立证据支持合方，不为求全面而强行合方。',copy:'复制摘要',share:'分享给亲友',copied:'摘要已复制',urgentTitle:'请停止问诊并及时就医',urgentBody:'你报告了可能需要尽快处理的危险信号。线上整理不能排除急症；如症状正在发生或明显加重，请立即联系当地急救或前往急诊。',screened:'本轮未报告系统询问的紧急危险信号；这不等于已经排除疾病。',classicBasis:'经典依据',notEnough:'当前尚未匹配到具体方证，请补充主要症状、寒热、汗出和分泌物特征。',episode:'本机已保存 {n} 次完整整理（仅保留最近20次；清除浏览器数据会删除记录）。',choose:'选择此项',free:'内测开放'},
+'zh-TW':{},
+en:{brand:'Jingfang Symptom Guide',tagline:'No diagnosis knowledge needed. Describe how you feel and receive a structured pre-visit summary for your clinician.',classic:'Classical Jingfang framework of Shang Han Za Bing Lun',offline:'You are offline. Previously loaded interviews remain available.',openingTitle:'What feels wrong? Use your own words.',openingHelp:'Example: My stomach burns, with acid coming up and nausea; or I developed chills and fever yesterday and now I am coughing.',openingPlaceholder:'Symptoms, when they started, what makes them worse…',start:'Start guided interview',privacy:'No account · Stored on this device · Urgent risks checked first',common:'Common starting points (labels are only entry routes)',back:'← Back',which:'Which problem should we organize first?',whichHelp:'One sentence may contain several concerns. Pick the main one; the original description will remain in the summary.',newEpisode:'← Start a new summary',footer:'This tool organizes symptoms before a visit and supports study of classical Jingfang. It does not diagnose or prescribe. Medication decisions require a licensed practitioner.',question:'Adaptive follow-up',turn:'Question {n}',unknown:'Not sure yet',noMatch:'I could not identify the concern reliably. Choose the closest entry or add the body area and main sensation.',report:'Pre-visit symptom summary',chief:'Your original description',answers:'Confirmed reported facts',competition:'Competing internal directions (used to choose questions; not a diagnosis)',formula:'Reference formulas and supporting findings',support:'Supporting clues',missing:'Missing or needs verification',none:'None yet',combine:'Combination review',combineYes:'Two pattern directions have separate supporting clues. A licensed practitioner can assess whether a combined formula is justified.',combineNo:'There is not enough independent evidence for a combined formula. The system will not combine formulas merely to appear comprehensive.',copy:'Copy summary',share:'Share with family',copied:'Summary copied',urgentTitle:'Stop the interview and seek urgent care',urgentBody:'You reported a possible danger sign. An online summary cannot rule out an emergency. If it is happening now or worsening, contact local emergency services or go to an emergency department.',screened:'No urgent danger sign asked about was reported in this interview. This does not rule out illness.',classicBasis:'Classical basis',notEnough:'The reported clues are not specific enough to show formula-pattern candidates. Withholding a guess is more reliable.',episode:'{n} completed summaries saved on this device (up to 20 recent summaries; clearing browser data deletes them).',choose:'Choose',free:'Test access'}
 };
-function diseaseName(id) {
-  for (var i = 0; i < allDiseases.length; i++) { if (allDiseases[i].id === id) return allDiseases[i].name; }
-  return '';
-}
 
-function inferPattern(node, nodeKey) {
-  var syn = node.syndrome || '';
-  var text = syn + ' ' + (node.symptoms || '') + ' ' + (node.warning || '');
+var TMAP={'经':'經','医':'醫','伤':'傷','杂':'雜','论':'論','体':'體','状':'狀','问':'問','诊':'診','说':'說','这':'這','里':'裡','开':'開','始':'始','动':'動','态':'態','整':'整','理':'理','无':'無','录':'錄','仅':'僅','机':'機','紧':'緊','险':'險','题':'題','门':'門','选':'選','择':'擇','还':'還','会':'會','报':'報','结':'結','处':'處','药':'藥','业':'業','师':'師','须':'須','烧':'燒','发':'發','恶':'惡','呕':'嘔','泻':'瀉','头':'頭','胀':'脹','痒':'癢','湿':'濕','节':'節','频':'頻','难':'難','气':'氣','后':'後','变':'變','与':'與','为':'為','学':'學','临':'臨','则':'則','证':'證','据':'據','应':'應','个':'個','东':'東','两':'兩','内':'內','区':'區','别':'別','现':'現','时':'時','进':'進','过':'過','并':'並','给':'給','续':'續','总':'總','来':'來','响':'響','诉':'訴','张':'張','复':'復','较':'較','认':'認','确':'確','术':'術','导':'導','构':'構','纲':'綱','书':'書','归':'歸','转':'轉','饮':'飲','热':'熱','寒':'寒','稳':'穩','数':'數','项':'項','显':'顯','测':'測','剂':'劑','属':'屬','简':'簡','觉':'覺','观':'觀','虑':'慮','连':'連','续':'續','击':'擊','浸':'浸','满':'滿','浓':'濃','黄':'黃','黏':'黏','肤':'膚','妇':'婦','怀':'懷','脸':'臉','脚':'腳','肿':'腫','压':'壓','质':'質','虚':'虛','劳':'勞','额':'額','颈':'頸','产':'產','权':'權','义':'義','线':'線','极':'極','剧':'劇','轻':'輕','较':'較','颗':'顆','难':'難','达':'達','脸':'臉','忆':'憶','扫':'掃','码':'碼','约':'約','确':'確','与':'與','么':'麼','别':'別','听':'聽','懂':'懂','亲':'親','友':'友','储':'儲','预':'預'};
+function toTW(s){return String(s||'').replace(/[\u3400-\u9fff]/g,function(c){return TMAP[c]||c;});}
+Object.keys(UI['zh-CN']).forEach(function(k){UI['zh-TW'][k]=toTW(UI['zh-CN'][k]);});
 
-  // === 六经方向 — 四级推断链 ===
-  // L1: 显式 channel 元数据（未来可加）
-  var liujing = node.channel || '';
+var EN_Q={
+q_pattern_sweat:'To distinguish cold-related formula patterns: have you been sweating during this episode?',q_safety_gate:'First, a safety check: do you currently have a sudden severe symptom such as marked breathing difficulty, confusion, fainting, one-sided weakness, vomiting blood, black stool, or bleeding that will not stop?',q_mental_alarm:'Have you recently had thoughts of harming yourself, not wanting to live, or being unable to keep yourself safe?',q_duration:'When did this problem begin?',q_course:'Since it began, is it getting worse, improving, recurring, or staying about the same?',q_severity:'At its worst, how severe is it from 0 to 10?',q_impact:'What does it interfere with?',q_sleep_pattern:'Which is the main problem: taking a long time to fall asleep, waking often, waking too early, or not feeling restored?',q_sleep_mind:'When you cannot sleep, which description fits best?',q_sleep_day:'How do you mainly feel the next day?',q_substance_change:'Have coffee, strong tea, alcohol, tobacco, supplements, or medicines recently increased or changed?',q_digestive_link:'When sleep worsens, is there also bloating, reflux, overeating, or late-night eating?',q_gi_dominant:'For the stomach or abdominal discomfort, is the main sensation pain, fullness/blockage, burning, nausea, or something hard to describe?',q_gi_meal:'How is it related to meals?',q_gi_vomit:'Have you vomited? If yes, which description is closest?',q_stool_form:'Which best describes the stool?',q_stool_frequency:'How often do you currently pass stool?',q_bowel_pain_link:'How is the abdominal discomfort related to bowel movements?',q_stool_alarm:'Any tar-black stool, obvious fresh blood, or repeated vomiting of blood?',q_food_trigger:'Did several people become ill after the same food, or does a specific food repeatedly trigger it?',q_hydration:'Have drinking and urination clearly decreased, or do you black out briefly on standing?',q_breathing_alarm:'Is breathing clearly difficult now, are you unable to speak a full sentence, or are the lips blue?',q_sputum:'What is the sputum like?',q_fever_chill:'Did you measure your temperature? Are chills, heat/fever, both, or neither more prominent?',q_nose_discharge:'What is the nasal discharge like?',q_trigger_environment:'Does this recur with seasons, dust, pets, or cold air?',q_night_breath:'Does cough or wheeze worsen at night or when lying down?',q_chest_alarm:'Was the chest symptom sudden and severe, with cold sweat, fainting, marked breathlessness, or radiation to the arm, jaw, or back?',q_chest_exertion:'How is chest tightness or breathlessness related to walking or climbing stairs?',q_palpitation_pattern:'During palpitations, is the beat fast, irregular/skipping, or simply very forceful?',q_edema_breath:'Is there ankle swelling, breathlessness when lying flat, or waking breathless at night?',q_chest_touch_move:'Can pressing the chest, turning, or lifting an arm clearly reproduce the pain?',q_neuro_alarm:'Did you suddenly develop one-sided face/limb weakness or numbness, slurred speech, sudden vision loss, or a new explosive headache?',q_dizziness_type:'Which kind of dizziness is closest?',q_headache_character:'Which description best fits the headache?',q_position_trigger:'Does turning the head, rolling over, or standing trigger it immediately, and how long does it last?',q_sensory_change:'Any tinnitus/hearing change, light sensitivity, visual change, or sinus pressure?',q_measured_temperature:'Did you measure the temperature during the hot/cold feeling?',q_temperature_cluster:'Which temperature pattern fits best?',q_sweat_pattern:'When and where does sweating happen?',q_thirst_drinking:'When the mouth is dry, do you truly want to drink? Cold, warm, or only small sips?',q_weight_change:'Has weight changed clearly without trying in the past one to three months?',q_medication_change:'Before this began, did you start or change any medicine, supplement, or weight-loss product?',q_pain_alarm:'Was there significant injury, or fever, limb weakness, or loss of bladder/bowel control with the pain?',q_pain_mechanical:'How is the pain related to movement or load?',q_pain_inflammatory:'Is a joint clearly red, swollen or hot, or stiff for more than 30 minutes in the morning?',q_pain_quality:'Is it aching, fixed stabbing, burning/electric, or cramping?',q_numb_weak:'Does pain/numbness radiate from the back or neck into a limb, or is there true weakness?',q_weather_relation:'Does cold or damp weather worsen it and warmth relieve it?',q_urine_alarm:'Any visible blood in urine, fever with severe back pain, complete inability to urinate, or painful urination during pregnancy?',q_urine_pattern:'Which best describes urine volume and flow?',q_urine_pain:'Any burning, urgency, or lower abdominal pain with urination?',q_fluid_diuretic:'Before the urine change, did water, beer, coffee, strong tea, or diuretic use change?',q_nocturia:'How many times do you usually get up at night, and is the volume large?',q_sexual_context:'Was the change sudden or gradual? Did morning function, desire, and stress change together?',q_gyn_alarm:'Could you be pregnant with severe one-sided pelvic pain or fainting, or is bleeding soaking one pad per hour?',q_cycle_relation:'Is the problem mainly before, during, after menstruation, or unrelated to the cycle?',q_bleeding_amount:'Compared with usual, how is the amount? Any large clots, dizziness, or palpitations?',q_cycle_regular:'Were the intervals of the last three periods roughly stable?',q_discharge:'How have vaginal discharge color, odor, amount, and itching changed?',q_pregnancy_possible:'Is pregnancy possible with this menstrual change?',q_skin_alarm:'Is the rash/swelling accompanied by breathing difficulty, lip/tongue swelling, widespread blisters/peeling, high fever, or painful eyes/mouth?',q_skin_appearance:'Which best describes the skin now?',q_skin_spread:'Where is it and how quickly is it spreading?',q_skin_exposure:'Before onset, did you change medicine, skincare, detergent, food, or environment?',q_edema_pattern:'When is swelling most obvious, and does pressing leave a pit?',q_general_alarm:'Any persistent high fever, major bleeding, rapid unplanned weight loss, altered consciousness, or weakness preventing standing?',q_fatigue_pattern:'Which best describes the weakness or lack of energy?',q_appetite_weight:'How have appetite and weight changed recently?'};
 
-  // L2: 从方证名解析（覆盖 95%+ 节点）
-  if (!liujing) {
-    var parts = [];
-    if (syn.indexOf('太阳') >= 0) parts.push('太阳');
-    if (syn.indexOf('阳明') >= 0) parts.push('阳明');
-    if (syn.indexOf('少阳') >= 0) parts.push('少阳');
-    if (syn.indexOf('太阴') >= 0) parts.push('太阴');
-    if (syn.indexOf('少阴') >= 0) parts.push('少阴');
-    if (syn.indexOf('厥阴') >= 0) parts.push('厥阴');
-    if (parts.length > 0) liujing = parts.join('') + '方向';
-  }
+var EN_O={yes:'Yes',no:'No',unsure:'Not sure',prefer_not:'Prefer not to answer',hours_days:'Hours to days',weeks:'Weeks',months_years:'Months or longer',episodic:'Repeated episodes with recovery between',worse:'Getting worse',better:'Improving',variable:'Comes and goes',stable:'About the same',mild:'0–3',moderate:'4–6',severe:'7–10',none:'None',daily:'Work, home duties, or school',sleep:'Mainly sleep',cannot:'Unable to function normally',onset:'Difficulty falling asleep',maintenance:'Waking often',early:'Waking too early',unrested:'Unrefreshed despite enough sleep',racing:'Racing thoughts',restless_hot:'Restless or hot',fear_startle:'Tense, fearful, or easily startled',no_clear:'No clear pattern',fatigue:'Fatigued',dizzy:'Dizzy or palpitations',irritable:'Irritable or poor concentration',normal:'Little daytime effect',pain:'Pain',bloat:'Full or blocked',burn:'Burning',nausea:'Nausea',unclear:'Hard to describe',empty:'Worse on an empty stomach',after:'Worse after meals',specific:'Worse after fatty/spicy food or alcohol',lying:'Worse lying down or at night',food:'Vomited food',clear:'Clear/watery',blood_coffee:'Blood or coffee-ground material',cannot_keep:'Cannot keep even water down',hard:'Hard/pellet-like or difficult',formed:'Formed',loose:'Loose/unformed',watery:'Watery',alternating:'Alternating hard and loose',rare:'Once every 3+ days',frequent:'3+ times a day',urge_incomplete:'Repeated incomplete feeling',before_relief:'Before; relieved after stool',constant:'Continuous',blood:'Blood present',cluster:'Several people affected',low_water:'Drinking less / sweating more',yellow:'Yellow or green and thick',chill:'Chills prominent',fever:'Measured or felt fever prominent',both:'Both / alternating',dry:'Dry or blocked',mild:'Mild only',rest:'At rest or with tension',fast:'Suddenly fast',irregular:'Irregular or skipping',strong:'Forceful rather than fast',spin:'Spinning',faint:'Lightheaded / near-faint',heavy:'Heavy or foggy head',unstable:'Unsteady walking',throb:'Throbbing',band:'Pressure or tight band',stabbing:'Fixed stabbing',sudden:'Sudden worst-ever',head_brief:'Head turn/rolling; usually under 1 minute',stand:'Dark vision on standing',long:'Not positional; lasts longer',ear:'Tinnitus/hearing change',light:'Light sensitivity or nausea',vision:'Visual change',sinus:'Sinus/facial pressure',measured_high:'Measured high',not_measured:'Not measured',cold:'Colder than others; prefers warmth',heat:'Hotter than others; wants cool air',episodes:'Alternating hot and cold',hands:'Mainly cold hands/feet',day_easy:'Sweats easily by day',night:'Sweats during sleep',local:'Local hands/feet/head',cold_much:'Very thirsty for lots of cold water',warm:'Prefers warm drinks',sip:'Only small sips',no_thirst:'Dry but not thirsty',loss:'Clear loss',gain:'Clear gain',unknown:'Not weighed',move_worse:'Worse with movement/load',rest_worse:'Worse after rest; eases after moving',rest_relief:'Better with rest',ache:'Aching',burn_electric:'Burning/electric',cramp:'Cramp/tightness',radiate:'Radiating pain/numbness',weak:'True weakness',large:'Frequent and large volume',small_urgent:'Frequent, small, urgent',incomplete:'Incomplete emptying',urgent:'Urgency',pelvic:'Lower abdominal/perineal discomfort',diuretic:'More alcohol/caffeine/diuretic',zero_one:'0–1 time',two_plus_large:'2+ times, large volume',two_plus_small:'2+ times, small volume',sudden_stress:'Sudden and stress-linked',gradual:'Gradual',before:'Before period',during:'During period',after:'After period',unrelated:'Unrelated to cycle',light:'Markedly less',usual:'Usual amount',early:'Often early',late:'Often late',yellow_odor:'Yellow/green with odor',curd_itch:'Curd-like with itching',red_hot:'Red, hot, itchy',wet:'Blisters/weeping/erosion',dark_thick:'Dark/thickened',symmetric:'Roughly symmetric',rapid:'Spreading rapidly',whole:'Many body areas',morning_face:'Face/eyelids in morning',evening_leg:'Ankles in evening',pitting:'Leaves a persistent pit',not_sure:'Not sure',sleepy:'Sleepy',muscle:'Muscle fatigue / low endurance',breath:'Breathless or palpitations with effort',motivation:'Can move but lacks drive',less_loss:'Eating less and losing weight',more_loss:'Eating more but losing weight'};
 
-  // L3: nodeKey→channel 映射（方证名不含经名的边缘节点）
-  if (!liujing && nodeKey) {
-    var keyMap = {
-      zhuyeshigao:'阳明', huangqiguizhiwuwu:'太阳',
-      lingguizhugan:'太阴', suanzao:'少阴',
-      zhenwu_sym:'少阴', zhibaidihuang_sym:'少阴',
-      sym_guipi:'太阴', sym_ganmai:'太阴',
-      sym_banxiahoupo:'太阴', sym_banxiabaizhu:'太阴',
-      maimen_sym:'阳明', wuling_sym:'太阳太阴',
-      sym_dan:'少阳', dachaihu_sym:'少阳阳明', sym_daochi:'太阳'
-    };
-    var mapped = keyMap[nodeKey];
-    if (mapped) liujing = mapped + '方向';
-  }
+var DISEASES=[
+['fever','🤒','感冒/发热','怕冷·出汗·头身痛','Cold / fever','我感冒发热','fever'],['cough','😷','咳嗽','干咳·痰·喘','Cough','我咳嗽','cough'],['stomach','🤢','胃部不适','疼·胀·烧灼·恶心','Stomach discomfort','胃不舒服','stomach'],['reflux','🔥','反酸/烧心','酸水·胸口灼热','Reflux / heartburn','反酸烧心','reflux'],['insomnia','🌙','失眠','入睡难·易醒·早醒','Insomnia','失眠','insomnia'],['headache','🤕','头痛','部位·性质·诱因','Headache','头痛','headache'],['vertigo','🌀','头晕/眩晕','旋转·发黑·昏沉','Dizziness / vertigo','头晕眩晕','vertigo'],['rhinitis','🤧','鼻炎/喷嚏','鼻塞·清涕·黄涕','Rhinitis / sneezing','鼻炎打喷嚏','rhinitis'],['constipation','🚽','便秘','干硬·费力·不尽','Constipation','便秘','constipation'],['diarrhea','💧','腹泻','稀便·次数·腹痛','Diarrhea','腹泻','stomach'],['gallbladder','😰','胆囊不适','右上腹·口苦·恶心','Gallbladder symptoms','右上腹痛口苦恶心','gallbladder'],['palpitation','💓','心慌/胸闷','快·乱·强·活动关系','Palpitations / chest tightness','心慌胸闷','palpitation'],['fatigue','😴','乏力','困·气短·没精神','Fatigue','乏力没精神','fatigue'],['backpain','🧎','腰背痛','活动·放射·麻木','Back pain','腰背痛','backpain'],['arthralgia','🦿','关节痛','红肿热·怕冷潮湿','Joint pain','关节痛','arthralgia'],['gout','🦶','痛风/尿酸高','突发红肿热痛','Gout / uric acid','痛风关节红肿热痛','gout'],['eczema','🖐️','皮疹/湿疹','红痒·渗出·干裂','Rash / eczema','皮肤痒起疹','eczema'],['acne','😟','痤疮','部位·红肿·周期','Acne','长痘痘','acne'],['ulcer','😬','口腔溃疡','反复·疼痛·口干','Mouth ulcer','口腔溃疡','ulcer'],['pharyngitis','🗣️','咽喉不适','干·痛·异物感','Throat symptoms','咽喉不舒服','pharyngitis'],['urinary','🚻','尿频/尿路不适','夜尿·尿量·灼痛','Urinary symptoms','尿频尿路不适','urinary'],['male','♂️','男性健康','勃起·射精·欲望','Men’s health','勃起困难射精过快','premature'],['dysmenorrhea','🌸','痛经','经前·经期·血块','Period pain','痛经','dysmenorrhea'],['menses','🩸','月经不调','提前·推迟·量变化','Irregular periods','月经不调','irregular_menses'],['breast','🎗️','乳房胀痛/结节','周期·部位·变化','Breast symptoms','乳房胀痛结节','breast'],['thyroid','🦋','颈部/甲状腺','咽堵·颈部变化','Neck / thyroid','甲状腺颈部不适','thyroid'],['hypertension','🫀','血压相关不适','头晕·头痛·心慌','Blood-pressure symptoms','血压高头晕头痛','hypertension'],['diabetes','🍬','血糖相关不适','口渴·多尿·体重','Blood-sugar symptoms','口渴多尿血糖高','diabetes'],['hemorrhoids','🩸','痔疮/便血','出血·疼·脱出','Hemorrhoid symptoms','痔疮便血','hemorrhoids'],['other','🧭','其他不适','直接说你的感受','Other symptoms','身体不舒服','symptoms']];
 
-  // L4: 全文扫描兜底
-  if (!liujing) {
-    if (text.indexOf('太阳') >= 0) liujing = '太阳方向';
-    else if (text.indexOf('阳明') >= 0) liujing = '阳明方向';
-    else if (text.indexOf('少阳') >= 0) liujing = '少阳方向';
-    else if (text.indexOf('太阴') >= 0) liujing = '太阴方向';
-    else if (text.indexOf('少阴') >= 0) liujing = '少阴方向';
-    else if (text.indexOf('厥阴') >= 0) liujing = '厥阴方向';
-    else liujing = '结合问答路径综合判断';
-  }
+var DISEASE_COMPLAINT={fever:'feverish',cough:'cough',stomach:'stomach_uncomfortable',reflux:'acid_reflux',insomnia:'sleep_bad',headache:'headache',vertigo:'dizzy',rhinitis:'sneeze_itch',constipation:'constipation',diarrhea:'diarrhea',gallbladder:'abdominal_pain',palpitation:'palpitation',fatigue:'fatigue',backpain:'low_back_pain',arthralgia:'joint_ache',gout:'joint_ache',eczema:'eczema_like',acne:'acne',ulcer:'sore_throat',pharyngitis:'sore_throat',urinary:'frequent_urine',premature:'erection_problem',dysmenorrhea:'period_pain',irregular_menses:'period_irregular',breast:'pelvic_discomfort',thyroid:'throat_lump',hypertension:'headache',diabetes:'thirsty',hemorrhoids:'hemorrhoid',symptoms:'fatigue'};
+var COMPLAINT_TREE={feverish:'fever',fear_cold:'fever',alternating_hot_cold:'fever',cough:'cough',dry_cough:'cough',phlegm:'cough',wheeze:'cough',stomach_uncomfortable:'stomach',stomach_pain:'stomach',bloating:'stomach',nausea:'stomach',vomiting:'stomach',acid_reflux:'reflux',heartburn:'reflux',sleep_bad:'insomnia',hard_to_fall_asleep:'insomnia',wake_often:'insomnia',wake_too_early:'insomnia',headache:'headache',migraine_like:'headache',dizzy:'vertigo',vertigo:'vertigo',sneeze_itch:'rhinitis',stuffy_nose:'rhinitis',runny_nose:'rhinitis',constipation:'constipation',diarrhea:'stomach',abdominal_pain:'stomach',palpitation:'palpitation',chest_tight:'palpitation',fatigue:'fatigue',low_energy:'fatigue',low_back_pain:'backpain',low_back_ache:'backpain',joint_ache:'arthralgia',knee_pain:'arthralgia',eczema_like:'eczema',skin_itch:'eczema',rash:'eczema',acne:'acne',sore_throat:'pharyngitis',throat_dry:'pharyngitis',frequent_urine:'urinary',night_urine:'urinary',erection_problem:'premature',premature_ejaculation:'premature',period_pain:'dysmenorrhea',period_irregular:'irregular_menses',pelvic_discomfort:'irregular_menses',throat_lump:'thyroid',thirsty:'diabetes',hemorrhoid:'hemorrhoids',blood_in_stool:'hemorrhoids'};
+var EN_ALIAS=[[/heartburn|acid reflux|reflux/,'acid_reflux'],[/stomach|nausea|upper abdomen/,'stomach_uncomfortable'],[/insomnia|cannot sleep|can.t sleep/,'sleep_bad'],[/cough/,'cough'],[/fever|chills/,'feverish'],[/headache|migraine/,'headache'],[/dizz|vertigo|spinning/,'dizzy'],[/constipat/,'constipation'],[/diarrh/,'diarrhea'],[/palpitation|heart racing/,'palpitation'],[/chest tight/,'chest_tight'],[/fatigue|tired|low energy/,'fatigue'],[/back pain|low back/,'low_back_pain'],[/joint pain|knee pain/,'joint_ache'],[/rash|eczema|itchy skin/,'eczema_like'],[/urinary|frequent urin/,'frequent_urine'],[/erection|erectile/,'erection_problem'],[/premature ejaculation/,'premature_ejaculation'],[/period pain|cramp/,'period_pain'],[/irregular period/,'period_irregular'],[/sore throat/,'sore_throat'],[/hemorrhoid/,'hemorrhoid']];
 
-  // === 表里推断 ===
-  var biaoLi = '结合症状综合判断';
-  var hasBiao = /怕冷|怕风|头痛|项强|鼻塞|发热|身痛|骨节|关节痛/.test(text);
-  var hasLi = /便秘|腹痛|腹胀|恶心|呕吐|腹泻|下利|小便|口渴|烦|口苦|胸闷/.test(text);
-  if (hasBiao && !hasLi) biaoLi = '偏表或表证未解';
-  else if (!hasBiao && hasLi) biaoLi = '偏里或内在不适';
-  else if (hasBiao && hasLi) biaoLi = '表里同见';
-
-  // === 寒热推断 ===
-  var hanRe = '寒热需结合症状继续判断';
-  var hasHan = /怕冷|四肢冷|手脚冷|清稀|喜温|不渴|少阴|太阴|厥阴|寒/.test(text);
-  var hasRe = /发烧|发热|高烧|热|口渴|黄|烦|臭|阳明|红肿|灼热|火/.test(text);
-  if (hasHan && !hasRe) hanRe = '偏寒';
-  else if (!hasHan && hasRe) hanRe = '偏热';
-  else if (hasHan && hasRe) hanRe = '寒热错杂';
-
-  // === 虚实推断 ===
-  var xuShi = '虚实夹杂或需继续观察';
-  var hasXu = /虚|没力气|气短|自汗|汗出不止|少气|喜按|少阴|太阴|困|累|乏力|隐痛|空痛|酸软|萎靡/.test(text);
-  var hasShi = /实|便秘|胀痛|硬痛|拒按|痰多|瘀血|刺痛|红肿|结石|结节|烦躁|谵语/.test(text);
-  if (hasXu && !hasShi) xuShi = '偏虚';
-  else if (!hasXu && hasShi) xuShi = '偏实';
-  else if (hasXu && hasShi) xuShi = '虚实夹杂';
-
-  return { liujing: liujing, biaoLi: biaoLi, hanRe: hanRe, xuShi: xuShi };
-}
-
-function makeDoctorText(node) {
-  var dName = '';
-  for (var i = 0; i < allDiseases.length; i++) { if (allDiseases[i].id === diseaseId) { dName = allDiseases[i].name; break; } }
-  var symptoms = (node.symptoms || '').replace(/<[^>]+>/g, '');
-  var syndrome = (node.syndrome || '').replace(/（.*?）/g, '');
-  var answers = visitAnswers.length ? '我刚才选择的症状是：' + visitAnswers.join('；') + '。' : '';
-  return '我主要想咨询' + (dName || '身体不适') + '。' + answers + '目前表现为：' + symptoms + '。工具按六经八纲问诊整理后，更接近“' + syndrome + '”这个学习参考方向。请医生结合面诊、舌脉和必要检查判断。';
-}
-
-function renderAnswerTrail() {
-  if (!visitAnswers.length) return '';
-  var html = '<div class="r-section"><h4>刚才的问诊选择</h4><div class="r-compare">';
-  for (var i = 0; i < visitAnswers.length; i++) {
-    html += (i + 1) + '. ' + visitAnswers[i] + '\n';
-  }
-  html += '</div></div>';
-  return html;
-}
-
-function copyDoctorText() {
-  var el = document.getElementById('doctorText');
-  var text = el ? el.textContent : '';
-  if (!text) return;
-  if (navigator.clipboard) {
-    navigator.clipboard.writeText(text).then(function(){ alert('病情描述已复制，可以发给家人或就诊时参考。'); });
-  } else {
-    alert(text);
-  }
-}
-
-// ==================== INIT ====================
-function init() {
-  var grid = document.getElementById('diseaseGrid'), html = '';
-  for (var i = 0; i < allDiseases.length; i++) {
-    var d = allDiseases[i];
-    html += '<div class="disease-card" onclick="selectDisease(\'' + d.id + '\')"><div class="icon">' + d.icon + '</div><div class="name">' + d.name + '</div><div class="hint">' + d.hint + '</div></div>';
-  }
-  grid.innerHTML = html;
-  // 搜索过滤
-  var si = document.getElementById('searchInput');
-  if (si) {
-    si.addEventListener('input', function() {
-      var kw = this.value.trim().toLowerCase();
-      var cards = document.querySelectorAll('.disease-card');
-      var shown = 0;
-      for (var i = 0; i < cards.length; i++) {
-        var ok = !kw || cards[i].textContent.toLowerCase().indexOf(kw) >= 0;
-        cards[i].style.display = ok ? '' : 'none';
-        if (ok) shown++;
-      }
-      // 无结果提示（引导留言提病种）
-      var tip = document.getElementById('searchEmptyTip');
-      if (kw && shown === 0) {
-        if (!tip) {
-          tip = document.createElement('div');
-          tip.id = 'searchEmptyTip';
-          tip.style.cssText = 'background:#fffbeb;border:1.5px solid #fcd34d;border-radius:12px;padding:14px;margin-bottom:12px;font-size:13px;color:#92400e;line-height:1.7;text-align:center;';
-          tip.innerHTML = '🔍 没搜到「' + kw + '」<br>想查的病种这里还没有？<br><b>留言告诉我</b>（页面底部），我每周更新病种';
-          si.parentNode.insertBefore(tip, si.nextSibling);
-        }
-        tip.style.display = 'block';
-      } else if (tip) { tip.style.display = 'none'; }
-    });
-  }
-  // 支持 ?d=病种id 直达（SEO/落地页链接用）
-  try {
-    var qp = new URLSearchParams(location.search);
-    var direct = qp.get('d');
-    if (direct && getTree(direct)) { selectDisease(direct); return; }
-  } catch (e) {}
-  if (!window.history.state || !window.history.state.page) {
-    window.history.replaceState({page:'home'}, '', '#');
-    window.history.pushState({page:'home_guard'}, '', '#');
-  }
-  if (window.history.state && window.history.state.page === 'quiz') restoreState(window.history.state);
-}
-
-// ==================== HISTORY ====================
-function pushState(page, disease, node, hash) {
-  popStateHandled = true;
-  window.history.pushState({page:page, disease:disease, node:node}, '', hash || '#');
-  setTimeout(function(){ popStateHandled = false; }, 100);
-}
-window.addEventListener('popstate', function(e) {
-  if (popStateHandled) return;
-  var s = e.state;
-  if (!s || s.page === 'home' || s.page === 'home_guard') { goHome(); return; }
-  if (s.page === 'quiz' && s.disease) { diseaseId = s.disease; currentNode = s.node || 'start'; visitPath = []; visitAnswers = []; showNode(); return; }
-  if (s.page === 'result' && s.disease && s.node) { diseaseId = s.disease; currentNode = s.node; var t = getTree(diseaseId); if (t && t.nodes[currentNode] && t.nodes[currentNode].syndrome) showResult(t.nodes[currentNode]); }
-});
-function restoreState(state) {
-  if (!state) return;
-  if (state.page === 'quiz' && state.disease) { diseaseId = state.disease; currentNode = state.node || 'start'; showNode(); }
-  else if (state.page === 'result' && state.disease && state.node) { diseaseId = state.disease; currentNode = state.node; var t = getTree(diseaseId); if (t && t.nodes[currentNode] && t.nodes[currentNode].syndrome) showResult(t.nodes[currentNode]); }
-}
-
-// ==================== NAVIGATION ====================
-function selectDisease(id) {
-  var d = null;
-  for (var i = 0; i < allDiseases.length; i++) { if (allDiseases[i].id === id) { d = allDiseases[i]; break; } }
-  if (d && d.ready === false) { alert('这个病种还在整理中，敬请期待！'); return; }
-  var tree = getTree(id);
-  if (!tree) { alert('这个病种即将上线！敬请期待。'); return; }
-  // 查询埋点（运营数据：哪个病种被查最多）
-  try { fetch('/pv?tool=quanmin&d=' + encodeURIComponent(id)); } catch (e) {}
-  diseaseId = id; currentNode = 'start'; visitPath = []; visitAnswers = [];
-  showNode();
-  document.getElementById('diseaseSelector').style.display = 'none';
-  document.getElementById('questionArea').classList.add('active');
-  pushState('quiz', id, 'start', '#q/' + id);
-}
-function goHome() {
-  document.getElementById('diseaseSelector').style.display = '';
-  document.getElementById('questionArea').classList.remove('active');
-  document.getElementById('resultArea').classList.remove('active');
-  diseaseId = null; currentNode = null; visitPath = []; visitAnswers = [];
-  var kcs = document.querySelectorAll('.knowledge-card');
-  for (var i = 0; i < kcs.length; i++) kcs[i].classList.remove('show');
-  pushState('home', null, null, '#');
-}
-function goBack() {
-  // 问答中：回退一题（配合浏览器返回键行为一致）
-  if (document.getElementById('questionArea').classList.contains('active')) {
-    if (visitPath.length > 0) {
-      currentNode = visitPath.pop();
-      visitAnswers.pop();
-      showNode();
-      return;
-    }
-    goHome();
-    return;
-  }
-  // 结果页：回到问答最后一步
-  if (document.getElementById('resultArea').classList.contains('active')) {
-    if (visitPath.length > 0) {
-      currentNode = visitPath.pop();
-      visitAnswers.pop();
-      document.getElementById('resultArea').classList.remove('active');
-      showNode();
-      return;
-    }
-    goHome();
-    return;
-  }
-  goHome();
-}
-
-function showNode() {
-  if (!diseaseId) return;
-  var tree = getTree(diseaseId);
-  if (!tree) return;
-  var node = tree.nodes[currentNode];
-  if (!node) return;
-  if (node.syndrome) { showResult(node); return; }
-  var dName = '';
-  for (var i = 0; i < allDiseases.length; i++) { if (allDiseases[i].id === diseaseId) { dName = allDiseases[i].name; break; } }
-  var html = '<div class="question-box"><div class="q-num">全民中医 · ' + dName + '</div><div class="q-text">' + node.q + '</div>';
-  for (var i = 0; i < node.opts.length; i++) {
-    var opt = node.opts[i];
-    html += '<button class="option-btn" data-next="' + opt.next + '"><span class="opt-icon">' + (opt.icon||'') + '</span>' + opt.text + '</button>';
-  }
-  html += '</div>';
-  if (node.hint) { html += '<div class="knowledge-card show"><div class="k-title">📖 学一点中医</div>' + node.hint + '</div>'; }
-  document.getElementById('questionContent').innerHTML = html;
-  document.getElementById('questionArea').classList.add('active');
-  document.getElementById('resultArea').classList.remove('active');
-  // 返回按钮：第一题显示"返回首页"，后续显示"上一题"
-  var bb = document.querySelector('#questionArea .back-btn');
-  if (bb) bb.textContent = visitPath.length > 0 ? '← 上一题' : '← 返回首页';
-  pushState('quiz', diseaseId, currentNode, '#q/' + diseaseId + '/' + currentNode);
-  var buttons = document.querySelectorAll('.option-btn');
-  for (var j = 0; j < buttons.length; j++) {
-    buttons[j].addEventListener('click', function() {
-      var next = this.getAttribute('data-next');
-      if (next) {
-        visitPath.push(currentNode);
-        visitAnswers.push(this.textContent.replace(/\s+/g, ' ').trim());
-        currentNode = next;
-        showNode();
-      }
-    });
-  }
-}
-
-function showResult(node) {
-  currentResultNode = node;
-  document.getElementById('questionArea').classList.remove('active');
-  document.getElementById('resultArea').classList.add('active');
-  var pattern = inferPattern(node, currentNode);
-  var doctorText = makeDoctorText(node);
-  var html = '<div class="report-card"><div class="r-title">六经八纲问诊整理</div>';
-  html += '<div class="r-syndrome">' + node.syndrome + '</div>';
-  html += '<div class="r-warning"><h4>⚠️ 先看是否需要及时就医</h4>发烧超过3天不退 · 呼吸困难 · 胸痛 · 神志不清 · 抽搐 · 剧烈腹痛 · 年龄小于1岁 · 孕妇';
-  if (node.warning) html += '<br><br>' + node.warning;
-  html += '</div>';
-  html += '<div class="r-path"><strong>按六经八纲整理：</strong><div class="path-grid"><div class="path-item"><b>六经方向</b>' + pattern.liujing + '</div><div class="path-item"><b>表里</b>' + pattern.biaoLi + '</div><div class="path-item"><b>寒热</b>' + pattern.hanRe + '</div><div class="path-item"><b>虚实</b>' + pattern.xuShi + '</div></div></div>';
-  html += '<div class="r-doctor"><h4>给医生看的描述</h4><div id="doctorText">' + doctorText + '</div><div class="copy-line">可以复制这段，就诊或和家人沟通时参考。</div></div>';
-  html += renderAnswerTrail();
-  html += '<div class="r-section"><h4>老叶精华速查表</h4><p>下面内容来自原有六经辨证速查表，是《伤寒论》经典知识学习参考，不等于诊断或处方。</p></div>';
-  html += '<div class="r-symptoms"><strong>典型表现：</strong>' + node.symptoms + '</div>';
-  html += '<div class="r-section"><h4>📜 《伤寒论》原文</h4><div class="r-original">' + (node.original || '原文待补充') + '</div></div>';
-  html += '<div class="r-section"><h4>🌿 经方组成（经典学习参考）</h4><p>' + node.formula + '</p></div>';
-  html += '<div class="r-section"><h4>🔥 煎煮方法</h4><p>' + node.method + '</p></div>';
-  if (node.hulao) html += '<div class="r-section"><h4>🎓 胡希恕先生要点</h4><div class="r-original" style="border-left:4px solid #f59e0b;">' + node.hulao + '</div></div>';
-  if (node.otc) html += '<div class="r-section"><h4>💊 家中常备中成药参考</h4><div class="r-otc">' + node.otc + '</div></div>';
-  if (node.combo) html += '<div class="r-section"><h4>🔗 组合方案</h4><div class="r-otc" style="background:#eff6ff;color:#1e40af;">' + node.combo + '</div></div>';
-  if (node.compare) html += '<div class="r-section"><h4>🤔 相似情况如何区分？</h4><div class="r-compare">' + node.compare + '</div></div>';
-  if (node.rhyme) html += '<div class="r-section"><h4>🎵 辨证口诀</h4><div class="r-rhyme">' + node.rhyme + '</div></div>';
-  html += '<p style="font-size:12px;color:#94a3b8;margin-top:12px;">以上为《伤寒论》经典知识的学习参考，不构成医疗建议。如需用药，请咨询执业中医师。</p></div>';
-  html += '<div class="report-actions"><button class="btn-save" onclick="copyDoctorText()">📋 复制病情描述</button><button class="btn-share" onclick="genShareCard()">🖼️ 生成分享卡片</button><button class="btn-share" onclick="shareReport()">📤 一键转发</button></div>';
-  // 相关病种推荐（提高留存和传播）
-  var relIds = relatedMap[diseaseId] || [];
-  if (relIds.length) {
-    var relHtml = '<div class="r-related"><div class="r-related-title">🤔 你还可能想查</div><div class="r-related-grid">';
-    for (var ri = 0; ri < relIds.length; ri++) {
-      var rn = diseaseName(relIds[ri]);
-      if (rn) relHtml += '<button class="related-btn" onclick="selectDisease(\'' + relIds[ri] + '\')">' + rn + '</button>';
-    }
-    relHtml += '</div></div>';
-    html += relHtml;
-  }
-  html += '<div style="text-align:center;margin-bottom:16px;"><button class="btn-donate" onclick="showDonate()">☕ 请老叶喝杯咖啡</button></div>';
-  document.getElementById('reportContent').innerHTML = html;
-  // 结果页返回按钮：显示"← 上一步"
-  var rbb = document.querySelector('#resultArea .back-btn');
-  if (rbb) rbb.textContent = visitPath.length > 0 ? '← 上一步' : '← 返回首页';
-  pushState('result', diseaseId, currentNode, '#r/' + diseaseId + '/' + currentNode);
-}
-
-// ==================== REPORT ACTIONS ====================
-function showDonate(){ var p=document.getElementById("donatePanel"); p.classList.toggle("show"); if(p.classList.contains("show")){ p.scrollIntoView({behavior:"smooth"}); } }
-
-function saveReport() {
-  if (navigator.share) { navigator.share({ title:'全民中医', text:'跟着六经八纲，把症状一步步理清楚→', url:'https://laoyetools.com/quanmin' }).catch(function(){}); }
-  else if (navigator.clipboard) { navigator.clipboard.writeText('🌿 全民中医\n跟着六经八纲，把症状一步步理清楚\n\n打开即用，不用注册：https://laoyetools.com/quanmin'); alert('链接已复制！'); }
-  else { alert('复制链接发给朋友吧：\n\nhttps://laoyetools.com/quanmin'); }
-}
-function shareReport() {
-  if (navigator.share) { navigator.share({ title:'全民中医', text:'跟着六经八纲，把症状一步步理清楚→', url:'https://laoyetools.com/quanmin' }).catch(function(){}); }
-  else { alert('复制链接发给朋友吧：\n\nhttps://laoyetools.com/quanmin'); }
-}
-
-// ==================== SHARE CARD ====================
-var currentResultNode = null;
-function roundRectPath(ctx, x, y, w, h, r) {
-  ctx.beginPath();
-  ctx.moveTo(x + r, y);
-  ctx.arcTo(x + w, y, x + w, y + h, r);
-  ctx.arcTo(x + w, y + h, x, y + h, r);
-  ctx.arcTo(x, y + h, x, y, r);
-  ctx.arcTo(x, y, x + w, y, r);
-  ctx.closePath();
-}
-function wrapText(ctx, text, x, y, maxWidth, lineHeight, maxLines) {
-  var chars = String(text || '').split('');
-  var line = '', lines = 0;
-  for (var i = 0; i < chars.length; i++) {
-    line += chars[i];
-    if (ctx.measureText(line).width > maxWidth) {
-      ctx.fillText(line.slice(0, -1), x, y);
-      y += lineHeight; lines++;
-      line = chars[i];
-      if (maxLines && lines >= maxLines) { return { y: y, truncated: true }; }
-    }
-  }
-  if (line) { ctx.fillText(line, x, y); lines++; }
-  return { y: y + (maxLines ? 0 : 0), truncated: false };
-}
-function genShareCard() {
-  var node = currentResultNode;
-  if (!node) { alert('请先完成一次辨证查询'); return; }
-  var dName = '';
-  for (var i = 0; i < allDiseases.length; i++) { if (allDiseases[i].id === diseaseId) { dName = allDiseases[i].name; break; } }
-  var W = 750, H = 1180;
-  var c = document.createElement('canvas');
-  c.width = W; c.height = H;
-  var ctx = c.getContext('2d');
-  ctx.fillStyle = '#f0fdf4'; ctx.fillRect(0, 0, W, H);
-  ctx.fillStyle = '#ffffff';
-  roundRectPath(ctx, 30, 36, W - 60, H - 72, 28); ctx.fill();
-  ctx.strokeStyle = '#86efac'; ctx.lineWidth = 3;
-  roundRectPath(ctx, 30, 36, W - 60, H - 72, 28); ctx.stroke();
-
-  // 顶部品牌
-  ctx.fillStyle = '#166534'; ctx.font = 'bold 34px sans-serif'; ctx.textAlign = 'center';
-  ctx.fillText('🌿 全民中医 · 辨证参考', W / 2, 110);
-  ctx.fillStyle = '#94a3b8'; ctx.font = '22px sans-serif';
-  ctx.fillText('跟着六经八纲，把症状一步步理清楚', W / 2, 150);
-
-  // 分隔线
-  ctx.strokeStyle = '#dcfce7'; ctx.lineWidth = 2;
-  ctx.beginPath(); ctx.moveTo(80, 185); ctx.lineTo(W - 80, 185); ctx.stroke();
-
-  // 病种
-  ctx.fillStyle = '#64748b'; ctx.font = '26px sans-serif'; ctx.textAlign = 'center';
-  ctx.fillText('查的是：' + (dName || '身体不适'), W / 2, 235);
-
-  // 辨证方向（大字，居中换行）
-  ctx.fillStyle = '#166534'; ctx.font = 'bold 44px sans-serif';
-  var synLines = wrapText(ctx, node.syndrome || '', 60, 300, W - 120, 60, 3);
-  ctx.fillStyle = '#16a34a'; ctx.font = 'bold 26px sans-serif';
-  var pat = inferPattern(node, currentNode);
-  ctx.fillText(pat.liujing + ' · ' + pat.hanRe, W / 2, synLines.y + 40);
-
-  // 分隔线
-  ctx.strokeStyle = '#dcfce7'; ctx.lineWidth = 2;
-  ctx.beginPath(); ctx.moveTo(80, synLines.y + 75); ctx.lineTo(W - 80, synLines.y + 75); ctx.stroke();
-
-  // 典型表现
-  var yy = synLines.y + 115;
-  ctx.textAlign = 'left';
-  ctx.fillStyle = '#166534'; ctx.font = 'bold 28px sans-serif';
-  ctx.fillText('典型表现', 70, yy);
-  ctx.fillStyle = '#475569'; ctx.font = '28px sans-serif';
-  var symWrap = wrapText(ctx, (node.symptoms || '').replace(/<[^>]+>/g, ''), 70, yy + 40, W - 140, 42, 5);
-  ctx.fillStyle = '#94a3b8'; ctx.font = '22px sans-serif';
-  if (symWrap.truncated) ctx.fillText('……（更多见工具内完整版）', 70, symWrap.y);
-
-  // 就医红线
-  var ry = symWrap.y + 50;
-  ctx.fillStyle = '#fef2f2';
-  roundRectPath(ctx, 60, ry, W - 120, 170, 16); ctx.fill();
-  ctx.fillStyle = '#dc2626'; ctx.font = 'bold 26px sans-serif';
-  ctx.fillText('⚠️ 以下情况请及时就医', 90, ry + 45);
-  ctx.font = '24px sans-serif';
-  wrapText(ctx, '发烧超3天 · 呼吸困难 · 胸痛 · 神志不清 · 抽搐 · 剧烈腹痛 · 年龄小于1岁 · 孕妇', 90, ry + 90, W - 180, 36, 2);
-
-  // 底部品牌
-  ctx.fillStyle = '#16a34a'; ctx.font = 'bold 30px sans-serif'; ctx.textAlign = 'center';
-  ctx.fillText('laoyetools.com/quanmin', W / 2, H - 120);
-  ctx.fillStyle = '#94a3b8'; ctx.font = '20px sans-serif';
-  ctx.fillText('免费自查小工具 · 打开即用 · 不用注册', W / 2, H - 82);
-  ctx.fillText('《伤寒论》经典知识学习参考，不构成医疗建议', W / 2, H - 48);
-
-  c.toBlob(function(blob) {
-    try {
-      var file = new File([blob], 'quanmin-card.png', { type: 'image/png' });
-      if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
-        navigator.share({ files: [file], title: '全民中医 · 辨证参考' }).catch(function(){ showCardPreview(c); });
-      } else { showCardPreview(c); }
-    } catch (e) { showCardPreview(c); }
-  }, 'image/png');
-}
-function showCardPreview(c) {
-  var img = document.getElementById('cardPreviewImg');
-  if (!img) return;
-  img.src = c.toDataURL('image/png');
-  document.getElementById('cardPreview').classList.add('show');
-}
-function hideCardPreview() { document.getElementById('cardPreview').classList.remove('show'); }
-
-// ==================== FEEDBACK ====================
-function submitFeedback() {
-  var msg = document.getElementById('fbMsg').value.trim();
-  if (!msg) { alert('请输入你想查的病种名称'); return; }
-  var contact = document.getElementById('fbContact').value.trim();
-  var xhr = new XMLHttpRequest();
-  xhr.open('POST', '/quanmin/feedback', true);
-  xhr.setRequestHeader('Content-Type', 'application/json');
-  xhr.onload = function() {
-    var r = document.getElementById('fbResult');
-    if (xhr.status === 200) { r.style.display = 'block'; r.textContent = '已收到！老叶会尽快更新。也可直接微信 laoye_jingfang'; document.getElementById('fbMsg').value = ''; document.getElementById('fbContact').value = ''; }
-    else { r.style.display = 'block'; r.style.color = '#dc2626'; r.textContent = '发送失败，请直接微信 laoye_jingfang'; }
-  };
-  xhr.send(JSON.stringify({ msg: msg, contact: contact || '' }));
-}
-
-// ==================== STARTUP ====================
-if ('serviceWorker' in navigator) { navigator.serviceWorker.register('/quanmin/sw.js', {scope:'/quanmin/'}).then(function(reg){ console.log('[PWA] SW registered:', reg.scope); if(reg.waiting){reg.waiting.postMessage('skipWaiting')} }).catch(function(e){ console.log('[PWA] SW failed:', e); }); }
-init();
+var storage={getItem:function(k){try{return localStorage.getItem(k);}catch(e){return null;}},setItem:function(k,v){try{localStorage.setItem(k,v);return true;}catch(e){return false;}}};
+var state={lang:storage.getItem('qj-lang')||'zh-CN',opening:'',complaint:null,session:null,currentQuestion:null,history:[],treeId:null};
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+function t(k,p){var s=(UI[state.lang]&&UI[state.lang][k])||UI['zh-CN'][k]||k;Object.keys(p||{}).forEach(function(x){s=s.replace('{'+x+'}',p[x]);});return s;}
+function tx(s){return state.lang==='zh-TW'?toTW(s):s;}
+function show(id){['home','matches','interview','result'].forEach(function(x){document.getElementById(x).classList.toggle('hidden',x!==id);});window.scrollTo(0,0);}
+function applyLang(){document.documentElement.lang=state.lang;storage.setItem('qj-lang',state.lang);document.querySelectorAll('[data-i18n]').forEach(function(el){el.textContent=t(el.dataset.i18n);});document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el){el.placeholder=t(el.dataset.i18nPlaceholder);});document.querySelectorAll('.lang').forEach(function(b){b.classList.toggle('active',b.dataset.lang===state.lang);});renderDiseases();if(!document.getElementById('interview').classList.contains('hidden')&&state.currentQuestion)renderQuestion(state.currentQuestion);if(!document.getElementById('result').classList.contains('hidden')&&state.session)renderReport();}
+function renderDiseases(){var h='';DISEASES.forEach(function(d){var name=state.lang==='en'?d[4]:tx(d[2]);var hint=state.lang==='en'?'Tap to start':tx(d[3]);h+='<button class="disease" data-opening="'+esc(d[5])+'" data-tree="'+d[6]+'" data-cid="'+esc(DISEASE_COMPLAINT[d[0]]||'fatigue')+'"><span class="ico">'+d[1]+'</span><span class="nm">'+esc(name)+'</span><span class="ht">'+esc(hint)+'</span></button>';});document.getElementById('diseaseGrid').innerHTML=h;document.querySelectorAll('.disease').forEach(function(b){b.onclick=function(){state.treeId=b.dataset.tree;state.opening=state.lang==='en'?(DISEASES.find(function(d){return d[5]===b.dataset.opening;})||[])[4]||b.dataset.opening:tx(b.dataset.opening);document.getElementById('opening').value=state.lang==='en'?(DISEASES.find(function(d){return d[5]===b.dataset.opening;})||[])[4]||b.dataset.opening:b.dataset.opening;startComplaint(FDE.getComplaintById(b.dataset.cid));};});}
+function begin(raw){raw=String(raw||'').trim();if(!raw){document.getElementById('opening').focus();return;}state.opening=raw;var scored=FDE.scoreComplaint(raw);if(!scored.length&&state.lang==='en'){var hit=EN_ALIAS.find(function(x){return x[0].test(raw.toLowerCase());});if(hit){var ec=FDE.getComplaintById(hit[1]);if(ec)scored=[{complaint:ec,score:100}];}}if(scored.length===1||scored[0]&&scored[0].score>=90||(scored[1]&&scored[0].score-scored[1].score>=25)){startComplaint(scored[0].complaint);return;}renderMatches(scored);}
+function renderMatches(scored){var h='';(scored.length?scored:FDE.complaints.slice(0,8)).forEach(function(x){var c=x.complaint||x;h+='<button class="match" data-id="'+esc(c.id)+'"><b>'+esc(state.lang==='en'?humanComplaintEn(c):tx(c.label))+'</b><small>'+esc(state.lang==='en'?domainEn(c.domain):tx(c.domainLabel))+'</small></button>';});document.getElementById('matchList').innerHTML=h;document.querySelectorAll('.match').forEach(function(b){b.onclick=function(){startComplaint(FDE.getComplaintById(b.dataset.id));};});show('matches');}
+function humanComplaintEn(c){var found=DISEASES.find(function(d){return d[5].indexOf(c.label)>=0||c.aliases.some(function(a){return d[5].indexOf(a)>=0;});});return found?found[4]:(domainEn(c.domain)+' concern');}
+function domainEn(d){return {sleep_emotion:'Sleep and mood',upper_gi:'Upper digestive',lower_gi:'Bowel',respiratory_ent:'Breathing / ENT',chest_circulation:'Chest / circulation',head_neuro:'Head / neurologic',temperature_fluids:'Temperature / fluids',musculoskeletal:'Musculoskeletal',urinary_male:'Urinary / men’s health',gynecology:'Women’s health',skin_hair_edema:'Skin / swelling',general_constitution:'General energy'}[d]||'General';}
+function startComplaint(c){if(!c){renderMatches([]);return;}state.complaint=c;if(!state.treeId)state.treeId=COMPLAINT_TREE[c.id]||null;state.session=FDE.createSession(c);state.history=[];state.episodeId='ep-'+Date.now();nextQuestion();}
+function nextQuestion(){var stop=FDE.stoppingDecision(state.session,state.complaint);if(stop.stop){var extra=state.session.status!=='urgent_handoff'&&FormulaMatcher.next(state.session,state.treeId);if(extra){state.currentQuestion=extra;renderQuestion(extra);return;}renderReport();return;}var q=FDE.selectNextQuestion(state.session,state.complaint);if(!q){renderReport();return;}state.currentQuestion=q;renderQuestion(q);}
+function qPrompt(q){if(state.lang==='en')return EN_Q[q.id]||q.prompt;if(state.lang==='zh-TW')return toTW(q.prompt);return q.prompt;}
+function oLabel(q,o){if(state.lang==='en'){var contextual={q_severity:{mild:'0–3',moderate:'4–6',severe:'7–10'},q_sleep_pattern:{early:'Waking too early'},q_gi_meal:{after:'Worse after meals'},q_bowel_pain_link:{after:'Worse after a bowel movement'},q_sensory_change:{light:'Light sensitivity or nausea'}};return contextual[q.id]&&contextual[q.id][o.value]||EN_O[o.value]||o.label;}if(state.lang==='zh-TW')return toTW(o.label);return o.label;}
+function renderQuestion(q){show('interview');var n=state.session.turns.length+1;document.getElementById('qMeta').textContent=t('turn',{n:n})+' · '+(state.lang==='en'?domainEn(state.complaint.domain):tx(state.complaint.domainLabel));document.getElementById('qText').textContent=qPrompt(q);document.getElementById('progressBar').style.width=Math.min(92,10+n*8)+'%';var h='';q.options.forEach(function(o){h+='<button class="option" data-value="'+esc(o.value)+'">'+esc(oLabel(q,o))+'</button>';});document.getElementById('options').innerHTML=h;document.querySelectorAll('.option').forEach(function(b){b.onclick=function(){state.history.push(JSON.stringify(state.session));if(q.options.some(function(o){return o.value===b.dataset.value&&o.signals&&o.signals.includes('urgent');}))state.session.status='urgent_handoff';FDE.answerQuestion(state.session,q,b.dataset.value,oLabel(q,q.options.find(function(o){return o.value===b.dataset.value;})));nextQuestion();};});}
+function backQuestion(){if(!state.history.length){show('home');return;}state.session=JSON.parse(state.history.pop());nextQuestion();}
+function getSelectedAnswers(){return state.session.turns.filter(function(turn){return turn.kind!=='repair';}).map(function(turn){var q=FDE.getQuestion(turn.questionId)||FormulaMatcher.getQuestion(turn.questionId);var o=q&&q.options.find(function(x){return x.value===turn.answer;});return {question:qPrompt(q||{id:'',prompt:turn.factKey}),answer:o?oLabel(q,o):turn.answer,factKey:turn.factKey,signals:o&&o.signals||[]};});}
+function cleanLegacy(s){return String(s||'').replace(/经典经方?|经典经方/g,'经典').replace(/经典说[：:]?/g,'').replace(/<[^>]+>/g,'');}
+function tokens(s){var out=[];String(s||'').replace(/[，。；、·\/（）()：:“”"'\s+\-]/g,'|').split('|').forEach(function(x){x=x.trim();if(x.length>=2&&x.length<=12&&out.indexOf(x)<0)out.push(x);});return out;}
+function legacyLeafCandidates(){if(!window.TREES||!state.treeId||!TREES[state.treeId])return[];var tree=TREES[state.treeId],source=(state.opening+' '+getSelectedAnswers().map(function(x){return x.answer;}).join(' '));var st=tokens(source);var arr=[];Object.keys(tree.nodes||{}).forEach(function(key){var n=tree.nodes[key];if(!n||!n.syndrome)return;var body=cleanLegacy([n.symptoms].join(' '));var matched=st.filter(function(x){return body.indexOf(x)>=0||x.indexOf(body)>=0;});var score=matched.reduce(function(a,x){return a+Math.min(3,x.length/2);},0);if(state.treeId==='stomach'||state.treeId==='reflux'){[['反酸',/反酸/,/反酸|泻心|胃/],['烧灼/烧心',/烧灼|烧心/,/热|烧心|反酸/],['恶心/想吐',/恶心|想吐/,/恶心|呕|痞/]].forEach(function(rule){if(rule[1].test(source)&&rule[2].test(body)){score+=2.5;if(matched.indexOf(rule[0])<0)matched.push(rule[0]);}});}arr.push({key:key,node:n,score:score,support:matched});});return arr.filter(function(x){return x.score>0;}).sort(function(a,b){return b.score-a.score;}).slice(0,3);}
+function leafCandidates(){if(['cough','rhinitis','fever'].includes(state.treeId))return FormulaMatcher.rank(state.treeId,state.opening,state.session);return legacyLeafCandidates().map(function(x){x.missing=[];return x;});}
+function hypothesisEvidence(h){var a=getSelectedAnswers(),support=[];a.forEach(function(x){if(x.signals.some(function(s){return h.signature.indexOf(s)>=0;}))support.push(x.answer);});return support.slice(0,3);}
+function buildSummaryText(){var a=getSelectedAnswers();var lines=[t('report'),t('chief')+': '+state.opening,''];a.forEach(function(x,i){lines.push((i+1)+'. '+x.question+' — '+x.answer);});if(state.session.status!=='urgent_handoff'){leafCandidates().forEach(function(x,i){lines.push('',(i===0?'优先参考方：':'对照参考方：')+cleanLegacy(x.node.syndrome),'支持：'+x.support.join('、'));if(x.ingredients)lines.push('经典组成：'+x.ingredients);if(x.missing.length)lines.push('待核实：'+x.missing.join('；'));});}lines.push('',state.session.status==='urgent_handoff'?t('urgentTitle')+'\n'+t('urgentBody'):t('screened')); return lines.join('\n');}
+function renderReport(){show('result');var urgent=state.session.status==='urgent_handoff',a=getSelectedAnswers(),hyps=state.session.hypotheses.slice().sort(function(x,y){return y.probability-x.probability;}).slice(0,3),leaves=leafCandidates();var h='<div class="report"><h2>'+esc(urgent?t('urgentTitle'):t('report'))+'</h2>';if(urgent){h+='<div class="alert"><div class="emergency">⚠ '+esc(t('urgentTitle'))+'</div>'+esc(t('urgentBody'))+'</div>';}else{h+='<div class="screened-note">'+esc(t('screened'))+'</div>';}if(!urgent&&leaves.length){h+='<div class="formula-lead"><div>'+esc(state.lang==='en'?'Leading reference formula':tx('优先参考方'))+'</div><h2>'+esc(tx(cleanLegacy(leaves[0].node.syndrome)))+'</h2><p>'+esc(tx(leaves[0].support.join(' · ')))+'</p><small>'+esc(state.lang==='en'?'Ranked from reported findings; clinician review required.':tx('按本次症状排序，供接诊医师辨证参考。'))+'</small></div>';}h+='<h3>'+esc(t('chief'))+'</h3><div class="summary">'+esc(state.opening)+'</div><h3>'+esc(t('answers'))+'</h3><div class="facts">';a.forEach(function(x){h+='<div class="fact"><b>'+esc(x.question)+'</b><br>'+esc(x.answer)+'</div>';});h+='</div>';
+if(!urgent){h+='<details><summary>'+esc(t('competition'))+'</summary><h3>'+esc(t('competition'))+'</h3><div class="candidates">';hyps.forEach(function(x){var ev=hypothesisEvidence(x),pct=Math.round(x.probability*100);h+='<div class="candidate"><strong>'+esc(state.lang==='en'?x.key.replace(/_/g,' '):tx(x.title))+'</strong><div class="meter"><i style="width:'+pct+'%"></i></div><span class="weak">'+(state.lang==='en'?'Relative rule weight ':tx('规则相对权重 '))+pct+'% · '+esc(t('support'))+': '+esc(ev.length?ev.join('；'):t('none'))+'</span></div>';});h+='</div></details><h3>'+esc(t('formula'))+'</h3>';
+if(leaves.length){h+='<div class="candidates">';leaves.forEach(function(x,i){var title=(i===0?(state.lang==='en'?'Leading reference: ':tx('优先参考：')):(state.lang==='en'?'Compare: ':tx('对照参考：')))+tx(cleanLegacy(x.node.syndrome));var basis=state.lang==='en'?'Source passage retained in the Chinese knowledge layer; a licensed practitioner must verify the passage, pattern match, and individual findings.':tx(cleanLegacy(x.node.original||'需由执业中医师核对经典条文与个案表现'));h+='<div class="candidate"><strong>'+esc(title)+'</strong><div><b>'+esc(t('support'))+':</b> '+esc(x.support.length?x.support.join('、'):t('none'))+'</div>'+(x.ingredients?'<div><b>'+esc(state.lang==='en'?'Classical ingredients: ':tx('经典组成：'))+'</b>'+esc(tx(x.ingredients))+'</div>':'')+(x.differential?'<div>'+esc(tx(x.differential))+'</div>':'')+(x.source?'<a href="'+esc(x.source)+'" target="_blank" rel="noopener noreferrer">'+esc(state.lang==='en'?'Source':tx('方证来源'))+'</a>':'')+'<div><b>'+esc(t('classicBasis'))+':</b> '+esc(basis)+'</div><div class="weak"><b>'+esc(t('missing'))+':</b> '+esc(state.lang==='en'?'Tongue, pulse, abdominal findings and medication suitability require in-person verification.':tx((x.missing.length?x.missing.join('；')+'。':'')+'舌脉与个体适宜性由接诊医师核定。'))+'</div></div>';});h+='</div>';var combine=combineDecision(leaves);h+='<h3>'+esc(t('combine'))+'</h3><div class="combine">'+esc(combine?t('combineYes'):t('combineNo'))+'</div>';}else{h+='<div class="combine">'+esc(t('notEnough'))+'</div>';}}
+var count=saveEpisode(urgent,a,hyps,leaves);h+='<div class="actions"><button class="solid" data-copy>'+esc(t('copy'))+'</button><button data-share>'+esc(t('share'))+'</button></div><div class="usage">'+esc(t('episode',{n:count}))+'</div></div>';document.getElementById('report').innerHTML=h;var cb=document.querySelector('[data-copy]');if(cb)cb.onclick=copySummary;var sb=document.querySelector('[data-share]');if(sb)sb.onclick=shareSummary;}
+function combineDecision(leaves){if(leaves.length<2)return false;var a=leaves[0],b=leaves[1];if(a.support.length<2||b.support.length<2)return false;var inter=a.support.filter(function(x){return b.support.indexOf(x)>=0;}).length;var union=new Set(a.support.concat(b.support)).size;return union>0&&inter/union<.35&&a.score>=3&&b.score>=3;}
+function saveEpisode(urgent,a,hyps,leaves){var list=[];try{list=JSON.parse(storage.getItem('qj-episodes')||'[]');}catch(e){}if(!Array.isArray(list))list=[];list=list.filter(function(x){return x&&x.id!==state.episodeId;});list.unshift({id:state.episodeId,createdAt:new Date().toISOString(),lang:state.lang,opening:state.opening,complaintId:state.complaint.id,urgent:urgent,answers:a,competition:hyps.map(function(x){return {id:x.id,probability:x.probability};}),formulaPatterns:leaves.map(function(x){return x.key;})});list=list.slice(0,20);return storage.setItem('qj-episodes',JSON.stringify(list))?list.length:0;}
+function copySummary(){var s=buildSummaryText();if(navigator.clipboard)navigator.clipboard.writeText(s).then(function(){alert(t('copied'));}).catch(function(){prompt(t('copy'),s);});else prompt(t('copy'),s);}
+function shareSummary(){var s=buildSummaryText();if(navigator.share)navigator.share({title:t('report'),text:s,url:location.href.split('#')[0]}).catch(function(){});else copySummary();}
+document.getElementById('startBtn').onclick=function(){state.treeId=null;begin(document.getElementById('opening').value);};document.querySelectorAll('.lang').forEach(function(b){b.onclick=function(){state.lang=b.dataset.lang;applyLang();};});document.addEventListener('click',function(e){var a=e.target.closest('[data-action]');if(!a)return;if(a.dataset.action==='home')show('home');if(a.dataset.action==='back-question')backQuestion();});window.addEventListener('online',function(){document.getElementById('offline').classList.add('hidden');});window.addEventListener('offline',function(){document.getElementById('offline').classList.remove('hidden');});if(!navigator.onLine)document.getElementById('offline').classList.remove('hidden');
+if('serviceWorker'in navigator&&location.protocol.indexOf('http')===0)navigator.serviceWorker.register('./sw.js').catch(function(){});applyLang();show('home');
+window.QuanminApp={begin:begin,combineDecision:combineDecision,cleanLegacy:cleanLegacy,EN_Q:EN_Q,EN_O:EN_O,DISEASES:DISEASES,oLabel:oLabel,buildSummaryText:buildSummaryText};
+})();

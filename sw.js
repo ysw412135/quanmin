@@ -1,42 +1,10 @@
-var CACHE = 'quanmin-v9';
-var URLS = ['/quanmin', '/quanmin/', '/quanmin/index.html', '/quanmin/manifest.json', '/quanmin/trees.js', '/quanmin/app.js', '/quanmin/pwa.js', '/quanmin/icon-192.png', '/quanmin/icon-512.png'];
-
-// Take control immediately (critical for PWA install to work on first visit)
-self.addEventListener('install', function(e) {
-  self.skipWaiting();
-  e.waitUntil(caches.open(CACHE).then(function(c) { return c.addAll(URLS); }));
-});
-
-self.addEventListener('activate', function(e) {
-  e.waitUntil(self.clients.claim());
-  // Clean old caches
-  e.waitUntil(caches.keys().then(function(keys) {
-    return Promise.all(keys.filter(function(k) { return k !== CACHE; }).map(function(k) { return caches.delete(k); }));
-  }));
-});
-
-self.addEventListener('fetch', function(e) {
-  // Skip non-GET requests and chrome-extension
-  if(e.request.method !== 'GET') return;
-  // Handle navigation requests (HTML) with network-first, cache-fallback
-  if(e.request.mode === 'navigate') {
-    e.respondWith(
-      fetch(e.request).catch(function() {
-        return caches.match('/quanmin') || caches.match('/quanmin/');
-      })
-    );
-    return;
-  }
-  // Network-first for static assets（保证更新生效，离线时回退缓存）
-  e.respondWith(
-    fetch(e.request).then(function(resp) {
-      if(resp.status === 200) {
-        var clone = resp.clone();
-        caches.open(CACHE).then(function(c) { c.put(e.request, clone); });
-      }
-      return resp;
-    }).catch(function() {
-      return caches.match(e.request);
-    })
-  );
+var PREFIX='quanmin-jingfang:'+self.registration.scope+':';
+var CACHE=PREFIX+'20260913-2';
+var ASSETS=['./','./index.html','./manifest.json','./trees.js','./fde-engine.js','./app.js','./formula-matcher.js'];
+self.addEventListener('install',function(e){e.waitUntil(caches.open(CACHE).then(function(c){return c.addAll(ASSETS);}).then(function(){return self.skipWaiting();}));});
+self.addEventListener('activate',function(e){e.waitUntil(caches.keys().then(function(keys){return Promise.all(keys.filter(function(k){return k.indexOf(PREFIX)===0&&k!==CACHE;}).map(function(k){return caches.delete(k);}));}).then(function(){return self.clients.claim();}));});
+self.addEventListener('fetch',function(e){
+ var url=new URL(e.request.url);
+ if(e.request.method!=='GET'||!ASSETS.some(function(a){return new URL(a,self.registration.scope).href===url.href;}))return;
+ e.respondWith(caches.open(CACHE).then(function(c){return c.match(e.request).then(function(r){return r||fetch(e.request);});}));
 });
