@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>经方原典标注完整性检查</title>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif;margin:0;background:#f5f7f5;color:#1f2f24}.wrap{max-width:1050px;margin:auto;padding:24px}.card{background:#fff;border:1px solid #dce7de;border-radius:16px;padding:18px;margin:14px 0}h1{color:#14532d}.ok{color:#166534}.warn{color:#92400e}table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:9px;border-bottom:1px solid #e7eee8;text-align:left;vertical-align:top}code{background:#edf4ee;padding:2px 5px;border-radius:5px}.pill{display:inline-block;padding:3px 8px;border-radius:999px;background:#edf7ef;margin:2px;font-size:12px}</style>
+</head>
+<body><main class="wrap">
+<h1>全民经方中医 · 原典标注完整性检查</h1>
+<p>内部开发工具。用于逐步补充《伤寒论》《金匮要略》原典定位，<strong>不参与方证隐藏、删除或降级</strong>。</p>
+<div class="card"><b>知识分层：</b>仲景原典 → 全民经方证据链 → 经方速查表工程索引 → 系统本次推理。字段缺失只代表“标注尚未结构化完整”，不等于证据链或速查表逻辑无效。</div>
+<div id="summary" class="card"></div>
+<div class="card"><h2>待补充/待核对的标注</h2><table><thead><tr><th>位置</th><th>方证</th><th>标注状态</th><th>现有原典字段</th></tr></thead><tbody id="rows"></tbody></table></div>
+</main>
+<script src="./trees.js"></script>
+<script>
+(function(){
+'use strict';
+var books=['《伤寒论》','《金匮要略》'];
+function status(node){var o=String(node.original||'');if(!o)return'missing';return books.some(function(x){return o.indexOf(x)>=0;})?'marked':'review';}
+var seen=new Set(),items=[];
+function add(scope,key,node){if(!node||!node.syndrome)return;var id=scope+'::'+key+'::'+node.syndrome;if(seen.has(id))return;seen.add(id);items.push({scope:scope,key:key,node:node,status:status(node)});}
+if(window.SHARED)Object.keys(window.SHARED).forEach(function(k){add('SHARED',k,window.SHARED[k]);});
+if(window.TREES)Object.keys(window.TREES).forEach(function(treeId){var nodes=window.TREES[treeId]&&window.TREES[treeId].nodes||{};Object.keys(nodes).forEach(function(k){add(treeId,k,nodes[k]);});});
+var marked=items.filter(function(x){return x.status==='marked';}).length;
+var pending=items.filter(function(x){return x.status!=='marked';});
+document.getElementById('summary').innerHTML='<div><span class="pill">方证节点 '+items.length+'</span><span class="pill ok">已标注两书出处 '+marked+'</span><span class="pill warn">待补充/核对 '+pending.length+'</span></div><p><b>注意：</b>这里的“待补充”只表示原典字段尚未结构化完整，不代表方证错误，更不会触发隐藏。现有全民经方证据链和经方速查表逻辑继续保留。</p>';
+document.getElementById('rows').innerHTML=pending.map(function(x){var label=x.status==='missing'?'尚未填写原典字段':'已有说明，待核对是否可补两书定位';return '<tr><td><code>'+escapeHtml(x.scope+'/'+x.key)+'</code></td><td>'+escapeHtml(x.node.syndrome)+'</td><td class="warn">'+label+'</td><td>'+escapeHtml(x.node.original||'—')+'</td></tr>';}).join('')||'<tr><td colspan="4" class="ok">当前方证均已完成原典标注。</td></tr>';
+function escapeHtml(s){return String(s||'').replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+})();
+</script></body></html>

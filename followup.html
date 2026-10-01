@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#14532d">
+<title>全民经方中医 · 复诊变化整理</title>
+<style>
+:root{--ink:#17251d;--muted:#637168;--green:#166534;--green2:#22c55e;--line:#d7e7d9;--red:#b91c1c;--amber:#92400e}*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#e8f5ea 0,#f8faf8 42%,#edf7ef 100%);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif;min-height:100vh}.app{max-width:760px;margin:auto;padding:16px 12px 56px}.back{display:inline-block;color:#166534;text-decoration:none;margin:4px 0 12px}.hero,.panel{background:rgba(255,254,249,.97);border:1px solid var(--line);border-radius:20px;box-shadow:0 12px 34px rgba(34,82,45,.08);padding:20px;margin-bottom:16px}h1{font-size:27px;color:#134e28;margin:0 0 8px}h2{font-size:19px;margin:0 0 9px;color:#244c2f}.lead,.helper{color:var(--muted);line-height:1.7;font-size:14px}.step{display:inline-block;background:#e9f7ec;color:#166534;border-radius:999px;padding:5px 10px;font-size:12px;font-weight:750;margin-bottom:9px}.notice{border-radius:12px;padding:12px 13px;line-height:1.65;font-size:13px;margin:12px 0}.notice.safe{background:#f0fdf4;border:1px solid #bbf7d0;color:#166534}.notice.warn{background:#fffbeb;border:1px solid #fde68a;color:var(--amber)}.notice.danger{background:#fff1f2;border:1px solid #fecaca;color:var(--red)}label{display:block;font-size:13px;font-weight:750;color:#385443;margin:12px 0 6px}select,textarea,input[type=number]{width:100%;padding:12px;border:1.5px solid #cfe1d2;border-radius:12px;background:#fff;outline:none;line-height:1.55}textarea:focus,select:focus,input:focus{border-color:var(--green2);box-shadow:0 0 0 4px rgba(34,197,94,.09)}textarea{min-height:92px;resize:vertical}.baseline{white-space:pre-wrap;background:#f7faf7;border:1px solid #dce8de;border-radius:12px;padding:13px;line-height:1.65;font-size:13px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.primary{width:100%;border:0;border-radius:13px;padding:14px 16px;background:linear-gradient(135deg,#166534,#15803d);color:#fff;font-weight:800;margin-top:12px}.secondary{width:100%;border:1px solid #bcd3c0;border-radius:13px;padding:12px 16px;background:#fff;color:#166534;font-weight:750;margin-top:8px}.summary{white-space:pre-wrap;background:#f7faf7;border:1px solid #dce8de;border-radius:12px;padding:14px;line-height:1.75;font-size:13px}.hidden{display:none!important}.footer{text-align:center;color:#7f8b82;font-size:11px;line-height:1.7;margin-top:24px}@media(max-width:560px){.grid{grid-template-columns:1fr}.hero,.panel{padding:17px;border-radius:17px}}
+</style>
+</head>
+<body><main class="app">
+<a class="back" href="./index.html">← 返回症状整理</a>
+<section class="hero"><div class="step">公益 V2 · 复诊</div><h1>把这次变化说清楚</h1><div class="lead">选择你上一次保存的症状整理，再记录现在发生了什么变化。这里只整理患者自己的变化，不分析医生处方，也不把“好转/加重”自动归因于某种治疗。</div></section>
+<section id="empty" class="panel hidden"><h2>还没有可对照的历史记录</h2><div class="helper">请先完成一次症状整理。完成后的记录默认只保存在这台设备的浏览器中。</div><a class="secondary" style="display:block;text-align:center;text-decoration:none" href="./index.html">先去整理症状</a></section>
+<section id="formPanel" class="panel hidden">
+<div class="step">第 1 步</div><h2>选择上一次记录</h2>
+<label for="episode">历史症状记录</label><select id="episode"></select>
+<div id="baseline" class="baseline"></div>
+<div class="step" style="margin-top:18px">第 2 步</div><h2>记录当前变化</h2>
+<label for="overall">总体感觉</label><select id="overall"><option value="明显好转">明显好转</option><option value="有所好转">有所好转</option><option value="差不多">差不多</option><option value="有好有坏">有好有坏</option><option value="有所加重">有所加重</option><option value="明显加重">明显加重</option><option value="说不清">说不清</option></select>
+<div class="grid"><div><label for="severity">目前最困扰症状严重度（0–10）</label><input id="severity" type="number" min="0" max="10" step="1" placeholder="0=没有，10=最严重"></div><div><label for="days">距上次记录约多少天</label><input id="days" type="number" min="0" max="3650" step="1" placeholder="例如 3"></div></div>
+<label for="better">哪些症状改善了？</label><textarea id="better" placeholder="例如：胃里烧灼明显少了，晚上反酸从每天都有变成偶尔。"></textarea>
+<label for="same">哪些症状还在、变化不大？</label><textarea id="same" placeholder="例如：饭后胃胀还是差不多。"></textarea>
+<label for="newSymptoms">有没有新出现的不舒服？</label><textarea id="newSymptoms" placeholder="没有就写“没有”；如有，请尽量写开始时间和严重程度。"></textarea>
+<label for="impact">吃饭、睡觉、活动或日常生活有什么变化？</label><textarea id="impact" placeholder="例如：现在能正常吃饭；夜里仍醒2次；走路不受影响。"></textarea>
+<label for="danger">新出现的情况里，有没有以下任一项：明显呼吸困难、晕厥/意识异常、突然单侧无力或说话不清、呕血/黑便、止不住的出血、突然出现从未有过的剧烈头痛？</label><select id="danger"><option value="没有">没有</option><option value="有">有</option><option value="说不清">说不清</option></select>
+<div id="dangerNote" class="notice danger hidden"><b>请优先处理安全问题。</b><br>如果上述危险情况正在发生或明显加重，不要只依赖线上整理，请及时联系当地急救或前往急诊。</div>
+<div class="notice safe">隐私：本页读取和保存的数据都留在当前浏览器本机，不上传到服务器。</div>
+<button id="build" class="primary">生成复诊变化摘要</button>
+</section>
+<section id="result" class="panel hidden"><div class="step">复诊摘要</div><h2>给医生看的变化记录</h2><div id="summary" class="summary"></div><button id="copy" class="secondary">复制摘要</button></section>
+<div class="footer">全民经方中医 · 公益 V2<br>记录患者自述变化，不代替诊断，不评价其他医生处方。</div>
+</main>
+<script>
+(function(){
+'use strict';
+var storage={get:function(k){try{return localStorage.getItem(k);}catch(e){return null;}},set:function(k,v){try{localStorage.setItem(k,v);return true;}catch(e){return false;}}};
+var episodes=[];try{episodes=JSON.parse(storage.get('qj-episodes')||'[]');}catch(e){}if(!Array.isArray(episodes))episodes=[];
+var episodeSel=document.getElementById('episode'),baseline=document.getElementById('baseline'),form=document.getElementById('formPanel'),empty=document.getElementById('empty'),danger=document.getElementById('danger'),dangerNote=document.getElementById('dangerNote');
+function fmtDate(s){var d=new Date(s);if(isNaN(d.getTime()))return '时间未记录';return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')+' '+String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0');}
+function clean(s){return String(s||'').trim();}
+function selected(){return episodes.find(function(x){return x.id===episodeSel.value;})||episodes[0];}
+function showBaseline(){var e=selected();if(!e)return;var lines=['上次记录：'+fmtDate(e.createdAt),'主诉：'+(e.opening||'未记录')];(e.answers||[]).slice(0,8).forEach(function(x){lines.push('· '+(x.question||x.factKey||'')+'：'+(x.answer||''));});baseline.textContent=lines.join('\n');}
+if(!episodes.length){empty.classList.remove('hidden');}else{form.classList.remove('hidden');episodes.forEach(function(e,i){var o=document.createElement('option');o.value=e.id;o.textContent=fmtDate(e.createdAt)+' · '+String(e.opening||'症状记录').slice(0,28);episodeSel.appendChild(o);});showBaseline();}
+episodeSel.onchange=showBaseline;danger.onchange=function(){dangerNote.classList.toggle('hidden',danger.value==='没有');};
+document.getElementById('build').onclick=function(){var e=selected();if(!e)return;var lines=['《复诊症状变化摘要》','', '对照记录：'+fmtDate(e.createdAt),'上次主诉：'+(e.opening||'未记录'),'本次记录：'+fmtDate(new Date().toISOString()),'总体变化：'+document.getElementById('overall').value];var sev=clean(document.getElementById('severity').value),days=clean(document.getElementById('days').value);if(sev)lines.push('当前最困扰症状严重度：'+sev+'/10');if(days)lines.push('距上次记录：约'+days+'天');lines.push('', '【改善的症状】',clean(document.getElementById('better').value)||'未填写','', '【仍存在/变化不大的症状】',clean(document.getElementById('same').value)||'未填写','', '【新出现的不适】',clean(document.getElementById('newSymptoms').value)||'未填写','', '【对睡眠、饮食、活动或日常生活的影响】',clean(document.getElementById('impact').value)||'未填写','', '【危险信号自述】',danger.value);if(danger.value!=='没有')lines.push('提示：存在或无法排除预设危险情况，应优先线下评估。');lines.push('','说明：以上为患者本人自述变化整理，不代表对治疗效果、病因或处方正确性的判断。');var text=lines.join('\n');document.getElementById('summary').textContent=text;document.getElementById('result').classList.remove('hidden');var list=[];try{list=JSON.parse(storage.get('qj-followups')||'[]');}catch(err){}if(!Array.isArray(list))list=[];list.unshift({id:'fu-'+Date.now(),createdAt:new Date().toISOString(),episodeId:e.id,overall:document.getElementById('overall').value,severity:sev,days:days,better:clean(document.getElementById('better').value),same:clean(document.getElementById('same').value),newSymptoms:clean(document.getElementById('newSymptoms').value),impact:clean(document.getElementById('impact').value),danger:danger.value,summary:text});storage.set('qj-followups',JSON.stringify(list.slice(0,20)));document.getElementById('result').scrollIntoView({behavior:'smooth'});};
+document.getElementById('copy').onclick=function(){var text=document.getElementById('summary').textContent;if(navigator.clipboard)navigator.clipboard.writeText(text).then(function(){alert('已复制');});else prompt('复制摘要',text);};
+})();
+</script>
+</body></html>
