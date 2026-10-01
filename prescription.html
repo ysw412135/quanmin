@@ -18,14 +18,12 @@
 <h1>整理我的中药处方</h1>
 <div class="lead">先把医院或诊所开的处方拍清楚，再逐味核对。当前版本<strong>不会把照片发送到外部AI服务</strong>，照片只在本次浏览器页面中预览。</div>
 </section>
-
 <section class="panel">
 <div class="step">第 1 步</div><h2>拍照或选择处方照片</h2>
 <label class="upload"><input id="photo" type="file" accept="image/*" capture="environment"><b>📷 拍照 / 选择照片</b><span class="helper">尽量拍正、完整、光线均匀，不要遮住药名和剂量。</span></label>
 <div id="preview" class="preview hidden"><img id="previewImg" alt="处方照片预览"></div>
 <div class="notice safe">隐私原则：在接入经过审查的识别服务以前，本页面不上传处方照片。关闭或刷新页面后，照片预览会消失。</div>
 </section>
-
 <section class="panel">
 <div class="step">第 2 步</div><h2>录入或粘贴识别草稿</h2>
 <div class="helper">以后接入OCR/视觉识别后，这里会自动出现识别草稿。当前内测版先允许人工录入，用来验证“逐味确认”流程本身是否好用。</div>
@@ -34,7 +32,6 @@
 <button id="parseBtn" class="secondary">按行生成逐味核对表</button>
 <div class="notice warn">识别结果只是草稿。药名、炮制规格、剂量和用法未确认前，系统不得据此进行方证或处方结构分析。</div>
 </section>
-
 <section class="panel">
 <div class="step">第 3 步</div><h2>逐味确认药名、剂量和用法</h2>
 <div id="rows"></div>
@@ -43,7 +40,6 @@
 <div class="notice danger">如果照片模糊、药名无法辨认或剂量存在疑问，请保留“不确定”，不要猜。尤其禁止把 6g、9g 等误识别成 60g、90g 后继续分析。</div>
 <button id="buildBtn" class="primary" disabled>生成处方整理记录</button>
 </section>
-
 <section id="result" class="panel hidden">
 <div class="step">第 4 步</div><h2>处方整理记录</h2>
 <div id="summary" class="summary"></div>
@@ -52,7 +48,6 @@
 <div class="notice warn">本内测页暂不自动判断“医生开得对不对”，也不生成药味增减或剂量调整。后续只有在处方文字已确认、经典出处已核实后，才进入“症状 × 仲景方证 × 医生实际处方”的结构对照。</div>
 <button id="copyBtn" class="secondary">复制整理记录</button>
 </section>
-
 <div class="footer">全民经方中医 · 公益 V2 · 处方整理原型<br>用于就诊资料整理与经典知识参考，不代替执业医师诊疗。</div>
 </main>
 <script>
@@ -62,7 +57,7 @@ var photo=document.getElementById('photo'),preview=document.getElementById('prev
 var rows=document.getElementById('rows'),raw=document.getElementById('rawText'),confirmed=document.getElementById('confirmed'),build=document.getElementById('buildBtn');
 function esc(s){return String(s||'').replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
 function addRow(name,dose,use){var wrap=document.createElement('div');wrap.className='rx-row';wrap.innerHTML='<input type="text" class="drug" placeholder="药名/炮制规格" value="'+esc(name||'')+'"><input type="text" class="dose" placeholder="剂量" value="'+esc(dose||'')+'"><input type="text" class="use" placeholder="用法" value="'+esc(use||'')+'"><button type="button" class="mini remove">删除</button>';wrap.querySelector('.remove').onclick=function(){wrap.remove();};rows.appendChild(wrap);}
-function parseLine(line){line=String(line||'').trim();if(!line)return null;var m=line.match(/^(.+?)\s*([0-9]+(?:\.[0-9]+)?\s*(?:g|克|mg|毫克|ml|毫升|枚|片|粒|袋)?)?\s*(.*)$/i);return m?{name:(m[1]||'').trim(),dose:(m[2]||'').trim(),use:(m[3]||'').trim()}:{name:line,dose:'',use:''};}
+function parseLine(line){line=String(line||'').trim();if(!line)return null;var m=line.match(/^(.+?)[\s：:，,]*([0-9]+(?:\.[0-9]+)?\s*(?:mg|毫克|ml|毫升|g|克|枚|片|粒|袋))(?:\s+(.*))?$/i);if(m)return{name:(m[1]||'').trim(),dose:(m[2]||'').trim(),use:(m[3]||'').trim()};return{name:line,dose:'',use:''};}
 photo.onchange=function(){var f=photo.files&&photo.files[0];if(!f)return;var url=URL.createObjectURL(f);previewImg.src=url;preview.classList.remove('hidden');previewImg.onload=function(){URL.revokeObjectURL(url);};};
 document.getElementById('parseBtn').onclick=function(){rows.innerHTML='';var lines=raw.value.split(/\r?\n/).map(function(x){return x.trim();}).filter(Boolean);if(!lines.length){addRow('','','');return;}lines.forEach(function(line){var x=parseLine(line);if(x)addRow(x.name,x.dose,x.use);});confirmed.checked=false;build.disabled=true;};
 document.getElementById('addRow').onclick=function(){addRow('','','');};
