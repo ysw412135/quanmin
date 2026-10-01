@@ -1,5 +1,29 @@
 (function(){
 'use strict';
+// Public formula candidates must be traceable to Zhang Zhongjing's two source books.
+var CLASSIC_BOOKS=['《伤寒论》','《金匮要略》'];
+function classicAllowed(node){
+ if(!node||!node.syndrome)return true;
+ var src=String(node.original||'');
+ return CLASSIC_BOOKS.some(function(book){return src.indexOf(book)>=0;});
+}
+var classicBlocked=[];
+if(window.TREES){
+ Object.keys(window.TREES).forEach(function(treeId){
+  var nodes=window.TREES[treeId]&&window.TREES[treeId].nodes;
+  if(!nodes)return;
+  Object.keys(nodes).forEach(function(key){
+   var node=nodes[key];
+   if(node&&node.syndrome&&!classicAllowed(node)){
+    classicBlocked.push({treeId:treeId,key:key,syndrome:node.syndrome,original:node.original||''});
+    delete nodes[key];
+   }
+  });
+ });
+}
+window.ClassicSourcePolicy={books:CLASSIC_BOOKS.slice(),allowed:classicAllowed,blocked:classicBlocked,rule:'公开经典方剂候选仅允许来源于《伤寒论》《金匮要略》；未核实出处的方证默认不展示。'};
+if(classicBlocked.length&&window.console&&console.info)console.info('[全民经方中医] 已隐藏 '+classicBlocked.length+' 个未满足仲景两书来源规则的方证节点。');
+
 // Matching rules are engineering heuristics, not calibrated clinical probabilities.
 var features=[
  ['chill','怕冷/恶寒',/怕冷|恶寒|发冷|chills?/i],
