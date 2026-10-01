@@ -1,5 +1,5 @@
 var PREFIX='quanmin-jingfang:'+self.registration.scope+':';
-var CACHE=PREFIX+'20261001-gongyi-v2-4';
+var CACHE=PREFIX+'20261001-gongyi-v2-5';
 var ASSETS=['./','./index.html','./followup.html','./manifest.json','./trees.js','./fde-engine.js','./app.js','./formula-matcher.js'];
 self.addEventListener('install',function(e){e.waitUntil(caches.open(CACHE).then(function(c){return c.addAll(ASSETS);}).then(function(){return self.skipWaiting();}));});
 self.addEventListener('activate',function(e){e.waitUntil(caches.keys().then(function(keys){return Promise.all(keys.filter(function(k){return k.indexOf(PREFIX)===0&&k!==CACHE;}).map(function(k){return caches.delete(k);}));}).then(function(){return self.clients.claim();}));});
