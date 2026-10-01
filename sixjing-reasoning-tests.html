@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>六经推理自测</title><style>body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif;background:#f6f8f6;color:#203027;margin:0}.wrap{max-width:900px;margin:auto;padding:24px}.case{background:#fff;border:1px solid #dce7de;border-radius:14px;padding:14px;margin:10px 0}.pass{border-left:5px solid #16a34a}.fail{border-left:5px solid #dc2626}code{background:#eef3ef;padding:2px 5px;border-radius:5px}</style></head><body><main class="wrap"><h1>六经—八纲—方证推理层 · 烟雾测试</h1><p>只检查“六经方向”是否落入合理竞争组，不验证诊断准确率，也不用于患者自行用药。</p><div id="out"></div></main><script src="./formula-matcher.js"></script><script>
+(function(){
+var samples=[
+ {name:'太阳方向',opening:'突然怕冷发热，头痛全身酸痛，没有汗',want:'taiyang'},
+ {name:'少阳方向',opening:'一阵冷一阵热，口苦，胸胁不舒服，恶心，食欲下降',want:'shaoyang'},
+ {name:'阳明方向',opening:'明显怕热，出汗多，很渴想喝凉水，大便干结，腹部胀满',want:'yangming'},
+ {name:'太阴方向',opening:'腹胀，吃不下，容易恶心，大便稀，喜欢喝温水，整个人疲乏',want:'taiyin'},
+ {name:'少阴方向',opening:'明显怕冷，没有精神，很困倦，总想躺着，手脚凉',want:'shaoyin'},
+ {name:'厥阴竞争方向',opening:'手足厥冷，寒热错杂，口干但只想小口喝，饥而不欲食',want:'jueyin'}
+];
+var out=document.getElementById('out');
+samples.forEach(function(s){var rows=FormulaMatcher.sixJing(s.opening,{turns:[]}),top=rows[0],pass=top&&top.id===s.want;var d=document.createElement('div');d.className='case '+(pass?'pass':'fail');d.innerHTML='<b>'+s.name+'</b><div>输入：'+s.opening+'</div><div>期望：<code>'+s.want+'</code>；当前第一方向：<code>'+(top?top.id:'none')+'</code>（'+(top?top.score:0)+'）</div><div>前三：'+rows.slice(0,3).map(function(x){return x.id+':'+x.score;}).join(' / ')+'</div>';out.appendChild(d);});
+})();
+</script></body></html>
