@@ -1,21 +1,85 @@
-MIT License
+全民中医项目非商业使用许可 v1.0
+Quanmin TCM Project Non-Commercial License v1.0
 
-Copyright (c) 2026 老叶经方 (ysw412135)
+Copyright (c) 2026 老叶经方 / ysw412135
+All rights reserved except for the limited permissions expressly granted below.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+1. 许可范围
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+在遵守本许可全部条款的前提下，权利人授予你一项全球范围、非独占、不可转让、不可再许可的有限许可，可将本仓库中由权利人拥有版权的原创代码、文档、结构化规则、界面与数据整理成果用于：
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+- 个人学习与研究；
+- 非商业教学；
+- 非营利、公益性质的使用；
+- 非商业目的的修改、测试、复现与分发。
+
+2. 非商业条件
+
+上述许可仅适用于不以直接或间接商业利益为目的的使用。
+
+以下行为均视为“商业使用”，除非事先取得权利人的明确书面商业授权：
+
+- 对本项目、其修改版或衍生版收费；
+- 通过会员、订阅、广告、赞助权益、API 收费、SaaS、App、小程序或其他方式变现；
+- 将本项目或其核心代码、结构化规则、数据、界面或衍生版本集成进商业产品或商业服务；
+- 以本项目为基础提供收费部署、咨询、培训、技术服务或医疗相关商业服务；
+- 企业、机构或个人在其营利性业务中使用本项目以支持产品、销售、运营、交付或客户服务；
+- 销售、转售、授权、出租、打包分发本项目或其衍生作品；
+- 其他以获取商业利益、竞争优势或经济回报为主要目的的使用。
+
+如你不能确定某项用途是否属于商业使用，应在使用前联系权利人取得书面确认。
+
+3. 署名与许可保留
+
+任何获准的非商业复制、修改或分发必须：
+
+- 保留本版权声明和本许可文件；
+- 明确说明原项目来源为“全民中医 / ysw412135/quanmin”；
+- 不得暗示权利人对你的产品、组织、观点或医疗结论提供背书；
+- 在修改版本中清楚标明已做修改。
+
+4. 商业授权
+
+本许可不授予任何商业使用权。
+
+如需商业使用，必须在使用前取得权利人的单独书面商业授权。商业授权可根据使用范围、部署方式、用户规模、是否修改、是否再分发等条件另行约定。
+
+商业授权申请方式见仓库中的 COMMERCIAL_USE.md。
+
+5. 名称与标识
+
+本许可不授予“全民中医”、项目 Logo、视觉标识、域名或其他可能具有来源识别作用的名称、商标或品牌元素的商业使用权。
+
+6. 第三方与公版材料
+
+本许可仅适用于权利人有权许可的原创部分。
+
+《伤寒论》《金匮要略》等属于公版领域的古籍材料，以及仓库中可能包含的第三方材料，不因被本项目整理、引用或索引而改变其原有法律状态。第三方材料应遵循其各自的许可、版权或使用条件。
+
+7. 医疗与安全声明
+
+本项目用于就诊前症状整理、知识学习、研究和辅助沟通，不构成医疗诊断、处方、治疗建议或急症处理。
+
+任何使用者均应自行承担基于本项目进行部署、修改、研究、展示或使用所产生的风险，并确保其具体使用方式符合适用法律、行业规范和专业要求。
+
+8. 无担保
+
+本项目按“现状”提供，不作任何明示或默示担保，包括但不限于适销性、特定用途适用性、准确性、完整性、不侵权或医疗效果的担保。
+
+在适用法律允许的最大范围内，权利人不对因使用或无法使用本项目而产生的任何直接、间接、附带、特殊、惩罚性或后果性损失承担责任。
+
+9. 终止
+
+如你违反本许可，依据本许可获得的权限自动终止。停止违规行为并不自动恢复许可，除非权利人书面同意。
+
+10. 既有版本
+
+本许可适用于采用本许可发布的版本及其后续版本。
+
+已经依法依据此前许可获得某一历史版本副本的使用者，其对该历史版本已取得的权利不因本项目后续更换许可而被追溯撤销。
+
+11. 其他
+
+除本许可明确授予的权利外，其他一切权利均由权利人保留。
+
+如需商业授权、合作或对许可范围有疑问，请按照 COMMERCIAL_USE.md 所示方式联系。
