@@ -1,0 +1,14 @@
+{
+  "pattern_id": "PATTERN-TEMPLATE",
+  "title": "待命名方证假说",
+  "source_refs": [],
+  "supporting_findings": [],
+  "missing_findings": [],
+  "contradicting_findings": [],
+  "safety_exclusions": [],
+  "candidate_formula_refs": [],
+  "review_status": "draft",
+  "review_log": [],
+  "clinical_use_allowed": false,
+  "notes": "此为字段模板；不得直接作为患者诊断或处方规则。"
+}
