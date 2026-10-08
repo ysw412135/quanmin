@@ -169,6 +169,16 @@ http://localhost:8080
 
 ---
 
+## 经方知识工程（V0.1）
+
+项目开始建设可审校的经方知识库：从原典版本和条文定位、症状术语、六经八纲框架，到方证支持/反证、方剂索引、证据审核、合成病例测试及可复用 Skill。
+
+**[进入知识库 →](knowledge/README.md)** · **[知识工程 Skill →](knowledge/skills/SKILL_00_总览.md)** · **[方证数据模板 →](knowledge/patterns/pattern-template.json)**
+
+目前这是结构与审核规范，**不代表已经建成经方全文库、完成执业医师盲审或具有临床验证结果**。
+
+---
+
 ## 项目结构
 
 ```text
